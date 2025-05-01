@@ -7,6 +7,7 @@ import { PiStudent } from "react-icons/pi";
 import { Link, usePage } from '@inertiajs/react';
 import { CgProfile } from "react-icons/cg";
 import { useState } from 'react';
+import Helmet from '@/Components/Helmet';
 
 export default function AuthenticatedLayout({ children }) {
     const [showData, setShowData] = useState(true);
@@ -15,6 +16,7 @@ export default function AuthenticatedLayout({ children }) {
 
     return (
         <div className="flex min-h-screen bg-gray-100">
+            <Helmet />
             <aside className="w-64 bg-white shadow-lg flex flex-col">
                 <div className="flex h-16 items-center justify-center border-b">
                     <Link href="/">
@@ -25,8 +27,7 @@ export default function AuthenticatedLayout({ children }) {
                 <nav className="p-4 space-y-8 flex flex-col mb-4">
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href="/"
                     >
                         <MdOutlineSpaceDashboard /><p>Dashboard</p>
                     </Link>

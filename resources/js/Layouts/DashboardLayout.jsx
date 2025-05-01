@@ -1,4 +1,5 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import Helmet from '@/Components/Helmet';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { Link, usePage } from '@inertiajs/react';
 
@@ -7,11 +8,18 @@ export default function DashboardLayout({ header, children }) {
 
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
+            <Helmet />
             <header className="bg-white shadow px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                    <Link href="/">
-                        <ApplicationLogo className="h-8 w-auto text-gray-800" />
-                    </Link>
+                    {auth?.user ? (
+                        <Link href={route('dashboard')}>
+                            <ApplicationLogo className="h-8 w-auto text-gray-800" />
+                        </Link>
+                    ) : (
+                        <Link href="/">
+                            <ApplicationLogo className="h-8 w-auto text-gray-800" />
+                        </Link>
+                    )}
                 </div>
 
                 <nav className="space-x-8 flex items-center">
