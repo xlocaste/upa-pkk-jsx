@@ -32,8 +32,8 @@ export default function DashboardLayout({ header, children }) {
                     </Link>
                     <Link
                         className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
-                        href={route('form.alumni.list')}
-                        active={route().current('form.alumni.list')}
+                        href={route('form.lowongan-pekerjaan.list')}
+                        active={route().current('form.lowongan-pekerjaan.list')}
                     >
                         Lowongan Pekerjaan
                     </Link>

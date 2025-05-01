@@ -8,7 +8,7 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
             <Head title="Mahasiswa" />
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                    <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 text-gray-900">
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>

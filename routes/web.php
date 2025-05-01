@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\LowonganPekerjaanController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -50,6 +51,18 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
             Route::get('/', [AlumniController::class, 'index'])->name('index');
         });
     });
+
+    Route::prefix('/lowongan-pekerjaan')->name('lowongan-pekerjaan.')->group(function() {
+        Route::group(['middleware' => ['auth']], function() {
+            Route::get('/create', [LowonganPekerjaanController::class, 'create'])->name('create');
+            Route::post('/', [LowonganPekerjaanController::class, 'store'])->name('store');
+            Route::put('/{lowonganKerja}', [LowonganPekerjaanController::class, 'update'])->name('update');
+            Route::delete('/{lowonganKerja}', [LowonganPekerjaanController::class, 'destroy'])->name('destroy');
+            Route::get('/{lowonganKerja}/edit', [LowonganPekerjaanController::class, 'edit'])->name('edit');
+            Route::get('/{lowonganKerja}', [LowonganPekerjaanController::class, 'show'])->name('show');
+            Route::get('/', [LowonganPekerjaanController::class, 'index'])->name('index');
+        });
+    });
 });
 
 Route::prefix('/form')->name('form.')->group(function() {
@@ -59,6 +72,10 @@ Route::prefix('/form')->name('form.')->group(function() {
 
     Route::prefix('/alumni')->name('alumni.')->group(function() {
         Route::get('/', [AlumniController::class, 'list'])->name('list');
+    });
+
+    Route::prefix('/lowongan-pekerjaan')->name('lowongan-pekerjaan.')->group(function() {
+        Route::get('/', [LowonganPekerjaanController::class, 'list'])->name('list');
     });
 });
 

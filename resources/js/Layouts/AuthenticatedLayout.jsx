@@ -47,8 +47,8 @@ export default function AuthenticatedLayout({ children }) {
                     </Link>
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
-                        href={route('authentication.mahasiswa.index')}
-                        active={route().current('authentication.mahasiswa.index')}
+                        href={route('authentication.lowongan-pekerjaan.index')}
+                        active={route().current('authentication.lowongan-pekerjaan.index')}
                     >
                         <MdWorkOutline /><p>Lowongan Pekerjaan</p>
                     </Link>
