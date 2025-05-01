@@ -9,7 +9,7 @@ export default function DashboardLayout({ header, children }) {
         <div className="min-h-screen bg-gray-100 flex flex-col">
             <header className="bg-white shadow px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                    <Link href={route('dashboard')}>
+                    <Link href="/">
                         <ApplicationLogo className="h-8 w-auto text-gray-800" />
                     </Link>
                 </div>
