@@ -61,8 +61,8 @@ export default function AuthenticatedLayout({ children }) {
                     </Link>
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
-                        href={route('authentication.mahasiswa.index')}
-                        active={route().current('authentication.mahasiswa.index')}
+                        href={route('authentication.inkubasi.index')}
+                        active={route().current('authentication.inkubasi.index')}
                     >
                         <HiOutlineBuildingOffice2 /><p>Inkubasi</p>
                     </Link>

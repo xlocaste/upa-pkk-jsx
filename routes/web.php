@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\InkubasiController;
 use App\Http\Controllers\LowonganPekerjaanController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PraInkubasiController;
@@ -76,6 +77,18 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
             Route::get('/', [PraInkubasiController::class, 'index'])->name('index');
         });
     });
+
+    Route::prefix('/inkubasi')->name('inkubasi.')->group(function() {
+        Route::group(['middleware' => ['auth']], function() {
+            Route::get('/create', [InkubasiController::class, 'create'])->name('create');
+            Route::post('/', [InkubasiController::class, 'store'])->name('store');
+            Route::put('/{inkubasi}', [InkubasiController::class, 'update'])->name('update');
+            Route::delete('/{inkubasi}', [InkubasiController::class, 'destroy'])->name('destroy');
+            Route::get('/{inkubasi}/edit', [InkubasiController::class, 'edit'])->name('edit');
+            Route::get('/{inkubasi}', [InkubasiController::class, 'show'])->name('show');
+            Route::get('/', [InkubasiController::class, 'index'])->name('index');
+        });
+    });
 });
 
 Route::prefix('/form')->name('form.')->group(function() {
@@ -93,6 +106,10 @@ Route::prefix('/form')->name('form.')->group(function() {
 
     Route::prefix('/pra-inkubasi')->name('pra-inkubasi.')->group(function() {
         Route::get('/', [PraInkubasiController::class, 'list'])->name('list');
+    });
+
+    Route::prefix('/inkubasi')->name('inkubasi.')->group(function() {
+        Route::get('/', [InkubasiController::class, 'list'])->name('list');
     });
 });
 
