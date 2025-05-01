@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Alumni\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::prefix('/mahasiswa')->name('mahasiswa.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [MahasiswaController::class, 'create'])->name('create');
+        Route::post('/', [MahasiswaController::class, 'store'])->name('store');
+        Route::put('/{mahasiswa}', [MahasiswaController::class, 'update'])->name('update');
+        Route::delete('/{mahasiswa}', [MahasiswaController::class, 'destroy'])->name('destroy');
+        Route::get('/{mahasiswa}/edit', [MahasiswaController::class, 'edit'])->name('edit');
+        Route::get('/{mahasiswa}', [MahasiswaController::class, 'show'])->name('show');
+    });
+    Route::get('/', [MahasiswaController::class, 'index'])->name('index');
 });
 
 require __DIR__.'/auth.php';
