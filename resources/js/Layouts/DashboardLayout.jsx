@@ -39,8 +39,8 @@ export default function DashboardLayout({ header, children }) {
                     </Link>
                     <Link
                         className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
-                        href={route('form.alumni.list')}
-                        active={route().current('form.alumni.list')}
+                        href={route('form.pra-inkubasi.list')}
+                        active={route().current('form.pra-inkubasi.list')}
                     >
                         Pra Inkubasi
                     </Link>

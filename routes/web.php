@@ -3,6 +3,7 @@
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\LowonganPekerjaanController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PraInkubasiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,18 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
             Route::get('/', [LowonganPekerjaanController::class, 'index'])->name('index');
         });
     });
+
+    Route::prefix('/pra-inkubasi')->name('pra-inkubasi.')->group(function() {
+        Route::group(['middleware' => ['auth']], function() {
+            Route::get('/create', [PraInkubasiController::class, 'create'])->name('create');
+            Route::post('/', [PraInkubasiController::class, 'store'])->name('store');
+            Route::put('/{praInkubasi}', [PraInkubasiController::class, 'update'])->name('update');
+            Route::delete('/{praInkubasi}', [PraInkubasiController::class, 'destroy'])->name('destroy');
+            Route::get('/{praInkubasi}/edit', [PraInkubasiController::class, 'edit'])->name('edit');
+            Route::get('/{praInkubasi}', [PraInkubasiController::class, 'show'])->name('show');
+            Route::get('/', [PraInkubasiController::class, 'index'])->name('index');
+        });
+    });
 });
 
 Route::prefix('/form')->name('form.')->group(function() {
@@ -76,6 +89,10 @@ Route::prefix('/form')->name('form.')->group(function() {
 
     Route::prefix('/lowongan-pekerjaan')->name('lowongan-pekerjaan.')->group(function() {
         Route::get('/', [LowonganPekerjaanController::class, 'list'])->name('list');
+    });
+
+    Route::prefix('/pra-inkubasi')->name('pra-inkubasi.')->group(function() {
+        Route::get('/', [PraInkubasiController::class, 'list'])->name('list');
     });
 });
 
