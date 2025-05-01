@@ -9,17 +9,39 @@ export default function DashboardLayout({ header, children }) {
         <div className="min-h-screen bg-gray-100 flex flex-col">
             <header className="bg-white shadow px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                    <Link href="/">
+                    <Link href={route('dashboard')}>
                         <ApplicationLogo className="h-8 w-auto text-gray-800" />
                     </Link>
                 </div>
 
-                <nav className="space-x-4 flex items-center">
-                    <Link href="/" className="text-gray-700 hover:text-blue-600 transition">
-                        Home
+                <nav className="space-x-8 flex items-center">
+                    <Link
+                        className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        Alumni
                     </Link>
-                    <Link href="/about" className="text-gray-700 hover:text-blue-600 transition">
-                        About
+                    <Link
+                        className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        Lowongan Pekerjaan
+                    </Link>
+                    <Link
+                        className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        Pra Inkubasi
+                    </Link>
+                    <Link
+                        className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        Inkubasi
                     </Link>
 
                     {auth?.user ? (
