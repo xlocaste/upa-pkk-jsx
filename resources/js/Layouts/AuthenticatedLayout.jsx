@@ -67,7 +67,7 @@ export default function AuthenticatedLayout({ children }) {
                     </Link>
                 </nav>
 
-                <div className="border-t p-4 pb-0">
+                <div className="border-t px-4 pb-0">
                     <button onClick={() => setShowData((prev) => !prev)} className="mb-4 w-full flex items-center space-x-2">
                         <span className="flex w-full items-center cursor-pointer space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900">
                             <MdOutlineManageAccounts className='text-xl'/>
@@ -101,7 +101,7 @@ export default function AuthenticatedLayout({ children }) {
                         </Link>
                     </div>
                     )}
-                    <div className="text-xs text-gray-500 mt-1 text-center">
+                    <div className="text-xs text-gray-500 mt-6 text-center">
                         {user.email}
                     </div>
                 </div>
