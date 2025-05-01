@@ -1,12 +1,15 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
-import { HiOutlineLogout } from "react-icons/hi";
-import { MdOutlineManageAccounts } from "react-icons/md";
+import { HiOutlineLogout, HiOutlineOfficeBuilding } from "react-icons/hi";
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
+import { MdOutlineManageAccounts, MdOutlineSpaceDashboard } from "react-icons/md";
+import { MdWorkOutline } from "react-icons/md";
+import { PiStudent } from "react-icons/pi";
 import { Link, usePage } from '@inertiajs/react';
 import { CgProfile } from "react-icons/cg";
 import { useState } from 'react';
 
 export default function AuthenticatedLayout({ children }) {
-    const [showData, setShowData] = useState(false);
+    const [showData, setShowData] = useState(true);
     const { auth } = usePage().props;
     const user = auth.user;
 
@@ -19,13 +22,52 @@ export default function AuthenticatedLayout({ children }) {
                     </Link>
                 </div>
 
-                <nav className="p-4 space-y-2">
-                    <Link className='text-xl' href={route('dashboard')} active={route().current('dashboard')}>
-                        Dashboard
+                <nav className="p-4 space-y-8 flex flex-col mb-4">
+                    <Link
+                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        <MdOutlineSpaceDashboard /><p>Dashboard</p>
+                    </Link>
+                    <Link
+                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        <PiStudent /><p>Mahasiswa</p>
+                    </Link>
+                    <Link
+                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        <PiStudent /><p>Alumni</p>
+                    </Link>
+                    <Link
+                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        <MdWorkOutline /><p>Lowongan Pekerjaan</p>
+                    </Link>
+                    <Link
+                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        <HiOutlineOfficeBuilding /><p>Pra Inkubasi</p>
+                    </Link>
+                    <Link
+                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        href={route('dashboard')}
+                        active={route().current('dashboard')}
+                    >
+                        <HiOutlineBuildingOffice2 /><p>Inkubasi</p>
                     </Link>
                 </nav>
 
-                <div className="border-t p-4">
+                <div className="border-t p-4 pb-0">
                     <button onClick={() => setShowData((prev) => !prev)} className="mb-4 w-full flex items-center space-x-2">
                         <span className="flex w-full items-center cursor-pointer space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900">
                             <MdOutlineManageAccounts className='text-xl'/>
@@ -59,7 +101,7 @@ export default function AuthenticatedLayout({ children }) {
                         </Link>
                     </div>
                     )}
-                    <div className="text-xs text-gray-500 mt-1">
+                    <div className="text-xs text-gray-500 mt-1 text-center">
                         {user.email}
                     </div>
                 </div>
