@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Alumni\MahasiswaController;
+use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,16 +26,40 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('/mahasiswa')->name('mahasiswa.')->group(function() {
-    Route::group(['middleware' => ['auth']], function() {
-        Route::get('/create', [MahasiswaController::class, 'create'])->name('create');
-        Route::post('/', [MahasiswaController::class, 'store'])->name('store');
-        Route::put('/{mahasiswa}', [MahasiswaController::class, 'update'])->name('update');
-        Route::delete('/{mahasiswa}', [MahasiswaController::class, 'destroy'])->name('destroy');
-        Route::get('/{mahasiswa}/edit', [MahasiswaController::class, 'edit'])->name('edit');
-        Route::get('/{mahasiswa}', [MahasiswaController::class, 'show'])->name('show');
+Route::prefix('/authentication')->name('authentication.')->group(function() {
+    Route::prefix('/mahasiswa')->name('mahasiswa.')->group(function() {
+        Route::group(['middleware' => ['auth']], function() {
+            Route::get('/create', [MahasiswaController::class, 'create'])->name('create');
+            Route::post('/', [MahasiswaController::class, 'store'])->name('store');
+            Route::put('/{mahasiswa}', [MahasiswaController::class, 'update'])->name('update');
+            Route::delete('/{mahasiswa}', [MahasiswaController::class, 'destroy'])->name('destroy');
+            Route::get('/{mahasiswa}/edit', [MahasiswaController::class, 'edit'])->name('edit');
+            Route::get('/{mahasiswa}', [MahasiswaController::class, 'show'])->name('show');
+            Route::get('/', [MahasiswaController::class, 'index'])->name('index');
+        });
     });
-    Route::get('/', [MahasiswaController::class, 'index'])->name('index');
+
+    Route::prefix('/alumni')->name('alumni.')->group(function() {
+        Route::group(['middleware' => ['auth']], function() {
+            Route::get('/create', [AlumniController::class, 'create'])->name('create');
+            Route::post('/', [AlumniController::class, 'store'])->name('store');
+            Route::put('/{alumni}', [AlumniController::class, 'update'])->name('update');
+            Route::delete('/{alumni}', [AlumniController::class, 'destroy'])->name('destroy');
+            Route::get('/{alumni}/edit', [AlumniController::class, 'edit'])->name('edit');
+            Route::get('/{alumni}', [AlumniController::class, 'show'])->name('show');
+            Route::get('/', [AlumniController::class, 'index'])->name('index');
+        });
+    });
+});
+
+Route::prefix('/form')->name('form.')->group(function() {
+    Route::prefix('/mahasiswa')->name('mahasiswa.')->group(function() {
+        Route::get('/', [MahasiswaController::class, 'list'])->name('list');
+    });
+
+    Route::prefix('/alumni')->name('alumni.')->group(function() {
+        Route::get('/', [AlumniController::class, 'list'])->name('list');
+    });
 });
 
 require __DIR__.'/auth.php';

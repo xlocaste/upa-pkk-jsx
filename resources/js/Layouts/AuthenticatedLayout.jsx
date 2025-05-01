@@ -32,36 +32,36 @@ export default function AuthenticatedLayout({ children }) {
                     </Link>
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href={route('authentication.mahasiswa.index')}
+                        active={route().current('authentication.mahasiswa.index')}
                     >
                         <PiStudent /><p>Mahasiswa</p>
                     </Link>
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href={route('authentication.alumni.index')}
+                        active={route().current('authentication.alumni.index')}
                     >
                         <PiStudent /><p>Alumni</p>
                     </Link>
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href={route('authentication.mahasiswa.index')}
+                        active={route().current('authentication.mahasiswa.index')}
                     >
                         <MdWorkOutline /><p>Lowongan Pekerjaan</p>
                     </Link>
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href={route('authentication.mahasiswa.index')}
+                        active={route().current('authentication.mahasiswa.index')}
                     >
                         <HiOutlineOfficeBuilding /><p>Pra Inkubasi</p>
                     </Link>
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href={route('authentication.mahasiswa.index')}
+                        active={route().current('authentication.mahasiswa.index')}
                     >
                         <HiOutlineBuildingOffice2 /><p>Inkubasi</p>
                     </Link>

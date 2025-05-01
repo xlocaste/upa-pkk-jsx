@@ -17,29 +17,29 @@ export default function DashboardLayout({ header, children }) {
                 <nav className="space-x-8 flex items-center">
                     <Link
                         className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href={route('form.alumni.list')}
+                        active={route().current('form.alumni.list')}
                     >
                         Alumni
                     </Link>
                     <Link
                         className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href={route('form.alumni.list')}
+                        active={route().current('form.alumni.list')}
                     >
                         Lowongan Pekerjaan
                     </Link>
                     <Link
                         className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href={route('form.alumni.list')}
+                        active={route().current('form.alumni.list')}
                     >
                         Pra Inkubasi
                     </Link>
                     <Link
                         className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
-                        href={route('dashboard')}
-                        active={route().current('dashboard')}
+                        href={route('form.alumni.list')}
+                        active={route().current('form.alumni.list')}
                     >
                         Inkubasi
                     </Link>

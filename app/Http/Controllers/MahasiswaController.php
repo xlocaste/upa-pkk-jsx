@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Alumni;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mahasiswa\StoreRequest;
@@ -17,7 +17,19 @@ class MahasiswaController extends Controller
     {
         $daftarMahasiswa = Mahasiswa::all();
 
-        return inertia::render('Mahasiswa/List', [
+        return inertia::render('Authentication/Mahasiswa/List', [
+            'Mahasiswa' => $daftarMahasiswa,
+            'auth' => [
+                'user' => Auth::user(),
+            ],
+        ]);
+    }
+
+    public function list()
+    {
+        $daftarMahasiswa = Mahasiswa::all();
+
+        return inertia::render('Form/Mahasiswa/List', [
             'Mahasiswa' => $daftarMahasiswa,
             'auth' => [
                 'user' => Auth::user(),
@@ -41,7 +53,7 @@ class MahasiswaController extends Controller
             'ipk'=>$request->ipk,
         ]);
 
-        return redirect()->route('mahasiswa.index');
+        return redirect()->route('authentication.mahasiswa.index');
     }
 
     public function update(UpdateRequest $request, Mahasiswa $mahasiswa)
@@ -53,17 +65,17 @@ class MahasiswaController extends Controller
             'ipk'=>$request->ipk,
         ]);
 
-        return Inertia::location(route('mahasiswa.index'));
+        return Inertia::location(route('authentication.mahasiswa.index'));
     }
 
     public function create()
     {
-        return Inertia::render('Mahasiswa/Add');
+        return Inertia::render('Authentication/Mahasiswa/Add');
     }
 
     public function edit(Mahasiswa $mahasiswa)
     {
-        return Inertia::render('Mahasiswa/Update', [
+        return Inertia::render('Authentication/Mahasiswa/Update', [
             'mahasiswa' => $mahasiswa
         ]);
     }
@@ -72,6 +84,6 @@ class MahasiswaController extends Controller
     {
         $mahasiswa->delete();
 
-        return Redirect::route('mahasiswa.index')->with('message', 'Data berhasil dihapus');
+        return Redirect::route('authentication.mahasiswa.index')->with('message', 'Data berhasil dihapus');
     }
 }
