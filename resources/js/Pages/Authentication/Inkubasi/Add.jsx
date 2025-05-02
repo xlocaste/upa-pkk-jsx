@@ -1,6 +1,8 @@
+import ApplicationLogo from '@/Components/ApplicationLogo';
 import PrimaryButton from '@/Components/PrimaryButton';
+import SecondaryButton from '@/Components/SecondaryButton';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { useForm } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import React from 'react';
 
 export default function Add() {
@@ -23,6 +25,10 @@ export default function Add() {
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
+                            <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-t-md p-2 pl-6 mb-4'>
+                                <ApplicationLogo />
+                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK INKUBASI</p>
+                            </div>
                         <div className="p-6 text-gray-900">
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div className='flex w h-full space-x-8'>
@@ -73,7 +79,12 @@ export default function Add() {
                                     </div>
                                 </div>
 
-                                <div className="flex justify-end">
+                                <div className="flex justify-end space-x-4">
+                                    <SecondaryButton>
+                                        <Link href={route('authentication.inkubasi.index')}>
+                                            KEMBALI
+                                        </Link>
+                                    </SecondaryButton>
                                     <PrimaryButton
                                         type="submit"
                                         disabled={processing}
