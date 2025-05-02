@@ -16,7 +16,7 @@ export default function PraInkubasiList({ praInkubasi }) {
                             <div className='flex justify-end m-4'>
                                 <PrimaryButton>
                                     <Link href={route('authentication.pra-inkubasi.create')}>
-                                        + TAMBAH INKUBASI
+                                        + TAMBAH PRA INKUBASI
                                     </Link>
                                 </PrimaryButton>
                             </div>

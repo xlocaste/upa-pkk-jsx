@@ -40,7 +40,7 @@ class AlumniController extends Controller
             'tahun_lulus'=>$request->tahun_lulus,
         ]);
 
-        return redirect()->route('alumni.index');
+        return redirect()->route('authentication.alumni.index');
     }
 
     public function update(UpdateRequest $request, Alumni $alumni)
@@ -52,21 +52,21 @@ class AlumniController extends Controller
             'tahun_lulus'=>$request->tahun_lulus,
         ]);
 
-        return redirect()->route('alumni.index');
+        return redirect()->route('authentication.alumni.index');
     }
 
     public function destroy(Alumni $alumni)
     {
         $alumni->delete();
 
-        return redirect()->route('alumni.index');
+        return redirect()->route('authentication.alumni.index');
     }
 
     public function edit(Alumni $alumni)
     {
         $mahasiswaList = Mahasiswa::all(['id', 'nama', 'nim']);
 
-        return Inertia::render('Alumni/Update', [
+        return Inertia::render('Authentication/Alumni/Update', [
             'alumni' => $alumni,
             'mahasiswaList' => $mahasiswaList,
         ]);
@@ -76,7 +76,7 @@ class AlumniController extends Controller
     {
         $mahasiswa = Mahasiswa::all(['id', 'nim', 'nama']);
 
-        return Inertia::render('Alumni/Add', [
+        return Inertia::render('Authentication/Alumni/Add', [
             'mahasiswa' => $mahasiswa,
         ]);
     }
