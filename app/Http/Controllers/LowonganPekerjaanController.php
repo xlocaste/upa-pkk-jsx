@@ -49,7 +49,7 @@ class LowonganPekerjaanController extends Controller
             'kontak'=>$request->kontak,
         ]);
 
-        return redirect()->route('authentication.lowongan-kerja.index');
+        return redirect()->route('authentication.lowongan-pekerjaan.index');
     }
 
     public function update(UpdateRequest $request, LowonganPekerjaan $lowonganKerja)

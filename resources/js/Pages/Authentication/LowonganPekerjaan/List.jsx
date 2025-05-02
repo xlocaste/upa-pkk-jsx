@@ -1,6 +1,7 @@
 import React from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
+import PrimaryButton from '@/Components/PrimaryButton';
 
 export default function LowonganList({ lowonganKerja }) {
     return (
@@ -10,6 +11,13 @@ export default function LowonganList({ lowonganKerja }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 text-gray-900">
+                            <div className='flex justify-end m-4'>
+                                <PrimaryButton>
+                                    <Link href={route('authentication.lowongan-pekerjaan.create')}>
+                                        + TAMBAH INKUBASI
+                                    </Link>
+                                </PrimaryButton>
+                            </div>
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
