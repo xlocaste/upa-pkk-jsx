@@ -10,7 +10,7 @@ export default function DashboardLayout({ header, children }) {
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
             <Helmet />
-            <header className="bg-white shadow px-6 py-4 flex items-center justify-between">
+            <header className="bg-gradient-to-r from-blue-300 via-blue-50 to-white shadow px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                     {auth?.user ? (
                         <Link href={route('dashboard')}>
@@ -21,7 +21,7 @@ export default function DashboardLayout({ header, children }) {
                             <ApplicationLogo className="h-8 w-auto text-gray-800" />
                         </Link>
                     )}
-                    <p className='font-bold text-2xl text-blue-500'>POLITEKNIK NEGERI SAMBAS</p>
+                    <p className='font-bold text-2xl text-gray-800'>POLITEKNIK NEGERI SAMBAS</p>
                 </div>
 
                 <nav className="space-x-8 flex items-center">
