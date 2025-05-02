@@ -1,6 +1,7 @@
 import React from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import { Head, Link } from '@inertiajs/react';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
 export default function LowonganList({ lowonganKerja }) {
     return (
@@ -10,6 +11,10 @@ export default function LowonganList({ lowonganKerja }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 text-gray-900">
+                            <div className='flex items-center mb-4 space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                                <ApplicationLogo />
+                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK LOWONGAN PEKERJAAN</p>
+                            </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {lowonganKerja.length > 0 ? (
                                     lowonganKerja.map((lowongan, index) => (
