@@ -1,7 +1,9 @@
 import React from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
+import { FaTrash } from "react-icons/fa6";
+import { FaEye, FaRegEdit } from "react-icons/fa";
 
 export default function LowonganList({ lowonganKerja }) {
     return (
@@ -14,7 +16,7 @@ export default function LowonganList({ lowonganKerja }) {
                             <div className='flex justify-end m-4'>
                                 <PrimaryButton>
                                     <Link href={route('authentication.lowongan-pekerjaan.create')}>
-                                        + TAMBAH INKUBASI
+                                        + TAMBAH LOWONGAN PEKERJAAN
                                     </Link>
                                 </PrimaryButton>
                             </div>
@@ -26,6 +28,7 @@ export default function LowonganList({ lowonganKerja }) {
                                         <th className="py-2 px-4 border-b">Deskripsi</th>
                                         <th className="py-2 px-4 border-b">Kontak</th>
                                         <th className="py-2 px-4 border-b">Gambar</th>
+                                        <th className="py-2 px-4 border-b">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,6 +49,33 @@ export default function LowonganList({ lowonganKerja }) {
                                                     ) : (
                                                         '-'
                                                     )}
+                                                </td>
+                                                <td className="px-4 py-1 border-b text-center">
+                                                    <div className='flex gap-2 justify-center'>
+                                                        <Link
+                                                            href={route('authentication.lowongan-pekerjaan.show', lowongan.id)}
+                                                            className='text-blue-400'
+                                                        >
+                                                            <FaEye />
+                                                        </Link>
+                                                        <Link
+                                                            href={route('authentication.lowongan-pekerjaan.edit', lowongan.id)}
+                                                            className='text-yellow-500'
+                                                        >
+                                                            <FaRegEdit />
+                                                        </Link>
+                                                        <Link
+                                                            as="button"
+                                                            className="text-red-400"
+                                                            onClick={() => {
+                                                                if (confirm('Yakin ingin menghapus project ini?')) {
+                                                                    router.delete(route('authentication.lowongan-pekerjaan.destroy', lowongan.id));
+                                                                }
+                                                            }}
+                                                        >
+                                                            <FaTrash />
+                                                        </Link>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         ))

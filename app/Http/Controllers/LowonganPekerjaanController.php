@@ -36,6 +36,15 @@ class LowonganPekerjaanController extends Controller
         ]);
     }
 
+    public function detail($lowonganPekerjaan)
+    {
+        $lowongan = LowonganPekerjaan::findOrFail($lowonganPekerjaan);
+
+        return inertia('Form/LowonganPekerjaan/Detail', [
+            'lowongan' => $lowongan
+        ]);
+    }
+
     public function store(StoreRequest $request)
     {
         if ($request->hasFile('image')) {

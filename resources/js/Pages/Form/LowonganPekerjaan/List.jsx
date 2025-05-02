@@ -1,6 +1,6 @@
 import React from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 export default function LowonganList({ lowonganKerja }) {
     return (
@@ -10,46 +10,50 @@ export default function LowonganList({ lowonganKerja }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <table className="min-w-full bg-white border border-gray-200">
-                                <thead>
-                                    <tr className="bg-gray-100 text-left">
-                                        <th className="py-2 px-4 border-b">No</th>
-                                        <th className="py-2 px-4 border-b">Judul Lowongan</th>
-                                        <th className="py-2 px-4 border-b">Deskripsi</th>
-                                        <th className="py-2 px-4 border-b">Kontak</th>
-                                        <th className="py-2 px-4 border-b">Gambar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {lowonganKerja.length > 0 ? (
-                                        lowonganKerja.map((lowongan, index) => (
-                                            <tr key={lowongan.id} className="hover:bg-gray-50">
-                                                <td className="py-2 px-4 border-b">{index + 1}</td>
-                                                <td className="py-2 px-4 border-b">{lowongan.judul_lowongan_kerja}</td>
-                                                <td className="py-2 px-4 border-b">{lowongan.deskripsi}</td>
-                                                <td className="py-2 px-4 border-b">{lowongan.kontak}</td>
-                                                <td className="py-2 px-4 border-b">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {lowonganKerja.length > 0 ? (
+                                    lowonganKerja.map((lowongan, index) => (
+                                        <Link
+                                            href={route('form.lowongan-pekerjaan.detail', lowongan.id)}
+                                            className="block"
+                                        >
+                                            <div
+                                                key={lowongan.id}
+                                                className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition p-4 flex flex-col justify-between hover:bg-gray-50"
+                                            >
+                                                <div>
                                                     {lowongan.image ? (
                                                         <img
                                                             src={`/storage/${lowongan.image}`}
                                                             alt="Gambar Lowongan"
-                                                            className="h-16 w-16 object-cover rounded"
+                                                            className="w-full h-64 object-cover rounded"
                                                         />
                                                     ) : (
-                                                        '-'
+                                                        <div className="text-center text-gray-400 italic h-64 flex items-center justify-center border rounded">
+                                                            Tidak ada gambar
+                                                        </div>
                                                     )}
-                                                </td>
-                                            </tr>
-                                        ))
-                                    ) : (
-                                        <tr>
-                                            <td colSpan="5" className="text-center py-4 text-gray-500">
-                                                Data lowongan tidak tersedia.
-                                            </td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </table>
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-lg font-semibold text-gray-800 my-2">
+                                                        {lowongan.judul_lowongan_kerja}
+                                                    </h3>
+                                                    <p className="text-gray-700 text-sm mb-2">
+                                                        {lowongan.deskripsi}
+                                                    </p>
+                                                    <p className="text-gray-600 text-sm mb-4">
+                                                        Kontak: {lowongan.kontak}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))
+                                ) : (
+                                    <div className="col-span-full text-center text-gray-500 py-8">
+                                        Data lowongan tidak tersedia.
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>

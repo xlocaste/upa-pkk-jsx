@@ -102,6 +102,7 @@ Route::prefix('/form')->name('form.')->group(function() {
 
     Route::prefix('/lowongan-pekerjaan')->name('lowongan-pekerjaan.')->group(function() {
         Route::get('/', [LowonganPekerjaanController::class, 'list'])->name('list');
+        Route::get('/{lowonganPekerjaan}', [LowonganPekerjaanController::class, 'detail'])->name('detail');
     });
 
     Route::prefix('/pra-inkubasi')->name('pra-inkubasi.')->group(function() {
