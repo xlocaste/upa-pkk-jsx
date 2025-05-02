@@ -1,4 +1,5 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import Footer from '@/Components/Footer';
 import Helmet from '@/Components/Helmet';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { Link, usePage } from '@inertiajs/react';
@@ -67,6 +68,7 @@ export default function DashboardLayout({ header, children }) {
             <main className="flex-1 p-6">
                 {children}
             </main>
+            <Footer />
         </div>
     );
 }
