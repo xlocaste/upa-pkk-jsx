@@ -38,7 +38,7 @@ class PraInkubasiController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $praInkubasi = PraInkubasi::create([
+        PraInkubasi::create([
             'nama_usaha'=>$request->nama_usaha,
             'prodi'=>$request->prodi,
             'kelas'=>$request->kelas,
