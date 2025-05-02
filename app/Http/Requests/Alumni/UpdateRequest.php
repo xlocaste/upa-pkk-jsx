@@ -22,7 +22,6 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mahasiswa_id' => ['required', 'exists:mahasiswa,id', 'unique:alumni,mahasiswa_id'],
             'tempat_magang' => ['required'],
             'judul_magang' => ['required'],
             'judul_tugas_akhir' => ['required'],
