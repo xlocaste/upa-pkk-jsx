@@ -29,7 +29,7 @@ export default function AddAlumni({ mahasiswa }) {
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-t-md p-2 pl-6 mb-4'>
                             <ApplicationLogo />
-                            <p className='font-bold text-gray-700 text-xl'>FORM ALUMNI</p>
+                            <p className='font-bold text-gray-700 text-xl'>UPA-PKK ALUMNI</p>
                         </div>
                         <div className="p-6 text-gray-900">
                             <form onSubmit={handleSubmit} className="space-y-4">
