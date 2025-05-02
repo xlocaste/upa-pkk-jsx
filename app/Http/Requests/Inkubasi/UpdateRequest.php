@@ -24,8 +24,8 @@ class UpdateRequest extends FormRequest
         return [
             'nama_tenant' => ['required', 'string', 'max:255'],
             'bidang_fokus_tenant' => ['required', 'string', 'max:255'],
-            'tahun_inkubasi_tenant' => ['required', 'integer', 'min:2000', 'max:' . date('Y')],
-            'tahun_exit_tenant' => ['required', 'integer', 'min:2000', 'max:' . (date('Y') + 10)],
+            'tahun_inkubasi_tenant' => ['required', 'max:' . date('Y')],
+            'tahun_exit_tenant' => ['required', 'max:' . (date('Y') + 10)],
         ];
     }
 }
