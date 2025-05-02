@@ -2,7 +2,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import PrimaryButton from '@/Components/PrimaryButton';
 import SecondaryButton from '@/Components/SecondaryButton';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Link, useForm } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import React from 'react';
 
 export default function Add() {
@@ -22,6 +22,7 @@ export default function Add() {
 
     return (
         <AuthenticatedLayout>
+            <Head title="Inkubasi" />
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
