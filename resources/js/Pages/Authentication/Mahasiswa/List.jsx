@@ -1,6 +1,9 @@
 import React from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
+import PrimaryButton from '@/Components/PrimaryButton';
+import { FaTrash } from "react-icons/fa6";
+import { FaEye, FaRegEdit } from "react-icons/fa";
 
 export default function MahasiswaList({ Mahasiswa, auth }) {
     return (
@@ -10,6 +13,13 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 text-gray-900">
+                            <div className='flex justify-end m-4'>
+                                <PrimaryButton>
+                                    <Link href={route('authentication.mahasiswa.create')}>
+                                        + TAMBAH MAHASISWA
+                                    </Link>
+                                </PrimaryButton>
+                            </div>
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
@@ -18,6 +28,7 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                                         <th className="py-2 px-4 border-b">NIM</th>
                                         <th className="py-2 px-4 border-b">Semester</th>
                                         <th className="py-2 px-4 border-b">IPK</th>
+                                        <th className="py-2 px-4 border-b">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -29,6 +40,33 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                                                 <td className="py-2 px-4 border-b">{mhs.nim}</td>
                                                 <td className="py-2 px-4 border-b">{mhs.semester}</td>
                                                 <td className="py-2 px-4 border-b">{mhs.ipk}</td>
+                                                <td className="px-4 py-1 border-b text-center">
+                                                    <div className='flex gap-2 justify-center'>
+                                                        <Link
+                                                            href={route('authentication.mahasiswa.show', mhs.id)}
+                                                            className='text-blue-400'
+                                                        >
+                                                            <FaEye />
+                                                        </Link>
+                                                        <Link
+                                                            href={route('authentication.mahasiswa.edit', mhs.id)}
+                                                            className='text-yellow-500'
+                                                        >
+                                                            <FaRegEdit />
+                                                        </Link>
+                                                        <Link
+                                                            as="button"
+                                                            className="text-red-400"
+                                                            onClick={() => {
+                                                                if (confirm('Yakin ingin menghapus project ini?')) {
+                                                                    router.delete(route('authentication.mahasiswa.destroy', mhs.id));
+                                                                }
+                                                            }}
+                                                        >
+                                                            <FaTrash />
+                                                        </Link>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         ))
                                     ) : (
