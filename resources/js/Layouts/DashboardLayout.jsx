@@ -21,6 +21,7 @@ export default function DashboardLayout({ header, children }) {
                             <ApplicationLogo className="h-8 w-auto text-gray-800" />
                         </Link>
                     )}
+                    <p className='font-bold text-2xl text-blue-500'>POLITEKNIK NEGERI SAMBAS</p>
                 </div>
 
                 <nav className="space-x-8 flex items-center">
