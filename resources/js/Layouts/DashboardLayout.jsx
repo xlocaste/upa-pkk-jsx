@@ -13,15 +13,16 @@ export default function DashboardLayout({ header, children }) {
             <header className="bg-gradient-to-r from-blue-300 via-blue-50 to-white shadow px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                     {auth?.user ? (
-                        <Link href={route('dashboard')}>
+                        <Link href={route('dashboard')} className='flex items-center space-x-2'>
                             <ApplicationLogo className="h-8 w-auto text-gray-800" />
+                            <p className='font-bold text-2xl text-gray-800'>POLITEKNIK NEGERI SAMBAS</p>
                         </Link>
                     ) : (
-                        <Link href="/">
+                        <Link href="/" className='flex items-center space-x-2'>
                             <ApplicationLogo className="h-8 w-auto text-gray-800" />
+                            <p className='font-bold text-2xl text-gray-800'>POLITEKNIK NEGERI SAMBAS</p>
                         </Link>
                     )}
-                    <p className='font-bold text-2xl text-gray-800'>POLITEKNIK NEGERI SAMBAS</p>
                 </div>
 
                 <nav className="space-x-8 flex items-center">
