@@ -41,7 +41,7 @@ const Footer = () => {
                     className="rounded-lg border-0"
                     ></iframe>
                 </div>
-                <p className="text-center mt-4 text-sm">&copy; 2025 Politeknik Negeri Sambas. All rights reserved.</p>
+                <p className="text-justify mt-4 text-sm">&copy; 2025 Politeknik Negeri Sambas. All rights reserved.</p>
             </div>
         </footer>
     )
