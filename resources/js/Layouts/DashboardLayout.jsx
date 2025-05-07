@@ -38,7 +38,7 @@ export default function DashboardLayout({ header, children }) {
                         href={route('form.lowongan-pekerjaan.list')}
                         active={route().current('form.lowongan-pekerjaan.list')}
                     >
-                        Lowongan Pekerjaan
+                        Job Hunter Zone
                     </Link>
                     <Link
                         className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"

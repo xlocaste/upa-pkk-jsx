@@ -50,7 +50,7 @@ export default function AuthenticatedLayout({ children }) {
                         href={route('authentication.lowongan-pekerjaan.index')}
                         active={route().current('authentication.lowongan-pekerjaan.index')}
                     >
-                        <MdWorkOutline /><p>Lowongan Pekerjaan</p>
+                        <MdWorkOutline /><p>Job Hunter</p>
                     </Link>
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"

@@ -13,7 +13,7 @@ export default function LowonganList({ lowonganKerja }) {
                         <div className="p-6 text-gray-900">
                             <div className='flex items-center mb-4 space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
                                 <ApplicationLogo />
-                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK LOWONGAN PEKERJAAN</p>
+                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK JOB HUNTER ZONE</p>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {lowonganKerja.length > 0 ? (
