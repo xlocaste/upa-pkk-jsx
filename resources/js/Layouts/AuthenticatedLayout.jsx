@@ -17,7 +17,7 @@ export default function AuthenticatedLayout({ children }) {
     return (
         <div className="flex min-h-screen bg-gray-100">
             <Helmet />
-            <aside className="w-64 fixed bg-white shadow-lg flex flex-col">
+            <aside className="w-64 h-screen fixed bg-white shadow-lg flex flex-col">
                 <div className="flex h-16 items-center justify-center border-b">
                     <Link href="/">
                         <ApplicationLogo className="h-10 w-auto fill-current text-gray-800" />
