@@ -7,7 +7,7 @@ import SecondaryButton from '@/Components/SecondaryButton';
 const Detail = ({ lowongan }) => {
     return (
         <DashboardLayout>
-            <Head title={`Detail Lowongan - ${lowongan.judul_lowongan_kerja}`} />
+            <Head title={`Detail Job - ${lowongan.judul_lowongan_kerja}`} />
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
@@ -25,7 +25,7 @@ const Detail = ({ lowongan }) => {
                                 <div className='ml-10 w-full'>
                                     <div className='flex items-center space-x-4 mb-4 p-2 rounded-md bg-gradient-to-r from-blue-300 via-blue-50'>
                                         <ApplicationLogo />
-                                        <p className='font-bold text-xl'>UPA-PKK DETAIL LOWONGAN PEKERJAAN</p>
+                                        <p className='font-bold text-xl uppercase'>UPA-PKK DETAIL Job hunter zone</p>
                                     </div>
                                     <h1 className="text-3xl w-full font-bold text-gray-800">
                                         {lowongan.judul_lowongan_kerja}
