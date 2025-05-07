@@ -21,13 +21,13 @@ export default function Update({ lowonganKerja }) {
 
     return (
         <AuthenticatedLayout>
-            <Head title="Update Lowongan Kerja" />
+            <Head title="Update Job Hunter" />
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-t-md p-2 pl-6 mb-4'>
                             <ApplicationLogo />
-                            <p className='font-bold text-gray-700 text-xl'>UPA-PKK LOWONGAN KERJA</p>
+                            <p className='font-bold text-gray-700 text-xl uppercase'>UPA-PKK Job Hunter</p>
                         </div>
                         <div className="p-6 text-gray-900">
                             <form onSubmit={handleSubmit} className="space-y-4">

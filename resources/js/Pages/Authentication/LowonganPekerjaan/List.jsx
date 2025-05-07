@@ -9,7 +9,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 export default function LowonganList({ lowonganKerja }) {
     return (
         <AuthenticatedLayout>
-            <Head title="Lowongan Pekerjaan" />
+            <Head title="Job Hunter" />
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
@@ -17,12 +17,12 @@ export default function LowonganList({ lowonganKerja }) {
                             <div className='flex justify-between m-4 ml-0'>
                                 <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
                                     <ApplicationLogo />
-                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK LOWONGAN PEKERJAAN</p>
+                                    <p className='font-bold uppercase text-gray-700 text-xl'>UPA-PKK Job Hunter</p>
                                 </div>
                                 <div className='flex items-center'>
                                     <PrimaryButton>
                                         <Link href={route('authentication.lowongan-pekerjaan.create')}>
-                                            + TAMBAH LOWONGAN PEKERJAAN
+                                            + TAMBAH Job Hunter
                                         </Link>
                                     </PrimaryButton>
                                 </div>
@@ -31,7 +31,7 @@ export default function LowonganList({ lowonganKerja }) {
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
                                         <th className="py-2 px-4 border-b">No</th>
-                                        <th className="py-2 px-4 border-b">Judul Lowongan</th>
+                                        <th className="py-2 px-4 border-b">Judul Lowongan Pekerjaan</th>
                                         <th className="py-2 px-4 border-b">Deskripsi</th>
                                         <th className="py-2 px-4 border-b">Kontak</th>
                                         <th className="py-2 px-4 border-b">Gambar</th>

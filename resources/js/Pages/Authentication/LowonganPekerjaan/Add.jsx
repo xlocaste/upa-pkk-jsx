@@ -22,19 +22,19 @@ export default function AddLowonganKerja() {
 
     return (
         <AuthenticatedLayout>
-            <Head title="Lowongan Kerja" />
+            <Head title="Job Hunter" />
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-t-md p-2 pl-6 mb-4'>
                             <ApplicationLogo />
-                            <p className='font-bold text-gray-700 text-xl'>UPA-PKK LOWONGAN PEKERJAAN</p>
+                            <p className='font-bold text-gray-700 text-xl uppercase'>UPA-PKK job hunter</p>
                         </div>
                         <div className="p-6 text-gray-900">
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div className='flex w h-full space-x-8'>
                                     <div className='w-1/2'>
-                                        <label className="block text-sm font-medium">Judul Lowongan</label>
+                                        <label className="block text-sm font-medium">Judul Lowongan Pekerjaan</label>
                                         <input
                                             type="text"
                                             value={data.judul_lowongan_kerja}
