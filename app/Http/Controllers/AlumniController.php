@@ -62,6 +62,15 @@ class AlumniController extends Controller
         return redirect()->route('authentication.alumni.index');
     }
 
+    public function show($alumni)
+    {
+        $alumni = Alumni::with('mahasiswa')->findOrFail($alumni);
+
+        return Inertia::render('Authentication/Alumni/Detail', [
+            'Alumni' => $alumni
+        ]);
+    }
+
     public function edit(Alumni $alumni)
     {
         $mahasiswaList = Mahasiswa::all(['id', 'nama', 'nim']);
