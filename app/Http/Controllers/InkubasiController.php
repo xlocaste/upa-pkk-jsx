@@ -60,6 +60,15 @@ class InkubasiController extends Controller
         return redirect()->route('authentication.inkubasi.index');
     }
 
+    public function show($inkubasi)
+    {
+        $inkubasi = Inkubasi::findOrFail($inkubasi);
+
+        return Inertia::render('Authentication/Inkubasi/Detail', [
+            'Inkubasi' => $inkubasi
+        ]);
+    }
+
     public function destroy(Inkubasi $inkubasi)
     {
         $inkubasi->delete();
