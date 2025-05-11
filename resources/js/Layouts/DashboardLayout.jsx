@@ -61,6 +61,13 @@ export default function DashboardLayout({ header, children }) {
                     >
                         Kerja Sama Industri
                     </Link>
+                    <Link
+                        className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
+                        href={route('form.mini-industri-kampus.list')}
+                        active={route().current('form.mini-industri-kampus.list')}
+                    >
+                        Mini Industri Kampus
+                    </Link>
 
                     {auth?.user ? (
                         <Link href={route('logout')} method='POST'>

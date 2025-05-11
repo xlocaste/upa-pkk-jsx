@@ -75,10 +75,10 @@ export default function AuthenticatedLayout({ children }) {
                     </Link>
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
-                        href={route('authentication.kerja-sama-industri.index')}
-                        active={route().current('authentication.kerja-sama-industri.index')}
+                        href={route('authentication.mini-industri-kampus.index')}
+                        active={route().current('authentication.mini-industri-kampus.index')}
                     >
-                        <HiOutlineBuildingOffice2 /><p>Kerja Sama Industri</p>
+                        <HiOutlineBuildingOffice2 /><p>Mini Industri Kampus</p>
                     </Link>
                 </nav>
 

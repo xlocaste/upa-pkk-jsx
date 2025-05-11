@@ -5,6 +5,7 @@ use App\Http\Controllers\InkubasiController;
 use App\Http\Controllers\KerjaSamaIndustriController;
 use App\Http\Controllers\LowonganPekerjaanController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MiniIndustriKampusController;
 use App\Http\Controllers\PraInkubasiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -102,6 +103,18 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
             Route::get('/', [KerjaSamaIndustriController::class, 'index'])->name('index');
         });
     });
+
+    Route::prefix('/mini-industri-kampus')->name('mini-industri-kampus.')->group(function() {
+        Route::group(['middleware' => ['auth']], function() {
+            Route::get('/create', [MiniIndustriKampusController::class, 'create'])->name('create');
+            Route::post('/', [MiniIndustriKampusController::class, 'store'])->name('store');
+            Route::put('/{miniIndustriKampus}', [MiniIndustriKampusController::class, 'update'])->name('update');
+            Route::delete('/{miniIndustriKampus}', [MiniIndustriKampusController::class, 'destroy'])->name('destroy');
+            Route::get('/{miniIndustriKampus}/edit', [MiniIndustriKampusController::class, 'edit'])->name('edit');
+            Route::get('/{miniIndustriKampus}', [MiniIndustriKampusController::class, 'show'])->name('show');
+            Route::get('/', [MiniIndustriKampusController::class, 'index'])->name('index');
+        });
+    });
 });
 
 Route::prefix('/form')->name('form.')->group(function() {
@@ -128,6 +141,10 @@ Route::prefix('/form')->name('form.')->group(function() {
 
     Route::prefix('/kerja-sama-industri')->name('kerja-sama-industri.')->group(function() {
         Route::get('/', [KerjaSamaIndustriController::class, 'list'])->name('list');
+    });
+
+    Route::prefix('/mini-industri-kampus')->name('mini-industri-kampus.')->group(function() {
+        Route::get('/', [MiniIndustriKampusController::class, 'list'])->name('list');
     });
 });
 
