@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MiniIndustriKampus\StoreRequest;
+use App\Http\Requests\MiniIndustriKampus\UpdateRequest;
 use App\Models\MiniIndustriKampus;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -41,6 +42,25 @@ class MiniIndustriKampusController extends Controller
         ]);
 
         return redirect()->route('authentication.mini-industri-kampus.index');
+    }
+
+    public function update(UpdateRequest $request, MiniIndustriKampus $miniIndustriKampus)
+    {
+        $miniIndustriKampus->update([
+            'nama_mik'=>$request->nama_mik,
+            'bidang_fokus_mik'=>$request->bidang_fokus_mik,
+            'tahun_mik'=>$request->tahun_mik,
+            'tahun_exit_mik'=>$request->tahun_exit_mik,
+        ]);
+
+        return redirect()->route('authentication.mini-industri-kampus.index');
+    }
+
+    public function edit(MiniIndustriKampus $miniIndustriKampus)
+    {
+        return Inertia::render('Authentication/MiniIndustriKampus/Update', [
+            'MiniIndustriKampus' => $miniIndustriKampus
+        ]);
     }
 
     public function create()
