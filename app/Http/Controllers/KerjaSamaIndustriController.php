@@ -7,6 +7,7 @@ use App\Http\Requests\KerjaSamaIndustri\UpdateRequest;
 use App\Models\KerjaSamaIndustri;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Redirect;
 
 class KerjaSamaIndustriController extends Controller
 {
@@ -54,6 +55,13 @@ class KerjaSamaIndustriController extends Controller
         ]);
 
         return redirect()->route('authentication.kerja-sama-industri.index');
+    }
+
+    public function destroy(KerjaSamaIndustri $kerjaSamaIndustri)
+    {
+        $kerjaSamaIndustri->delete();
+
+        return Redirect::route('authentication.kerja-sama-industri.index')->with('message', 'Data berhasil dihapus');
     }
 
     public function edit(KerjaSamaIndustri $kerjaSamaIndustri)
