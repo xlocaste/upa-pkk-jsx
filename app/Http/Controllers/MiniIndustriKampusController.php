@@ -18,4 +18,15 @@ class MiniIndustriKampusController extends Controller
             ]);
         }
     }
+
+    public function list()
+    {
+        $daftarMIK = MiniIndustriKampus::all();
+
+        {
+            return Inertia::render('Form/MiniIndustriKampus/List', [
+                'daftarMIK' => $daftarMIK
+            ]);
+        }
+    }
 }
