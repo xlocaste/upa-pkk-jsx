@@ -54,6 +54,13 @@ export default function DashboardLayout({ header, children }) {
                     >
                         Inkubasi
                     </Link>
+                    <Link
+                        className="whitespace-nowrap w-full transition-all duration-200 ease-in-out hover:text-blue-400"
+                        href={route('form.kerja-sama-industri.list')}
+                        active={route().current('form.kerja-sama-industri.list')}
+                    >
+                        Kerja Sama Industri
+                    </Link>
 
                     {auth?.user ? (
                         <Link href={route('logout')} method='POST'>

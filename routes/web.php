@@ -125,6 +125,10 @@ Route::prefix('/form')->name('form.')->group(function() {
     Route::prefix('/inkubasi')->name('inkubasi.')->group(function() {
         Route::get('/', [InkubasiController::class, 'list'])->name('list');
     });
+
+    Route::prefix('/kerja-sama-industri')->name('kerja-sama-industri.')->group(function() {
+        Route::get('/', [KerjaSamaIndustriController::class, 'list'])->name('list');
+    });
 });
 
 require __DIR__.'/auth.php';

@@ -18,4 +18,15 @@ class KerjaSamaIndustriController extends Controller
             ]);
         }
     }
+
+    public function list()
+    {
+        $daftarKSI = KerjaSamaIndustri::all();
+
+        {
+            return Inertia::render('Form/KerjaSamaIndustri/List', [
+                'daftarKSI' => $daftarKSI
+            ]);
+        }
+    }
 }

@@ -123,10 +123,10 @@ export default function AuthenticatedLayout({ children }) {
             </aside>
 
             <div className="flex-1 flex flex-col">
-                <div className='bg-white ml-60 py-5 text-center'>
+                <div className='bg-white ml-64 py-5 text-center'>
                     <p className='font-bold'>Unit Pelaksana Aksi Pemberdayaan dan Kesejahteraan Keluarga.</p>
                 </div>
-                <main className="p-6 ml-60">{children}</main>
+                <main className="p-6 ml-64">{children}</main>
             </div>
         </div>
     );
