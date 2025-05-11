@@ -36,6 +36,15 @@ class LowonganPekerjaanController extends Controller
         ]);
     }
 
+    public function show($lowonganPekerjaan)
+    {
+        $lowonganPekerjaan = LowonganPekerjaan::findOrFail($lowonganPekerjaan);
+
+        return Inertia::render('Authentication/LowonganPekerjaan/Detail', [
+            'LowonganPekerjaan' => $lowonganPekerjaan
+        ]);
+    }
+
     public function detail($lowonganPekerjaan)
     {
         $lowongan = LowonganPekerjaan::findOrFail($lowonganPekerjaan);
