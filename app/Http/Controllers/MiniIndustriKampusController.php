@@ -6,6 +6,7 @@ use App\Http\Requests\MiniIndustriKampus\StoreRequest;
 use App\Http\Requests\MiniIndustriKampus\UpdateRequest;
 use App\Models\MiniIndustriKampus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class MiniIndustriKampusController extends Controller
@@ -54,6 +55,13 @@ class MiniIndustriKampusController extends Controller
         ]);
 
         return redirect()->route('authentication.mini-industri-kampus.index');
+    }
+
+    public function destroy(MiniIndustriKampus $miniIndustriKampus)
+    {
+        $miniIndustriKampus->delete();
+
+        return Redirect::route('authentication.mini-industri-kampus.index')->with('message', 'Data berhasil dihapus');
     }
 
     public function edit(MiniIndustriKampus $miniIndustriKampus)
