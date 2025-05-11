@@ -64,6 +64,15 @@ class MiniIndustriKampusController extends Controller
         return Redirect::route('authentication.mini-industri-kampus.index')->with('message', 'Data berhasil dihapus');
     }
 
+    public function show($miniIndustriKampus)
+    {
+        $miniIndustriKampus = MiniIndustriKampus::findOrFail($miniIndustriKampus);
+
+        return Inertia::render('Authentication/MiniIndustriKampus/Detail', [
+            'MiniIndustriKampus' => $miniIndustriKampus
+        ]);
+    }
+
     public function edit(MiniIndustriKampus $miniIndustriKampus)
     {
         return Inertia::render('Authentication/MiniIndustriKampus/Update', [
