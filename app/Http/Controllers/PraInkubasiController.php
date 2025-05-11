@@ -71,6 +71,15 @@ class PraInkubasiController extends Controller
         return Redirect::route('authentication.pra-inkubasi.index')->with('message', 'Data berhasil dihapus');
     }
 
+    public function show($praInkubasi)
+    {
+        $praInkubasi = PraInkubasi::findOrFail($praInkubasi);
+
+        return Inertia::render('Authentication/PraInkubasi/Detail', [
+            'PraInkubasi' => $praInkubasi
+        ]);
+    }
+
     public function edit(PraInkubasi $praInkubasi)
     {
         return Inertia::render('Authentication/PraInkubasi/Update', [
