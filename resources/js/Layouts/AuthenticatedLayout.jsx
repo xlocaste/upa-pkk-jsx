@@ -66,6 +66,13 @@ export default function AuthenticatedLayout({ children }) {
                     >
                         <HiOutlineBuildingOffice2 /><p>Inkubasi</p>
                     </Link>
+                    <Link
+                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        href={route('authentication.kerja-sama-industri.index')}
+                        active={route().current('authentication.kerja-sama-industri.index')}
+                    >
+                        <HiOutlineBuildingOffice2 /><p>Kerja Sama Industri</p>
+                    </Link>
                 </nav>
 
                 <div className="border-t px-4 pb-0">

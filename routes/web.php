@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\InkubasiController;
+use App\Http\Controllers\KerjaSamaIndustriController;
 use App\Http\Controllers\LowonganPekerjaanController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PraInkubasiController;
@@ -87,6 +88,18 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
             Route::get('/{inkubasi}/edit', [InkubasiController::class, 'edit'])->name('edit');
             Route::get('/{inkubasi}', [InkubasiController::class, 'show'])->name('show');
             Route::get('/', [InkubasiController::class, 'index'])->name('index');
+        });
+    });
+
+    Route::prefix('/kerja-sama-industri')->name('kerja-sama-industri.')->group(function() {
+        Route::group(['middleware' => ['auth']], function() {
+            Route::get('/create', [KerjaSamaIndustriController::class, 'create'])->name('create');
+            Route::post('/', [KerjaSamaIndustriController::class, 'store'])->name('store');
+            Route::put('/{kerjaSamaIndustri}', [KerjaSamaIndustriController::class, 'update'])->name('update');
+            Route::delete('/{kerjaSamaIndustri}', [KerjaSamaIndustriController::class, 'destroy'])->name('destroy');
+            Route::get('/{kerjaSamaIndustri}/edit', [KerjaSamaIndustriController::class, 'edit'])->name('edit');
+            Route::get('/{kerjaSamaIndustri}', [KerjaSamaIndustriController::class, 'show'])->name('show');
+            Route::get('/', [KerjaSamaIndustriController::class, 'index'])->name('index');
         });
     });
 });
