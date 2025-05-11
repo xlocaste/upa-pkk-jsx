@@ -64,6 +64,15 @@ class KerjaSamaIndustriController extends Controller
         return Redirect::route('authentication.kerja-sama-industri.index')->with('message', 'Data berhasil dihapus');
     }
 
+    public function show($kerjaSamaIndustri)
+    {
+        $kerjaSamaIndustri = KerjaSamaIndustri::findOrFail($kerjaSamaIndustri);
+
+        return Inertia::render('Authentication/KerjaSamaIndustri/Detail', [
+            'KerjaSamaIndustri' => $kerjaSamaIndustri
+        ]);
+    }
+
     public function edit(KerjaSamaIndustri $kerjaSamaIndustri)
     {
         return Inertia::render('Authentication/KerjaSamaIndustri/Update', [
