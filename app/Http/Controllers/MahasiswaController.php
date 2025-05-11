@@ -41,7 +41,9 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::findOrFail($mahasiswa);
 
-        return response()->json($mahasiswa);
+        return Inertia::render('Authentication/Mahasiswa/Detail', [
+            'Mahasiswa' => $mahasiswa
+        ]);
     }
 
     public function store(StoreRequest $request)
