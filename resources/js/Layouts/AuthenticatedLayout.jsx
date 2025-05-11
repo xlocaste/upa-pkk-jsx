@@ -18,13 +18,13 @@ export default function AuthenticatedLayout({ children }) {
         <div className="flex min-h-screen bg-gray-100">
             <Helmet />
             <aside className="w-64 h-screen fixed bg-white shadow-lg flex flex-col">
-                <div className="flex h-16 items-center justify-center border-b">
+                <div className="flex py-3 items-center justify-center border-b">
                     <Link href="/">
                         <ApplicationLogo className="h-10 w-auto fill-current text-gray-800" />
                     </Link>
                 </div>
 
-                <nav className="p-4 space-y-8 flex flex-col mb-4">
+                <nav className="p-4 space-y-3 flex flex-col mb-4">
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
                         href="/"
@@ -73,6 +73,13 @@ export default function AuthenticatedLayout({ children }) {
                     >
                         <HiOutlineBuildingOffice2 /><p>Kerja Sama Industri</p>
                     </Link>
+                    <Link
+                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        href={route('authentication.kerja-sama-industri.index')}
+                        active={route().current('authentication.kerja-sama-industri.index')}
+                    >
+                        <HiOutlineBuildingOffice2 /><p>Kerja Sama Industri</p>
+                    </Link>
                 </nav>
 
                 <div className="border-t px-4 pb-0">
@@ -109,9 +116,9 @@ export default function AuthenticatedLayout({ children }) {
                         </Link>
                     </div>
                     )}
-                    <div className="text-xs text-gray-500 mt-6 text-center">
-                        {user.email}
-                    </div>
+                </div>
+                <div className="absolute w-full bottom-2 text-xs text-gray-500 mt-6 text-center">
+                    {user.email}
                 </div>
             </aside>
 
