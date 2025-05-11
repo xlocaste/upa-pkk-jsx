@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MiniIndustriKampus\StoreRequest;
 use App\Models\MiniIndustriKampus;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -28,5 +29,22 @@ class MiniIndustriKampusController extends Controller
                 'daftarMIK' => $daftarMIK
             ]);
         }
+    }
+
+    public function store(StoreRequest $request)
+    {
+        MiniIndustriKampus::create([
+            'nama_mik'=>$request->nama_mik,
+            'bidang_fokus_mik'=>$request->bidang_fokus_mik,
+            'tahun_mik'=>$request->tahun_mik,
+            'tahun_exit_mik'=>$request->tahun_exit_mik,
+        ]);
+
+        return redirect()->route('authentication.mini-industri-kampus.index');
+    }
+
+    public function create()
+    {
+        return Inertia::render('Authentication/MiniIndustriKampus/Add');
     }
 }

@@ -21,7 +21,7 @@ export default function InkubasiList({ daftarMIK }) {
                                 </div>
                                 <div className='flex items-center'>
                                     <PrimaryButton>
-                                        <Link href={route('authentication.kerja-sama-industri.create')}>
+                                        <Link href={route('authentication.mini-industri-kampus.create')}>
                                             + TAMBAH MINI INDUSTRI KAMPUS
                                         </Link>
                                     </PrimaryButton>
