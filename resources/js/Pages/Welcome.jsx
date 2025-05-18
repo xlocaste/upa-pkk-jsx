@@ -6,11 +6,22 @@ const Welcome = () => {
   return (
     <DashboardLayout>
         <Head title="Dashboard" />
-        <div className="py-8">
-            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                    <div className="p-6 text-gray-900">
+        <div
+            className="bg-cover bg-center min-h-screen"
+            style={{
+            backgroundImage: "url('/images/background.jpeg')",
+            }}
+        >
+            <div className="bg-gradient-to-r from-blue-300 to-transparent h-screen">
+                <div className="overflow-hidden sm:rounded-lg h-full flex items-center mx-14">
+                    <div className="w-1/2">
+                    <p className='text-white font-bold text-4xl'>
                         Unit Pelaksana Aksi Pemberdayaan dan Kesejahteraan Keluarga.
+                    </p>
+                    <p className='text-white font-extralight'>
+                        Unit Pelaksana Aksi Pemberdayaan dan Kesejahteraan Keluarga (UPA-PKK) berkomitmen untuk memberdayakan dan meningkatkan kesejahteraan keluarga melalui berbagai inisiatif berbasis komunitas.
+                    Misi kami adalah untuk menciptakan pendekatan yang berkelanjutan dan inklusif terhadap kesejahteraan keluarga, serta memberikan dampak positif melalui program-program kolaboratif dan jaringan dukungan.
+                    </p>
                     </div>
                 </div>
             </div>
