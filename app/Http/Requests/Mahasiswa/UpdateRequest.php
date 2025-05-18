@@ -22,10 +22,10 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama'=>['required'],
-            'nim'=>['required', 'unique:mahasiswa,nim'],
-            'semester'=>['required', 'integer', 'min:0'],
-            'ipk'=>['required', 'min:0', 'max:4', 'numeric'],
+            'nama' => ['required'],
+            'nim' => ['required'],
+            'semester' => ['required', 'integer', 'min:0'],
+            'ipk' => ['required', 'min:0', 'max:4', 'numeric'],
         ];
     }
 }
