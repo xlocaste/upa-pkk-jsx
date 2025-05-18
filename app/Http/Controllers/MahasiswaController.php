@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mahasiswa\StoreRequest;
 use App\Http\Requests\Mahasiswa\UpdateRequest;
+use App\Imports\MahasiswaImport;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MahasiswaController extends Controller
 {
@@ -68,6 +70,22 @@ class MahasiswaController extends Controller
         ]);
 
         return Inertia::location(route('authentication.mahasiswa.index'));
+    }
+
+    public function excel(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,xls,csv',
+        ]);
+
+        Excel::import(new MahasiswaImport, $request->file('file'));
+
+        return redirect()->route('authentication.mahasiswa.index')->with('success', 'Import berhasil!');
+    }
+
+    public function import()
+    {
+        return Inertia::render('Authentication/Mahasiswa/Import');
     }
 
     public function create()

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { FaTrash } from "react-icons/fa6";
 import { FaEye, FaRegEdit } from "react-icons/fa";
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import Import from './Import';
 
 export default function MahasiswaList({ Mahasiswa, auth }) {
+    const [showImport, setShowImport] = useState(false);
     return (
         <AuthenticatedLayout>
             <Head title="Mahasiswa" />
@@ -19,7 +21,13 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                                     <ApplicationLogo />
                                     <p className='font-bold text-gray-700 text-xl'>UPA-PKK MAHASISWA</p>
                                 </div>
-                                <div className='flex items-center'>
+                                <div className='flex items-center gap-4'>
+                                    <PrimaryButton
+                                        className="bg-green-600 hover:bg-green-800"
+                                        onClick={() => setShowImport(true)}
+                                        >
+                                        + IMPORT EXCEL
+                                    </PrimaryButton>
                                     <PrimaryButton>
                                         <Link href={route('authentication.mahasiswa.create')}>
                                             + TAMBAH MAHASISWA
@@ -27,6 +35,21 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                                     </PrimaryButton>
                                 </div>
                             </div>
+
+                            {showImport && (
+                                <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+                                <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+                                    <button
+                                    className="absolute top-2 right-4 font-bold text-gray-500 hover:text-red-600"
+                                    onClick={() => setShowImport(false)}
+                                    >
+                                    ✕
+                                    </button>
+                                    <Import onClose={() => setShowImport(false)} />
+                                </div>
+                                </div>
+                            )}
+
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
