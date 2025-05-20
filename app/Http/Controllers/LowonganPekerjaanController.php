@@ -61,10 +61,10 @@ class LowonganPekerjaanController extends Controller
         }
 
         $lowonganKerja = LowonganPekerjaan::Create([
-            'image'=>$image,
-            'judul_lowongan_kerja'=>$request->judul_lowongan_kerja,
-            'deskripsi'=>$request->deskripsi,
-            'kontak'=>$request->kontak,
+            'image' => $image,
+            'judul_lowongan_kerja' => $request->judul_lowongan_kerja,
+            'deskripsi' => $request->deskripsi,
+            'kontak' => $request->kontak,
         ]);
 
         return redirect()->route('authentication.lowongan-pekerjaan.index');
@@ -72,16 +72,13 @@ class LowonganPekerjaanController extends Controller
 
     public function update(UpdateRequest $request, LowonganPekerjaan $lowonganKerja)
     {
+        $data = $request->only(['judul_lowongan_kerja', 'deskripsi', 'kontak']);
+
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('LowongaKerja', 'public');
+            $data['image'] = $request->file('image')->store('LowongaKerja', 'public');
         }
 
-        $lowonganKerja->Update([
-            'image'=>$image,
-            'judul_lowongan_kerja'=>$request->judul_lowongan_kerja,
-            'deskripsi'=>$request->deskripsi,
-            'kontak'=>$request->kontak,
-        ]);
+        $lowonganKerja->update($data);
 
         return redirect()->route('authentication.lowongan-pekerjaan.index');
     }

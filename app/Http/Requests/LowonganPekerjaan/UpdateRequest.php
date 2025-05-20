@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
             'judul_lowongan_kerja' => ['required'],
             'deskripsi' => ['required'],
             'kontak' => ['required'],
-            'image' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
 
         ];
     }
