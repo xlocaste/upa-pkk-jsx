@@ -23,7 +23,7 @@ export default function Import({ onClose }) {
         type="file"
         accept=".xlsx,.xls,.csv"
         onChange={(e) => setData('file', e.target.files[0])}
-        className="block w-full mb-2 bg-gray-200 p-2 rounded-lg"
+        className="block w-full mb-2 bg-gray-200/50 backdrop-blur-md p-2 rounded-lg"
       />
       {errors.file && <div className="text-red-600 text-sm">{errors.file}</div>}
       <div className="mt-4 flex justify-end space-x-2">
