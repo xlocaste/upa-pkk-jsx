@@ -17,14 +17,19 @@ export default function AuthenticatedLayout({ children }) {
     return (
         <div className="flex min-h-screen bg-gray-100">
             <Helmet />
-            <aside className="w-64 h-screen fixed bg-white shadow-lg flex flex-col">
-                <div className="flex py-3 items-center justify-center border-b">
+            <aside className="w-64 h-screen fixed bg-gradient-to-t from-blue-300 via-blue-200 to-white shadow-lg flex flex-col">
+                <img
+                    src="/images/siluet.png"
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover z-0 opacity-20"
+                />
+                <div className="relative flex py-3 items-center justify-center">
                     <Link href="/">
                         <ApplicationLogo className="h-10 w-auto fill-current text-gray-800" />
                     </Link>
                 </div>
 
-                <nav className="p-4 space-y-3 flex flex-col mb-4">
+                <nav className="relative p-4 space-y-3 flex flex-col mb-4">
                     <Link
                         className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
                         href="/"
@@ -82,19 +87,18 @@ export default function AuthenticatedLayout({ children }) {
                     </Link>
                 </nav>
 
-                <div className="border-t px-4 pb-0">
+                <div className="relative px-4 pb-0">
                     <button onClick={() => setShowData((prev) => !prev)} className="mb-4 w-full flex items-center space-x-2">
                         <span className="flex w-full items-center cursor-pointer space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900">
                             <MdOutlineManageAccounts className='text-xl'/>
                             <div className='flex items-center justify-between w-full'>
                                 <p className='text-xl'>Account</p>
                                 <svg
-                                    className="w-4 h-4"
+                                    className={`w-4 h-4 transition-transform duration-200 ${showData ? 'rotate-180' : ''}`}
                                     fill="currentColor"
                                     viewBox="0 0 20 20"
                                 >
                                     <path
-                                        className='flex items-end'
                                         fillRule="evenodd"
                                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                         clipRule="evenodd"
@@ -104,18 +108,22 @@ export default function AuthenticatedLayout({ children }) {
                         </span>
                     </button>
 
-                    {showData && (
-                    <div className="flex flex-col items-start space-y-2 pl-2">
-                        <Link className='w-full flex items-center space-x-2' href={route('profile.edit')}>
-                            <CgProfile />
-                            <p>Profile</p>
-                        </Link>
-                        <Link className='flex items-center space-x-2' href={route('logout')} method="post" as="button">
-                            <HiOutlineLogout />
-                            <p>Log Out</p>
-                        </Link>
+                    <div
+                        className={`overflow-hidden transition-all duration-300 ease-in-out transform origin-top
+                            ${showData ? 'opacity-100 translate-y-0 max-h-40' : 'opacity-0 -translate-y-2 max-h-0 pointer-events-none'}
+                        `}
+                    >
+                        <div className="flex flex-col items-start space-y-2 pl-2">
+                            <Link className='w-full flex items-center space-x-2' href={route('profile.edit')}>
+                                <CgProfile />
+                                <p>Profile</p>
+                            </Link>
+                            <Link className='flex items-center space-x-2' href={route('logout')} method="post" as="button">
+                                <HiOutlineLogout />
+                                <p>Log Out</p>
+                            </Link>
+                        </div>
                     </div>
-                    )}
                 </div>
                 <div className="absolute w-full bottom-2 text-xs text-gray-500 mt-6 text-center">
                     {user.email}
@@ -123,7 +131,7 @@ export default function AuthenticatedLayout({ children }) {
             </aside>
 
             <div className="flex-1 flex flex-col">
-                <div className='bg-white ml-64 py-5 text-center'>
+                <div className='bg-gradient-to-l from-blue-300 via-blue-200 to-white ml-64 py-5 text-center'>
                     <p className='font-bold'>Unit Pelaksana Aksi Pemberdayaan dan Kesejahteraan Keluarga.</p>
                 </div>
                 <main className="p-6 ml-64">{children}</main>
