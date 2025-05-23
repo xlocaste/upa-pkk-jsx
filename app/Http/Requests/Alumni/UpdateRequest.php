@@ -32,7 +32,11 @@ class UpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'mahasiswa_id.unique' => 'Mahasiswa ini sudah terdaftar sebagai alumni.',
+            'mahasiswa_id.required' => 'Mahasiswa wajib dipilih.',
+            'tempat_magang.required'    => 'Tempat magang wajib diisi.',
+            'judul_magang.required'     => 'Judul magang wajib diisi.',
+            'judul_tugas_akhir.required' => 'Judul tugas akhir wajib diisi.',
+            'tahun_lulus.required'      => 'Tahun lulus wajib diisi.',
         ];
     }
 }
