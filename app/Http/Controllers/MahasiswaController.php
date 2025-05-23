@@ -75,10 +75,19 @@ class MahasiswaController extends Controller
     public function excel(Request $request)
     {
         $request->validate([
-            'file' => 'required|file|mimes:xlsx,xls,csv',
+            'file' => 'required|mimes:xlsx,xls,csv',
+        ], [
+            'file.required' => 'Silahkan pilih file .xlsx, .xls, atau .csv terlebih dahulu'
         ]);
 
-        Excel::import(new MahasiswaImport, $request->file('file'));
+        $import = new MahasiswaImport;
+        Excel::import($import, $request->file('file'));
+
+        if (!empty($import->errors)) {
+            return back()->withErrors([
+                'import' => implode("\n", $import->errors),
+            ]);
+        }
 
         return redirect()->route('authentication.mahasiswa.index')->with('success', 'Import berhasil!');
     }
