@@ -28,4 +28,23 @@ class UpdateRequest extends FormRequest
             'tahun_exit_mik' => ['required', 'max:' . (date('Y') + 10)],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'nama_mik.required' => 'Nama mini industri kampus wajib diisi.',
+            'nama_mik.string' => 'Nama mini industri kampus harus berupa teks.',
+            'nama_mik.max' => 'Nama mini industri kampus maksimal 255 karakter.',
+
+            'bidang_fokus_mik.required' => 'Bidang fokus mini industri kampus wajib diisi.',
+            'bidang_fokus_mik.string' => 'Bidang fokus mini industri kampus harus berupa teks.',
+            'bidang_fokus_mik.max' => 'Bidang fokus mini industri kampus maksimal 255 karakter.',
+
+            'tahun_mik.required' => 'Tahun mini industri kampus wajib diisi.',
+            'tahun_mik.max' => 'Tahun mini industri kampus tidak boleh lebih dari ' . date('Y') . '.',
+
+            'tahun_exit_mik.required' => 'Tahun exit mini industri kampus wajib diisi.',
+            'tahun_exit_mik.max' => 'Tahun exit mini industri kampus tidak boleh lebih dari ' . (date('Y') + 10) . '.',
+        ];
+    }
 }
