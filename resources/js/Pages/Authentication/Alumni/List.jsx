@@ -19,7 +19,13 @@ export default function AlumniList({ daftarAlumni }) {
                                     <ApplicationLogo />
                                     <p className='font-bold text-gray-700 text-xl'>UPA-PKK ALUMNI</p>
                                 </div>
-                                <div className='flex items-center'>
+                                <div className='flex items-center gap-4'>
+                                    <PrimaryButton
+                                        className="bg-green-600 hover:bg-green-800"
+                                        onClick={() => setShowImport(true)}
+                                        >
+                                        + IMPORT EXCEL
+                                    </PrimaryButton>
                                     <PrimaryButton>
                                         <Link href={route('authentication.alumni.create')}>
                                             + TAMBAH ALUMNI
