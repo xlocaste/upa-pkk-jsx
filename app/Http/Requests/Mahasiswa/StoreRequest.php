@@ -28,4 +28,23 @@ class StoreRequest extends FormRequest
             'ipk'=>['required', 'min:0', 'max:4', 'numeric'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'nama.required' => 'Nama wajib diisi.',
+
+            'nim.required' => 'NIM wajib diisi.',
+            'nim.unique'   => 'NIM ini sudah terdaftar.',
+
+            'semester.required' => 'Semester wajib diisi.',
+            'semester.integer'  => 'Semester harus berupa angka bulat.',
+            'semester.min'      => 'Semester minimal adalah 0.',
+
+            'ipk.required' => 'IPK wajib diisi.',
+            'ipk.numeric'  => 'IPK harus berupa angka.',
+            'ipk.min'      => 'IPK minimal adalah 0.',
+            'ipk.max'      => 'IPK maksimal adalah 4.',
+        ];
+    }
 }
