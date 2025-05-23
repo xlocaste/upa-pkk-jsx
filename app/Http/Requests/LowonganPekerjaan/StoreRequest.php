@@ -26,7 +26,19 @@ class StoreRequest extends FormRequest
             'deskripsi' => ['required'],
             'kontak' => ['required'],
             'image' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
+        ];
+    }
 
+    public function messages(): array
+    {
+        return [
+            'judul_lowongan_kerja.required' => 'Judul lowongan kerja wajib diisi.',
+            'deskripsi.required' => 'Deskripsi wajib diisi.',
+            'kontak.required' => 'Kontak wajib diisi.',
+            'image.required' => 'Gambar wajib diunggah.',
+            'image.image' => 'File harus berupa gambar.',
+            'image.mimes' => 'Format gambar harus JPG, JPEG, atau PNG.',
+            'image.max' => 'Ukuran gambar maksimal 2 MB.',
         ];
     }
 }
