@@ -14,7 +14,7 @@ class AlumniController extends Controller
 {
     public function index()
     {
-        $daftarAlumni = Alumni::with('mahasiswa')->get();
+        $daftarAlumni = Alumni::with('mahasiswa')->paginate(5);
 
         return Inertia::render('Authentication/Alumni/List', [
             'daftarAlumni' => $daftarAlumni
