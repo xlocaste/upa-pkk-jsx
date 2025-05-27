@@ -21,7 +21,7 @@ export default function InkubasiList({ daftarKSI }) {
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
+                        <div className="p-6 py-3 text-gray-900">
                             <div className='flex justify-between m-4 ml-0'>
                                 <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
                                     <ApplicationLogo />

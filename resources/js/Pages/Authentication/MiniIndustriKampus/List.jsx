@@ -5,15 +5,23 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import { FaTrash } from "react-icons/fa6";
 import { FaEye, FaRegEdit } from "react-icons/fa";
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function InkubasiList({ daftarMIK }) {
+
+    const handlePageChange = (url) => {
+        if (url) {
+            router.visit(url);
+        }
+    };
+
     return (
         <AuthenticatedLayout>
             <Head title="Mini Industri Kampus" />
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
+                        <div className="p-6 py-3 text-gray-900">
                             <div className='flex justify-between m-4 ml-0'>
                                 <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
                                     <ApplicationLogo />
@@ -85,6 +93,27 @@ export default function InkubasiList({ daftarMIK }) {
                                     )}
                                 </tbody>
                             </table>
+                            <div className="flex justify-end py-2 gap-4">
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(daftarMIK.prev_page_url)}
+                                    disabled={!daftarMIK.prev_page_url}
+                                    className='text-xs'
+                                >
+                                    Previous
+                                </SecondaryButton>
+
+                                <span className="text-gray-700 self-center text-xs">
+                                    Page {daftarMIK.current_page} of {daftarMIK.last_page}
+                                </span>
+
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(daftarMIK.next_page_url)}
+                                    disabled={!daftarMIK.next_page_url}
+                                    className='text-xs'
+                                >
+                                    Next
+                                </SecondaryButton>
+                            </div>
                         </div>
                     </div>
                 </div>
