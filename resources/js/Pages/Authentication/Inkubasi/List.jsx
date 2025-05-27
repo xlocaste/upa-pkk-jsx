@@ -5,8 +5,16 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import { FaTrash } from "react-icons/fa6";
 import { FaEye, FaRegEdit } from "react-icons/fa";
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function InkubasiList({ Inkubasi }) {
+
+    const handlePageChange = (url) => {
+        if (url) {
+            router.visit(url);
+        }
+    };
+
     return (
         <AuthenticatedLayout>
             <Head title="Inkubasi" />
@@ -85,6 +93,27 @@ export default function InkubasiList({ Inkubasi }) {
                                     )}
                                 </tbody>
                             </table>
+                            <div className="flex justify-end py-2 gap-4">
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(Inkubasi.prev_page_url)}
+                                    disabled={!Inkubasi.prev_page_url}
+                                    className='text-xs'
+                                >
+                                    Previous
+                                </SecondaryButton>
+
+                                <span className="text-gray-700 self-center text-xs">
+                                    Page {Inkubasi.current_page} of {Inkubasi.last_page}
+                                </span>
+
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(Inkubasi.next_page_url)}
+                                    disabled={!Inkubasi.next_page_url}
+                                    className='text-xs'
+                                >
+                                    Next
+                                </SecondaryButton>
+                            </div>
                         </div>
                     </div>
                 </div>
