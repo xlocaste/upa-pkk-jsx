@@ -13,7 +13,7 @@ class MiniIndustriKampusController extends Controller
 {
     public function index()
     {
-        $daftarMIK = MiniIndustriKampus::all();
+        $daftarMIK = MiniIndustriKampus::paginate(5);
 
         {
             return Inertia::render('Authentication/MiniIndustriKampus/List', [
