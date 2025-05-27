@@ -13,7 +13,7 @@ class KerjaSamaIndustriController extends Controller
 {
     public function index()
     {
-        $daftarKSI = KerjaSamaIndustri::all();
+        $daftarKSI = KerjaSamaIndustri::paginate(5);
 
         {
             return Inertia::render('Authentication/KerjaSamaIndustri/List', [
