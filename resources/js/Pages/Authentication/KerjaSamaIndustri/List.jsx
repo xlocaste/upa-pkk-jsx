@@ -5,8 +5,16 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import { FaTrash } from "react-icons/fa6";
 import { FaEye, FaRegEdit } from "react-icons/fa";
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function InkubasiList({ daftarKSI }) {
+
+    const handlePageChange = (url) => {
+        if (url) {
+            router.visit(url);
+        }
+    };
+
     return (
         <AuthenticatedLayout>
             <Head title="Kerja Sama Industri" />
@@ -85,6 +93,27 @@ export default function InkubasiList({ daftarKSI }) {
                                     )}
                                 </tbody>
                             </table>
+                            <div className="flex justify-end py-2 gap-4">
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(daftarKSI.prev_page_url)}
+                                    disabled={!daftarKSI.prev_page_url}
+                                    className='text-xs'
+                                >
+                                    Previous
+                                </SecondaryButton>
+
+                                <span className="text-gray-700 self-center text-xs">
+                                    Page {daftarKSI.current_page} of {daftarKSI.last_page}
+                                </span>
+
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(daftarKSI.next_page_url)}
+                                    disabled={!daftarKSI.next_page_url}
+                                    className='text-xs'
+                                >
+                                    Next
+                                </SecondaryButton>
+                            </div>
                         </div>
                     </div>
                 </div>
