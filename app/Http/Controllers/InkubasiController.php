@@ -14,7 +14,7 @@ class InkubasiController extends Controller
 {
     public function index()
     {
-        $daftarInkubasi = Inkubasi::all();
+        $daftarInkubasi = Inkubasi::paginate(5);
 
         return inertia::render('Authentication/Inkubasi/List', [
             'Inkubasi' => $daftarInkubasi,

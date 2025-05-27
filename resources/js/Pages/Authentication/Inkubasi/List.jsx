@@ -47,8 +47,8 @@ export default function InkubasiList({ Inkubasi }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {Inkubasi.length > 0 ? (
-                                        Inkubasi.map((item, index) => (
+                                    {Inkubasi.data.length > 0 ? (
+                                        Inkubasi.data.map((item, index) => (
                                             <tr key={item.id} className="hover:bg-gray-50">
                                                 <td className="py-2 px-4 border-b">{index + 1}</td>
                                                 <td className="py-2 px-4 border-b">{item.nama_tenant}</td>
