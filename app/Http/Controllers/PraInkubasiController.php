@@ -14,7 +14,7 @@ class PraInkubasiController extends Controller
 {
     public function index()
     {
-        $daftarPraInkubasi = PraInkubasi::all();
+        $daftarPraInkubasi = PraInkubasi::paginate(5);
 
         return Inertia::render('Authentication/PraInkubasi/List', [
             'praInkubasi' => $daftarPraInkubasi,
