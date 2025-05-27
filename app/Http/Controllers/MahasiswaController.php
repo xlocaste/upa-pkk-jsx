@@ -17,7 +17,7 @@ class MahasiswaController extends Controller
 {
     public function index()
     {
-        $daftarMahasiswa = Mahasiswa::all();
+        $daftarMahasiswa = Mahasiswa::paginate(5);
 
         return inertia::render('Authentication/Mahasiswa/List', [
             'Mahasiswa' => $daftarMahasiswa,

@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { FaTrash } from "react-icons/fa6";
 import { FaEye, FaRegEdit } from "react-icons/fa";
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Import from './Import';
+import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function MahasiswaList({ Mahasiswa, auth }) {
     const [showImport, setShowImport] = useState(false);
+
+    const handlePageChange = (url) => {
+        if (url) {
+            router.visit(url);
+        }
+    };
+
     return (
         <AuthenticatedLayout>
             <Head title="Mahasiswa" />
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
+                        <div className="p-6 py-3 text-gray-900">
                             <div className='flex justify-between m-4 ml-0'>
                                 <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
                                     <ApplicationLogo />
@@ -62,10 +70,12 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {Mahasiswa.length > 0 ? (
-                                        Mahasiswa.map((mhs, index) => (
+                                    {Mahasiswa.data.length > 0 ? (
+                                        Mahasiswa.data.map((mhs, index) => (
                                             <tr key={mhs.id} className="hover:bg-gray-50">
-                                                <td className="py-2 px-4 border-b">{index + 1}</td>
+                                                <td className="py-2 px-4 border-b">
+                                                    {(Mahasiswa.current_page - 1) * Mahasiswa.per_page + index + 1}
+                                                </td>
                                                 <td className="py-2 px-4 border-b">{mhs.nama}</td>
                                                 <td className="py-2 px-4 border-b">{mhs.nim}</td>
                                                 <td className="py-2 px-4 border-b">{mhs.semester}</td>
@@ -88,7 +98,7 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                                                             as="button"
                                                             className="text-red-400"
                                                             onClick={() => {
-                                                                if (confirm('Yakin ingin menghapus project ini?')) {
+                                                                if (confirm('Yakin ingin menghapus mahasiswa ini?')) {
                                                                     router.delete(route('authentication.mahasiswa.destroy', mhs.id));
                                                                 }
                                                             }}
@@ -101,13 +111,34 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                                         ))
                                     ) : (
                                         <tr>
-                                            <td colSpan="5" className="text-center py-4 text-gray-500">
+                                            <td colSpan="6" className="text-center py-4 text-gray-500">
                                                 Data mahasiswa tidak tersedia.
                                             </td>
                                         </tr>
                                     )}
                                 </tbody>
                             </table>
+                            <div className="flex justify-end py-2 gap-4">
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(Mahasiswa.prev_page_url)}
+                                    disabled={!Mahasiswa.prev_page_url}
+                                    className='text-xs'
+                                >
+                                    Previous
+                                </SecondaryButton>
+
+                                <span className="text-gray-700 self-center text-xs">
+                                    Page {Mahasiswa.current_page} of {Mahasiswa.last_page}
+                                </span>
+
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(Mahasiswa.next_page_url)}
+                                    disabled={!Mahasiswa.next_page_url}
+                                    className='text-xs'
+                                >
+                                    Next
+                                </SecondaryButton>
+                            </div>
                         </div>
                     </div>
                 </div>
