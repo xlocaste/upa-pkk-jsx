@@ -21,20 +21,48 @@ export default function MahasiswaList({ KerjaSamaIndustri, auth }) {
                             </div>
                             <div className='grid grid-cols-2 items-center gap-6'>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Nama Kerja Sama Industri</p>
-                                    <p className="font-bold text-3xl z-10">{KerjaSamaIndustri.nama_ksi}</p>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>Nama</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.nama_ksi}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Bidang Fokus Kerja Sama Industri</p>
-                                    <p className="font-bold text-3xl z-10">{KerjaSamaIndustri.bidang_fokus_ksi}</p>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>Bentuk Lembaga</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.bentuk_lembaga}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Tahun Kerja Sama Industri</p>
-                                    <p className="font-bold text-3xl z-10">{KerjaSamaIndustri.tahun_ksi}</p>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>Jenis Kegiatan</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.jenis_kegiatan}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Tahun Exit</p>
-                                    <p className="font-bold text-3xl z-10">{KerjaSamaIndustri.tahun_exit_ksi}</p>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>Tahun Kerja Sama Industri</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.tahun_ksi}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>Tahun Exit</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.tahun_exit_ksi}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>No MoU Poltesa</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.no_mou_poltesa}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>No MoU Mitra</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.no_mou_mitra}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>Prodi</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.prodi}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>Aktivitas</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.aktivitas}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>Waktu</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.waktu}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl text-gray-600 z-10'>Keterangan</p>
+                                    <p className="font-bold text-xl z-10">{KerjaSamaIndustri.keterangan}</p>
                                 </div>
                                 <div className="col-span-2 flex justify-end z-10">
                                     <Link href={route('authentication.kerja-sama-industri.index')}>
