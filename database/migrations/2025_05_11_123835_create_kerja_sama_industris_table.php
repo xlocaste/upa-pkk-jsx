@@ -14,9 +14,16 @@ return new class extends Migration
         Schema::create('kerja_sama_industri', function (Blueprint $table) {
             $table->id();
             $table->string('nama_ksi');
-            $table->string('bidang_fokus_ksi');
-            $table->string('tahun_ksi');
-            $table->string('tahun_exit_ksi');
+            $table->string('bentuk_lembaga');
+            $table->string('jenis_kegiatan');
+            $table->date('tahun_ksi');
+            $table->date('tahun_exit_ksi');
+            $table->string('no_mou_poltesa');
+            $table->string('no_mou_mitra')->nullable();
+            $table->string('prodi');
+            $table->string('aktivitas')->nullable();
+            $table->string('waktu');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

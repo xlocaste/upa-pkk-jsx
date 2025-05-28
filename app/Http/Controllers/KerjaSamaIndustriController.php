@@ -36,10 +36,17 @@ class KerjaSamaIndustriController extends Controller
     public function store(StoreRequest $request)
     {
         KerjaSamaIndustri::create([
-            'nama_ksi'=>$request->nama_ksi,
-            'bidang_fokus_ksi'=>$request->bidang_fokus_ksi,
-            'tahun_ksi'=>$request->tahun_ksi,
-            'tahun_exit_ksi'=>$request->tahun_exit_ksi,
+            'nama_ksi' => $request->nama_ksi,
+            'bentuk_lembaga' => $request->bentuk_lembaga,
+            'jenis_kegiatan' => $request->jenis_kegiatan,
+            'tahun_ksi' => $request->tahun_ksi,
+            'tahun_exit_ksi' => $request->tahun_exit_ksi,
+            'no_mou_poltesa' => $request->no_mou_poltesa,
+            'no_mou_mitra' => $request->no_mou_mitra,
+            'prodi' => $request->prodi,
+            'aktivitas' => $request->aktivitas,
+            'waktu' => $request->waktu,
+            'keterangan' => $request->keterangan,
         ]);
 
         return redirect()->route('authentication.kerja-sama-industri.index');
@@ -48,10 +55,17 @@ class KerjaSamaIndustriController extends Controller
     public function update(UpdateRequest $request, KerjaSamaIndustri $kerjaSamaIndustri)
     {
         $kerjaSamaIndustri->update([
-            'nama_ksi'=>$request->nama_ksi,
-            'bidang_fokus_ksi'=>$request->bidang_fokus_ksi,
-            'tahun_ksi'=>$request->tahun_ksi,
-            'tahun_exit_ksi'=>$request->tahun_exit_ksi,
+            'nama_ksi' => $request->nama_ksi,
+            'bentuk_lembaga' => $request->bentuk_lembaga,
+            'jenis_kegiatan' => $request->jenis_kegiatan,
+            'tahun_ksi' => $request->tahun_ksi,
+            'tahun_exit_ksi' => $request->tahun_exit_ksi,
+            'no_mou_poltesa' => $request->no_mou_poltesa,
+            'no_mou_mitra' => $request->no_mou_mitra,
+            'prodi' => $request->prodi,
+            'aktivitas' => $request->aktivitas,
+            'waktu' => $request->waktu,
+            'keterangan' => $request->keterangan,
         ]);
 
         return redirect()->route('authentication.kerja-sama-industri.index');

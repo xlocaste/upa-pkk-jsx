@@ -40,7 +40,7 @@ export default function InkubasiList({ daftarKSI }) {
                                     <tr className="bg-gray-100 text-left">
                                         <th className="py-2 px-4 border-b">No</th>
                                         <th className="py-2 px-4 border-b">Nama Tenant</th>
-                                        <th className="py-2 px-4 border-b">Bidang Fokus</th>
+                                        <th className="py-2 px-4 border-b">Jenis Kegiatan</th>
                                         <th className="py-2 px-4 border-b">Tahun Kerja Sama Industri</th>
                                         <th className="py-2 px-4 border-b">Tahun Exit</th>
                                         <th className="py-2 px-4 border-b">Action</th>
@@ -52,7 +52,7 @@ export default function InkubasiList({ daftarKSI }) {
                                             <tr key={item.id} className="hover:bg-gray-50">
                                                 <td className="py-2 px-4 border-b">{index + 1}</td>
                                                 <td className="py-2 px-4 border-b">{item.nama_ksi}</td>
-                                                <td className="py-2 px-4 border-b">{item.bidang_fokus_ksi}</td>
+                                                <td className="py-2 px-4 border-b">{item.jenis_kegiatan}</td>
                                                 <td className="py-2 px-4 border-b">{item.tahun_ksi}</td>
                                                 <td className="py-2 px-4 border-b">{item.tahun_exit_ksi}</td>
                                                 <td className="px-4 py-1 border-b text-center">

@@ -13,8 +13,15 @@ class KerjaSamaIndustri extends Model
 
     protected $fillable = [
         'nama_ksi',
-        'bidang_fokus_ksi',
+        'bentuk_lembaga',
+        'jenis_kegiatan',
         'tahun_ksi',
         'tahun_exit_ksi',
+        'no_mou_poltesa',
+        'no_mou_mitra',
+        'prodi',
+        'aktivitas',
+        'waktu',
+        'keterangan',
     ];
 }
