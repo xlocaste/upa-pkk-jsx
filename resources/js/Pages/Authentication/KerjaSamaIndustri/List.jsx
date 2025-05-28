@@ -8,9 +8,18 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import SecondaryButton from '@/Components/SecondaryButton';
 import Import from './Import';
 
-export default function InkubasiList({ daftarKSI }) {
+export default function InkubasiList({ daftarKSI, filters }) {
     console.log(daftarKSI)
     const [showImport, setShowImport] = useState(false);
+    const [keyword, setKeyword] = useState(filters?.keyword || '');
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        router.get(route('authentication.kerja-sama-industri.search'), { keyword }, {
+            preserveState: true,
+            replace: true,
+        });
+    };
 
     const handlePageChange = (url) => {
         if (url) {
@@ -25,11 +34,21 @@ export default function InkubasiList({ daftarKSI }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 py-3 text-gray-900">
+                            <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                                <ApplicationLogo />
+                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK KERJA SAMA INDUSTRI</p>
+                            </div>
                             <div className='flex justify-between m-4 ml-0'>
-                                <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
-                                    <ApplicationLogo />
-                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK KERJA SAMA INDUSTRI</p>
-                                </div>
+                                <form onSubmit={handleSearch} className="flex gap-2">
+                                    <input
+                                        type="text"
+                                        value={keyword}
+                                        onChange={(e) => setKeyword(e.target.value)}
+                                        placeholder="Cari Nama..."
+                                        className="border pr-24 py-1 rounded"
+                                    />
+                                    <PrimaryButton type="submit" className="text-sm">Cari</PrimaryButton>
+                                </form>
                                 <div className='flex items-center gap-4'>
                                     <PrimaryButton
                                         className="bg-green-600 hover:bg-green-800"
@@ -71,8 +90,8 @@ export default function InkubasiList({ daftarKSI }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {daftarKSI.data.length > 0 ? (
-                                        daftarKSI.data.map((item, index) => (
+                                    {daftarKSI?.data?.length > 0 ? (
+                                        daftarKSI?.data?.map((item, index) => (
                                             <tr key={item.id} className="hover:bg-gray-50">
                                                 <td className="py-2 px-4 border-b">{item.id}</td>
                                                 <td className="py-2 px-4 border-b">{item.nama_ksi}</td>
@@ -119,20 +138,20 @@ export default function InkubasiList({ daftarKSI }) {
                             </table>
                             <div className="flex justify-end py-2 gap-4">
                                 <SecondaryButton
-                                    onClick={() => handlePageChange(daftarKSI.prev_page_url)}
-                                    disabled={!daftarKSI.prev_page_url}
+                                    onClick={() => handlePageChange(daftarKSI?.prev_page_url)}
+                                    disabled={!daftarKSI?.prev_page_url}
                                     className='text-xs'
                                 >
                                     Previous
                                 </SecondaryButton>
 
                                 <span className="text-gray-700 self-center text-xs">
-                                    Page {daftarKSI.current_page} of {daftarKSI.last_page}
+                                    Page {daftarKSI?.current_page} of {daftarKSI?.last_page}
                                 </span>
 
                                 <SecondaryButton
-                                    onClick={() => handlePageChange(daftarKSI.next_page_url)}
-                                    disabled={!daftarKSI.next_page_url}
+                                    onClick={() => handlePageChange(daftarKSI?.next_page_url)}
+                                    disabled={!daftarKSI?.next_page_url}
                                     className='text-xs'
                                 >
                                     Next

@@ -98,6 +98,7 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
         Route::group(['middleware' => ['auth']], function() {
             Route::get('/create', [KerjaSamaIndustriController::class, 'create'])->name('create');
             Route::get('/import', [KerjaSamaIndustriController::class, 'import'])->name('import');
+            Route::get('/search', [KerjaSamaIndustriController::class, 'search'])->name('search');
             Route::post('/', [KerjaSamaIndustriController::class, 'store'])->name('store');
             Route::post('/excel', [KerjaSamaIndustriController::class, 'excel'])->name('excel');
             Route::put('/{kerjaSamaIndustri}', [KerjaSamaIndustriController::class, 'update'])->name('update');

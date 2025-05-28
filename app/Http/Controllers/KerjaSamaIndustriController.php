@@ -176,6 +176,25 @@ class KerjaSamaIndustriController extends Controller
             ->with('success', 'Import berhasil!');
     }
 
+    public function search(Request $request)
+    {
+        $query = KerjaSamaIndustri::query();
+
+        if ($request->has('keyword') && $request->keyword != '') {
+            $keyword = $request->keyword;
+            $query->where('nama_ksi', 'like', '%' . $keyword . '%');
+        }
+
+        $filteredKsi = $query->paginate(5)->appends(['keyword' => $request->keyword]);
+
+        return Inertia::render('Authentication/KerjaSamaIndustri/List', [
+            'daftarKSI' => $filteredKsi,
+            'filters' => [
+                'keyword' => $request->keyword,
+            ],
+        ]);
+    }
+
     public function import()
     {
         return Inertia::render('Authentication/KerjaSamaIndustri/Import');
