@@ -74,7 +74,7 @@ export default function InkubasiList({ daftarKSI }) {
                                     {daftarKSI.data.length > 0 ? (
                                         daftarKSI.data.map((item, index) => (
                                             <tr key={item.id} className="hover:bg-gray-50">
-                                                <td className="py-2 px-4 border-b">{index + 1}</td>
+                                                <td className="py-2 px-4 border-b">{item.id}</td>
                                                 <td className="py-2 px-4 border-b">{item.nama_ksi}</td>
                                                 <td className="py-2 px-4 border-b">{item.jenis_kegiatan}</td>
                                                 <td className="py-2 px-4 border-b">{item.tahun_ksi}</td>
