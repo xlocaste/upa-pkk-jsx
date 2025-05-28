@@ -97,7 +97,9 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
     Route::prefix('/kerja-sama-industri')->name('kerja-sama-industri.')->group(function() {
         Route::group(['middleware' => ['auth']], function() {
             Route::get('/create', [KerjaSamaIndustriController::class, 'create'])->name('create');
+            Route::get('/import', [KerjaSamaIndustriController::class, 'import'])->name('import');
             Route::post('/', [KerjaSamaIndustriController::class, 'store'])->name('store');
+            Route::post('/excel', [KerjaSamaIndustriController::class, 'excel'])->name('excel');
             Route::put('/{kerjaSamaIndustri}', [KerjaSamaIndustriController::class, 'update'])->name('update');
             Route::delete('/{kerjaSamaIndustri}', [KerjaSamaIndustriController::class, 'destroy'])->name('destroy');
             Route::get('/{kerjaSamaIndustri}/edit', [KerjaSamaIndustriController::class, 'edit'])->name('edit');

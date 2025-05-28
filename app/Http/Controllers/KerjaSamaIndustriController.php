@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\KerjaSamaIndustri\StoreRequest;
 use App\Http\Requests\KerjaSamaIndustri\UpdateRequest;
-use App\Models\KerjaSamaIndustri;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use App\Models\KerjaSamaIndustri;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Redirect;
 
@@ -85,6 +89,96 @@ class KerjaSamaIndustriController extends Controller
         return Inertia::render('Authentication/KerjaSamaIndustri/Detail', [
             'KerjaSamaIndustri' => $kerjaSamaIndustri
         ]);
+    }
+
+    public function excel(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,xls,csv',
+        ], [
+            'file.required' => 'Silahkan pilih file .xlsx, .xls, atau .csv terlebih dahulu',
+        ]);
+
+        $spreadsheet = IOFactory::load($request->file('file')->getRealPath());
+        $sheet = $spreadsheet->getActiveSheet();
+        $rows = $sheet->toArray(null, true, true, true);
+
+        $errors = [];
+
+        $rowHeader1 = $rows[4];
+        $rowHeader2 = $rows[5];
+
+        $finalHeaders = [];
+
+        foreach ($rowHeader2 as $key => $val) {
+            $mergedHeader = trim(($rowHeader1[$key] ?? '') . ' ' . ($rowHeader2[$key] ?? ''));
+            $finalHeaders[$key] = Str::slug($mergedHeader, '_');
+        }
+
+        $formatTanggal = function ($value) {
+            if (!$value) return null;
+
+            try {
+                return Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+            } catch (\Exception $e) {
+                try {
+                    return Carbon::parse($value)->format('Y-m-d');
+                } catch (\Exception $e) {
+                    return null;
+                }
+            }
+        };
+
+        $mitraKolom = array_search('mitra_kerjasama', $finalHeaders);
+
+        for ($i = 6; $i <= count($rows); $i++) {
+            $row = $rows[$i] ?? null;
+            if (!$row) continue;
+
+            $mitraKerjasama = $row[$mitraKolom] ?? null;
+
+            if (empty($mitraKerjasama)) {
+                break;
+            }
+
+            $data = [];
+            foreach ($finalHeaders as $col => $field) {
+                $data[$field] = $row[$col] ?? null;
+            }
+
+            try {
+                KerjaSamaIndustri::create([
+                    'nama_ksi'       => $data['mitra_kerjasama'],
+                    'bentuk_lembaga' => $data['bentuk_lembaga'],
+                    'jenis_kegiatan' => $data['jenis_kegiatan'],
+                    'tahun_ksi'      => $formatTanggal($data['kurun_waktu_mulai']),
+                    'tahun_exit_ksi' => $formatTanggal($data['berakhir']),
+                    'no_mou_poltesa' => $data['nomor_mou_poltesa'],
+                    'no_mou_mitra'   => $data['mitra'] ?? null,
+                    'prodi'          => $data['prodi'],
+                    'aktivitas'      => $data['aktivitas'] ?? null,
+                    'waktu'          => $data['waktu'],
+                    'keterangan'     => $data['keterangan'],
+                ]);
+            } catch (\Exception $e) {
+                $errors[] = "Baris $i: Gagal menyimpan - " . $e->getMessage();
+                Log::error($e);
+            }
+        }
+
+        if (!empty($errors)) {
+            return back()->withErrors([
+                'import' => implode("\n", $errors),
+            ]);
+        }
+
+        return redirect()->route('authentication.kerja-sama-industri.index')
+            ->with('success', 'Import berhasil!');
+    }
+
+    public function import()
+    {
+        return Inertia::render('Authentication/KerjaSamaIndustri/Import');
     }
 
     public function edit(KerjaSamaIndustri $kerjaSamaIndustri)

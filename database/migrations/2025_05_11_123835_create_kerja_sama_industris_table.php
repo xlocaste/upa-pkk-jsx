@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('jenis_kegiatan');
             $table->date('tahun_ksi');
             $table->date('tahun_exit_ksi');
-            $table->string('no_mou_poltesa');
+            $table->string('no_mou_poltesa')->nullable();
             $table->string('no_mou_mitra')->nullable();
-            $table->string('prodi');
+            $table->string('prodi')->nullable();
             $table->string('aktivitas')->nullable();
             $table->string('waktu');
             $table->string('keterangan');

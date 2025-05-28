@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, router } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -6,8 +6,11 @@ import { FaTrash } from "react-icons/fa6";
 import { FaEye, FaRegEdit } from "react-icons/fa";
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import SecondaryButton from '@/Components/SecondaryButton';
+import Import from './Import';
 
 export default function InkubasiList({ daftarKSI }) {
+    console.log(daftarKSI)
+    const [showImport, setShowImport] = useState(false);
 
     const handlePageChange = (url) => {
         if (url) {
@@ -27,7 +30,13 @@ export default function InkubasiList({ daftarKSI }) {
                                     <ApplicationLogo />
                                     <p className='font-bold text-gray-700 text-xl'>UPA-PKK KERJA SAMA INDUSTRI</p>
                                 </div>
-                                <div className='flex items-center'>
+                                <div className='flex items-center gap-4'>
+                                    <PrimaryButton
+                                        className="bg-green-600 hover:bg-green-800"
+                                        onClick={() => setShowImport(true)}
+                                        >
+                                        + IMPORT EXCEL
+                                    </PrimaryButton>
                                     <PrimaryButton>
                                         <Link href={route('authentication.kerja-sama-industri.create')}>
                                             + TAMBAH KERJA SAMA INDUSTRI
@@ -35,6 +44,21 @@ export default function InkubasiList({ daftarKSI }) {
                                     </PrimaryButton>
                                 </div>
                             </div>
+
+                            {showImport && (
+                                <div className="fixed inset-0 bg-black/50 backdrop-blur-md z-50 flex items-center justify-center">
+                                <div className="bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg w-full max-w-md relative">
+                                    <button
+                                    className="absolute top-2 right-4 font-bold text-gray-500 hover:text-red-600"
+                                    onClick={() => setShowImport(false)}
+                                    >
+                                    ✕
+                                    </button>
+                                    <Import onClose={() => setShowImport(false)} />
+                                </div>
+                                </div>
+                            )}
+
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
