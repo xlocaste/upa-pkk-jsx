@@ -9,9 +9,16 @@ export default function Update({ kerjaSamaIndustri }) {
     const { data, setData, post, processing, errors } = useForm({
         _method: 'put',
         nama_ksi: kerjaSamaIndustri.nama_ksi || '',
-        bidang_fokus_ksi: kerjaSamaIndustri.bidang_fokus_ksi || '',
+        bentuk_lembaga: kerjaSamaIndustri.bentuk_lembaga || '',
+        jenis_kegiatan: kerjaSamaIndustri.jenis_kegiatan || '',
         tahun_ksi: kerjaSamaIndustri.tahun_ksi || '',
         tahun_exit_ksi: kerjaSamaIndustri.tahun_exit_ksi || '',
+        no_mou_poltesa: kerjaSamaIndustri.no_mou_poltesa || '',
+        no_mou_mitra: kerjaSamaIndustri.no_mou_mitra || '',
+        prodi: kerjaSamaIndustri.prodi || '',
+        aktivitas: kerjaSamaIndustri.aktivitas || '',
+        waktu: kerjaSamaIndustri.waktu || '',
+        keterangan: kerjaSamaIndustri.keterangan || '',
     });
 
     const handleSubmit = (e) => {
@@ -31,8 +38,8 @@ export default function Update({ kerjaSamaIndustri }) {
                         </div>
                         <div className="p-6 text-gray-900">
                             <form onSubmit={handleSubmit} className="space-y-4">
-                                <div className="flex space-x-8">
-                                    <div className="w-1/2">
+                                <div className="grid grid-cols-2 gap-6">
+                                    <div>
                                         <label className="block text-sm font-medium">Nama Kerja Sama Industri</label>
                                         <input
                                             type="text"
@@ -43,20 +50,29 @@ export default function Update({ kerjaSamaIndustri }) {
                                         {errors.nama_ksi && <div className="text-red-500 text-sm">{errors.nama_ksi}</div>}
                                     </div>
 
-                                    <div className="w-1/2">
-                                        <label className="block text-sm font-medium">Bidang Fokus Kerja Sama Industri</label>
+                                    <div>
+                                        <label className="block text-sm font-medium">Bentuk Lembaga</label>
                                         <input
                                             type="text"
-                                            value={data.bidang_fokus_ksi}
-                                            onChange={(e) => setData('bidang_fokus_ksi', e.target.value)}
+                                            value={data.bentuk_lembaga}
+                                            onChange={(e) => setData('bentuk_lembaga', e.target.value)}
                                             className="w-full border border-gray-300 rounded px-3 py-2"
                                         />
-                                        {errors.bidang_fokus_ksi && <div className="text-red-500 text-sm">{errors.bidang_fokus_ksi}</div>}
+                                        {errors.bentuk_lembaga && <div className="text-red-500 text-sm">{errors.bentuk_lembaga}</div>}
                                     </div>
-                                </div>
 
-                                <div className="flex space-x-8">
-                                    <div className="w-1/2">
+                                    <div>
+                                        <label className="block text-sm font-medium">Jenis Kegiatan</label>
+                                        <input
+                                            type="text"
+                                            value={data.jenis_kegiatan}
+                                            onChange={(e) => setData('jenis_kegiatan', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.jenis_kegiatan && <div className="text-red-500 text-sm">{errors.jenis_kegiatan}</div>}
+                                    </div>
+
+                                    <div>
                                         <label className="block text-sm font-medium">Tahun Kerja Sama Industri</label>
                                         <input
                                             type="date"
@@ -67,7 +83,7 @@ export default function Update({ kerjaSamaIndustri }) {
                                         {errors.tahun_ksi && <div className="text-red-500 text-sm">{errors.tahun_ksi}</div>}
                                     </div>
 
-                                    <div className="w-1/2">
+                                    <div>
                                         <label className="block text-sm font-medium">Tahun Exit</label>
                                         <input
                                             type="date"
@@ -76,6 +92,72 @@ export default function Update({ kerjaSamaIndustri }) {
                                             className="w-full border border-gray-300 rounded px-3 py-2"
                                         />
                                         {errors.tahun_exit_ksi && <div className="text-red-500 text-sm">{errors.tahun_exit_ksi}</div>}
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-medium">No MOU Poltesa</label>
+                                        <input
+                                            type="text"
+                                            value={data.no_mou_poltesa}
+                                            onChange={(e) => setData('no_mou_poltesa', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.no_mou_poltesa && <div className="text-red-500 text-sm">{errors.no_mou_poltesa}</div>}
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-medium">No MOU Mitra</label>
+                                        <input
+                                            type="text"
+                                            value={data.no_mou_mitra}
+                                            onChange={(e) => setData('no_mou_mitra', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.no_mou_mitra && <div className="text-red-500 text-sm">{errors.no_mou_mitra}</div>}
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-medium">Program Studi</label>
+                                        <input
+                                            type="text"
+                                            value={data.prodi}
+                                            onChange={(e) => setData('prodi', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.prodi && <div className="text-red-500 text-sm">{errors.prodi}</div>}
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-medium">Aktivitas</label>
+                                        <input
+                                            type="text"
+                                            value={data.aktivitas}
+                                            onChange={(e) => setData('aktivitas', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.aktivitas && <div className="text-red-500 text-sm">{errors.aktivitas}</div>}
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-sm font-medium">Waktu</label>
+                                        <input
+                                            type="text"
+                                            value={data.waktu}
+                                            onChange={(e) => setData('waktu', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.waktu && <div className="text-red-500 text-sm">{errors.waktu}</div>}
+                                    </div>
+
+                                    <div className="col-span-2">
+                                        <label className="block text-sm font-medium">Keterangan</label>
+                                        <textarea
+                                            value={data.keterangan}
+                                            onChange={(e) => setData('keterangan', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                            rows={3}
+                                        />
+                                        {errors.keterangan && <div className="text-red-500 text-sm">{errors.keterangan}</div>}
                                     </div>
                                 </div>
 
