@@ -6,6 +6,7 @@ import SecondaryButton from '@/Components/SecondaryButton';
 import { PiStudent } from 'react-icons/pi';
 
 export default function MahasiswaList({ Mahasiswa, auth }) {
+    console.log(Mahasiswa)
     return (
         <AuthenticatedLayout>
             <Head title="Mahasiswa" />
@@ -21,20 +22,40 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                             </div>
                             <div className='grid grid-cols-2 items-center gap-6'>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Nama Mahasiswa</p>
-                                    <p className="font-bold text-3xl z-10">{Mahasiswa.nama}</p>
-                                </div>
-                                <div>
                                     <p className='font-bold text-xl z-10'>NIM</p>
                                     <p className="font-bold text-3xl z-10">{Mahasiswa.nim}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Semester</p>
-                                    <p className="font-bold text-3xl z-10">{Mahasiswa.semester}</p>
+                                    <p className='font-bold text-xl z-10'>Nama Mahasiswa</p>
+                                    <p className="font-bold text-3xl z-10">{Mahasiswa.nama}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>IPK</p>
-                                    <p className="font-bold text-3xl z-10">{Mahasiswa.ipk}</p>
+                                    <p className='font-bold text-xl z-10'>Jenis Kelamin</p>
+                                    <p className="font-bold text-3xl z-10">{Mahasiswa.jenis_kelamin}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl z-10'>Program Studi</p>
+                                    <p className="font-bold text-3xl z-10">{Mahasiswa.prodi}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl z-10'>Status</p>
+                                    <p className="font-bold text-3xl z-10">{Mahasiswa.status}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl z-10'>Semester</p>
+                                    <p className="font-bold text-3xl z-10">{Mahasiswa.semester || '-'}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl z-10'>Nomor SK</p>
+                                    <p className="font-bold text-3xl z-10">{Mahasiswa.nomor_sk || '-'}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl z-10'>Tanggal SK</p>
+                                    <p className="font-bold text-3xl z-10">{Mahasiswa.tanggal_sk || '-'}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl z-10'>Keterangan</p>
+                                    <p className="font-bold text-3xl z-10">{Mahasiswa.keterangan || '-'}</p>
                                 </div>
                                 <div className="col-span-2 flex justify-end z-10">
                                     <Link href={route('authentication.mahasiswa.index')}>

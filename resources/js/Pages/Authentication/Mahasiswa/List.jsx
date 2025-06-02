@@ -45,16 +45,19 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                             </div>
 
                             {showImport && (
-                                <div className="fixed inset-0 bg-black/50 backdrop-blur-md z-50 flex items-center justify-center">
-                                <div className="bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg w-full max-w-md relative">
-                                    <button
-                                    className="absolute top-2 right-4 font-bold text-gray-500 hover:text-red-600"
-                                    onClick={() => setShowImport(false)}
+                                <div className="fixed inset-0 bg-black/50 backdrop-blur-md z-50 flex items-center justify-center px-4 py-6">
+                                    <div
+                                        className="bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg w-full max-w-md relative"
+                                        style={{ maxHeight: '80vh', overflowY: 'auto' }}
                                     >
-                                    ✕
-                                    </button>
-                                    <Import onClose={() => setShowImport(false)} />
-                                </div>
+                                        <button
+                                        className="absolute top-2 right-4 font-bold text-gray-500 hover:text-red-600"
+                                        onClick={() => setShowImport(false)}
+                                        >
+                                        ✕
+                                        </button>
+                                        <Import onClose={() => setShowImport(false)} />
+                                    </div>
                                 </div>
                             )}
 
