@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\InkubasiController;
 use App\Http\Controllers\KerjaSamaIndustriController;
 use App\Http\Controllers\LowonganPekerjaanController;
@@ -150,6 +151,20 @@ Route::prefix('/form')->name('form.')->group(function() {
 
     Route::prefix('/mini-industri-kampus')->name('mini-industri-kampus.')->group(function() {
         Route::get('/', [MiniIndustriKampusController::class, 'list'])->name('list');
+    });
+});
+
+Route::prefix('/asd')->name('asd.')->group(function() {
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('/create', [BukuController::class, 'create'])->name('create');
+        Route::get('/import', [BukuController::class, 'import'])->name('import');
+        Route::post('/', [BukuController::class, 'store'])->name('store');
+        Route::post('/excel', [BukuController::class, 'excel'])->name('excel');
+        Route::put('/{buku}', [BukuController::class, 'update'])->name('update');
+        Route::delete('/{buku}', [BukuController::class, 'destroy'])->name('destroy');
+        Route::get('/{buku}/edit', [BukuController::class, 'edit'])->name('edit');
+        Route::get('/{buku}', [BukuController::class, 'show'])->name('show');
+        Route::get('/', [BukuController::class, 'index'])->name('index');
     });
 });
 
