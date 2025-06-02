@@ -8,8 +8,17 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import SecondaryButton from '@/Components/SecondaryButton';
 import Import from './Import';
 
-export default function PraInkubasiList({ praInkubasi }) {
+export default function PraInkubasiList({ praInkubasi,filters }) {
     const [showImport, setShowImport] = useState(false);
+    const [keyword, setKeyword] = useState(filters?.keyword || '');
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        router.get(route('authentication.pra-inkubasi.search'), { keyword }, {
+            preserveState: true,
+            replace: true,
+        });
+    };
 
     const handlePageChange = (url) => {
         if (url) {
@@ -24,11 +33,21 @@ export default function PraInkubasiList({ praInkubasi }) {
                 <div className="mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 py-3 text-gray-900">
+                            <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                                <ApplicationLogo />
+                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK PRA INKUBASI</p>
+                            </div>
                             <div className='flex justify-between m-4 mx-0'>
-                                <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
-                                    <ApplicationLogo />
-                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK PRA INKUBASI</p>
-                                </div>
+                                <form onSubmit={handleSearch} className="flex gap-2">
+                                    <input
+                                        type="text"
+                                        value={keyword}
+                                        onChange={(e) => setKeyword(e.target.value)}
+                                        placeholder="Cari Pra Inkubasi..."
+                                        className="border pr-24 py-1 rounded"
+                                    />
+                                    <PrimaryButton type="submit" className="text-sm">Cari</PrimaryButton>
+                                </form>
                                 <div className='flex items-center gap-4'>
                                     <PrimaryButton
                                         className="bg-green-600 hover:bg-green-800"

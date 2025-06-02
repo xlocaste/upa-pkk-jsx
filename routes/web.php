@@ -75,6 +75,7 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
         Route::group(['middleware' => ['auth']], function() {
             Route::get('/create', [PraInkubasiController::class, 'create'])->name('create');
             Route::get('/import', [PraInkubasiController::class, 'import'])->name('import');
+             Route::get('/search', [PraInkubasiController::class, 'search'])->name('search');
             Route::post('/', [PraInkubasiController::class, 'store'])->name('store');
             Route::post('/excel', [PraInkubasiController::class, 'excel'])->name('excel');
             Route::put('/{praInkubasi}', [PraInkubasiController::class, 'update'])->name('update');

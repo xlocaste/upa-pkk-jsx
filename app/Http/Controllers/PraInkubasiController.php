@@ -119,6 +119,27 @@ class PraInkubasiController extends Controller
         return redirect()->route('authentication.pra-inkubasi.index')->with('success', 'Import berhasil!');
     }
 
+    public function search(Request $request)
+    {
+        $query = PraInkubasi::query();
+
+        if ($request->has('keyword') && $request->keyword != '') {
+            $keyword = $request->keyword;
+            $query->where('nama_ketua_tim', 'like', '%' . $keyword . '%')
+                ->orWhere('status_mahasiswa_alumni', 'like', '%' . $keyword . '%')
+                ->orWhere('judul_proposal', 'like', '%' . $keyword . '%');
+        }
+
+        $filteredPraInkubasi = $query->paginate(10)->appends(['keyword' => $request->keyword]);
+
+        return Inertia::render('Authentication/PraInkubasi/List', [
+            'praInkubasi' => $filteredPraInkubasi,
+            'filters' => [
+                'keyword' => $request->keyword,
+            ],
+        ]);
+    }
+
     public function import()
     {
         return Inertia::render('Authentication/PraInkubasi/Import');

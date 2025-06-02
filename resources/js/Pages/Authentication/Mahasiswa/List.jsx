@@ -12,13 +12,13 @@ export default function MahasiswaList({ Mahasiswa, filters }) {
     const [showImport, setShowImport] = useState(false);
     const [keyword, setKeyword] = useState(filters?.keyword || '');
 
-        const handleSearch = (e) => {
-            e.preventDefault();
-            router.get(route('authentication.mahasiswa.search'), { keyword }, {
-                preserveState: true,
-                replace: true,
-            });
-        };
+    const handleSearch = (e) => {
+        e.preventDefault();
+        router.get(route('authentication.mahasiswa.search'), { keyword }, {
+            preserveState: true,
+            replace: true,
+        });
+    };
 
     const handlePageChange = (url) => {
         if (url) {
