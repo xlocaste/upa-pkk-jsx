@@ -19,12 +19,13 @@ export default function PraInkubasiList({ praInkubasi }) {
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
                                         <th className="py-2 px-4 border-b">No</th>
-                                        <th className="py-2 px-4 border-b">Nama Usaha</th>
-                                        <th className="py-2 px-4 border-b">Program Studi</th>
-                                        <th className="py-2 px-4 border-b">Kelas</th>
-                                        <th className="py-2 px-4 border-b">Semester</th>
-                                        <th className="py-2 px-4 border-b">Brand Produk</th>
-                                        <th className="py-2 px-4 border-b">Link</th>
+                                        <th className="py-2 px-4 border-b">Nama Ketua Tim</th>
+                                        <th className="py-2 px-4 border-b">Status Mahasiswa/Alumni</th>
+                                        <th className="py-2 px-4 border-b">Judul Proposal</th>
+                                        <th className="py-2 px-4 border-b">Dosen Pembimbing</th>
+                                        <th className="py-2 px-4 border-b">Usulan Anggaran</th>
+                                        <th className="py-2 px-4 border-b">No. WA</th>
+                                        <th className="py-2 px-4 border-b">Keterangan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -32,30 +33,18 @@ export default function PraInkubasiList({ praInkubasi }) {
                                         praInkubasi.map((item, index) => (
                                             <tr key={item.id} className="hover:bg-gray-50">
                                                 <td className="py-2 px-4 border-b">{index + 1}</td>
-                                                <td className="py-2 px-4 border-b">{item.nama_usaha}</td>
-                                                <td className="py-2 px-4 border-b">{item.prodi}</td>
-                                                <td className="py-2 px-4 border-b">{item.kelas}</td>
-                                                <td className="py-2 px-4 border-b">{item.semester}</td>
-                                                <td className="py-2 px-4 border-b">{item.brand_produk}</td>
-                                                <td className="py-2 px-4 border-b">
-                                                    {item.link ? (
-                                                        <a
-                                                            href={item.link}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="text-blue-600 underline"
-                                                        >
-                                                            Lihat
-                                                        </a>
-                                                    ) : (
-                                                        '-'
-                                                    )}
-                                                </td>
+                                                <td className="py-2 px-4 border-b">{item.nama_ketua_tim}</td>
+                                                <td className="py-2 px-4 border-b">{item.status_mahasiswa_alumni}</td>
+                                                <td className="py-2 px-4 border-b">{item.judul_proposal}</td>
+                                                <td className="py-2 px-4 border-b">{item.dosen_pembimbing}</td>
+                                                <td className="py-2 px-4 border-b">{item.usulan_anggaran}</td>
+                                                <td className="py-2 px-4 border-b">{item.no_wa}</td>
+                                                <td className="py-2 px-4 border-b">{item.keterangan || '-'}</td>
                                             </tr>
                                         ))
                                     ) : (
                                         <tr>
-                                            <td colSpan="7" className="text-center py-4 text-gray-500">
+                                            <td colSpan="8" className="text-center py-4 text-gray-500">
                                                 Data pra-inkubasi tidak tersedia.
                                             </td>
                                         </tr>
