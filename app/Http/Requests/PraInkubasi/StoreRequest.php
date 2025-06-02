@@ -22,42 +22,42 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_usaha'=> ['required', 'string', 'max:255'],
-            'prodi'=> ['required', 'string', 'max:100'],
-            'kelas'=> ['required', 'string', 'max:10'],
-            'semester'=> ['required', 'integer', 'min:1', 'max:14'],
-            'brand_produk'=> ['required', 'string', 'max:255'],
-            'link'=> ['required', 'url', 'max:255'],
+            'nama_ketua_tim' => ['required', 'string', 'max:255'],
+            'status_mahasiswa_alumni' => ['nullable', 'string', 'max:50'],
+            'judul_proposal' => ['required', 'string', 'max:255'],
+            'dosen_pembimbing' => ['nullable', 'string', 'max:255'],
+            'usulan_anggaran' => ['nullable', 'string', 'max:100'],
+            'no_wa' => ['required', 'string', 'max:20'],
+            'keterangan' => ['nullable', 'string', 'max:500'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'nama_usaha.required' => 'Nama usaha wajib diisi.',
-            'nama_usaha.string' => 'Nama usaha harus berupa teks.',
-            'nama_usaha.max' => 'Nama usaha maksimal 255 karakter.',
+            'nama_ketua_tim.required' => 'Nama ketua tim wajib diisi.',
+            'nama_ketua_tim.string' => 'Nama ketua tim harus berupa teks.',
+            'nama_ketua_tim.max' => 'Nama ketua tim maksimal 255 karakter.',
 
-            'prodi.required' => 'Prodi wajib diisi.',
-            'prodi.string' => 'Prodi harus berupa teks.',
-            'prodi.max' => 'Prodi maksimal 100 karakter.',
+            'status_mahasiswa_alumni.string' => 'Status harus berupa teks.',
+            'status_mahasiswa_alumni.max' => 'Status maksimal 50 karakter.',
 
-            'kelas.required' => 'Kelas wajib diisi.',
-            'kelas.string' => 'Kelas harus berupa teks.',
-            'kelas.max' => 'Kelas maksimal 10 karakter.',
+            'judul_proposal.required' => 'Judul proposal wajib diisi.',
+            'judul_proposal.string' => 'Judul proposal harus berupa teks.',
+            'judul_proposal.max' => 'Judul proposal maksimal 255 karakter.',
 
-            'semester.required' => 'Semester wajib diisi.',
-            'semester.integer' => 'Semester harus berupa angka bulat.',
-            'semester.min' => 'Semester minimal 1.',
-            'semester.max' => 'Semester maksimal 14.',
+            'dosen_pembimbing.string' => 'Dosen pembimbing harus berupa teks.',
+            'dosen_pembimbing.max' => 'Dosen pembimbing maksimal 255 karakter.',
 
-            'brand_produk.required' => 'Brand produk wajib diisi.',
-            'brand_produk.string' => 'Brand produk harus berupa teks.',
-            'brand_produk.max' => 'Brand produk maksimal 255 karakter.',
+            'usulan_anggaran.string' => 'Usulan anggaran harus berupa teks.',
+            'usulan_anggaran.max' => 'Usulan anggaran maksimal 100 karakter.',
 
-            'link.required' => 'Link wajib diisi.',
-            'link.url' => 'Link harus berupa URL yang valid.',
-            'link.max' => 'Link maksimal 255 karakter.',
+            'no_wa.required' => 'Nomor WhatsApp wajib diisi.',
+            'no_wa.string' => 'Nomor WhatsApp harus berupa teks.',
+            'no_wa.max' => 'Nomor WhatsApp maksimal 20 karakter.',
+
+            'keterangan.string' => 'Keterangan harus berupa teks.',
+            'keterangan.max' => 'Keterangan maksimal 500 karakter.',
         ];
     }
 

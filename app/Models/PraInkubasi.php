@@ -12,11 +12,12 @@ class PraInkubasi extends Model
     protected $table = 'pra_inkubasi';
 
     protected $fillable = [
-        'nama_usaha',
-        'prodi',
-        'kelas',
-        'semester',
-        'brand_produk',
-        'link',
+        'nama_ketua_tim',
+        'status_mahasiswa_alumni',
+        'judul_proposal',
+        'dosen_pembimbing',
+        'usulan_anggaran',
+        'no_wa',
+        'keterangan',
     ];
 }

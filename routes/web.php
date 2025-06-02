@@ -74,7 +74,9 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
     Route::prefix('/pra-inkubasi')->name('pra-inkubasi.')->group(function() {
         Route::group(['middleware' => ['auth']], function() {
             Route::get('/create', [PraInkubasiController::class, 'create'])->name('create');
+            Route::get('/import', [PraInkubasiController::class, 'import'])->name('import');
             Route::post('/', [PraInkubasiController::class, 'store'])->name('store');
+            Route::post('/excel', [PraInkubasiController::class, 'excel'])->name('excel');
             Route::put('/{praInkubasi}', [PraInkubasiController::class, 'update'])->name('update');
             Route::delete('/{praInkubasi}', [PraInkubasiController::class, 'destroy'])->name('destroy');
             Route::get('/{praInkubasi}/edit', [PraInkubasiController::class, 'edit'])->name('edit');

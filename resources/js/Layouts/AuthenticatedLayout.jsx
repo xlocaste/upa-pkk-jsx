@@ -31,55 +31,55 @@ export default function AuthenticatedLayout({ children }) {
 
                 <nav className="relative p-4 space-y-3 flex flex-col mb-4">
                     <Link
-                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        className="flex items-center space-x-2 text-lg w-full transition-all duration-200 ease-in-out hover:text-xl"
                         href="/"
                     >
                         <MdOutlineSpaceDashboard /><p>Dashboard</p>
                     </Link>
                     <Link
-                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        className="flex items-center space-x-2 text-lg w-full transition-all duration-200 ease-in-out hover:text-xl"
                         href={route('authentication.mahasiswa.index')}
                         active={route().current('authentication.mahasiswa.index')}
                     >
                         <PiStudent /><p>Mahasiswa</p>
                     </Link>
                     <Link
-                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        className="flex items-center space-x-2 text-lg w-full transition-all duration-200 ease-in-out hover:text-xl"
                         href={route('authentication.alumni.index')}
                         active={route().current('authentication.alumni.index')}
                     >
                         <PiStudent /><p>Alumni</p>
                     </Link>
                     <Link
-                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        className="flex items-center space-x-2 text-lg w-full transition-all duration-200 ease-in-out hover:text-xl"
                         href={route('authentication.lowongan-pekerjaan.index')}
                         active={route().current('authentication.lowongan-pekerjaan.index')}
                     >
                         <MdWorkOutline /><p>Job Hunter</p>
                     </Link>
                     <Link
-                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        className="flex items-center space-x-2 text-lg w-full transition-all duration-200 ease-in-out hover:text-xl"
                         href={route('authentication.pra-inkubasi.index')}
                         active={route().current('authentication.pra-inkubasi.index')}
                     >
                         <HiOutlineOfficeBuilding /><p>Pra Inkubasi</p>
                     </Link>
                     <Link
-                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        className="flex items-center space-x-2 text-lg w-full transition-all duration-200 ease-in-out hover:text-xl"
                         href={route('authentication.inkubasi.index')}
                         active={route().current('authentication.inkubasi.index')}
                     >
                         <HiOutlineBuildingOffice2 /><p>Inkubasi</p>
                     </Link>
                     <Link
-                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        className="flex items-center space-x-2 text-lg w-full transition-all duration-200 ease-in-out hover:text-xl"
                         href={route('authentication.kerja-sama-industri.index')}
                         active={route().current('authentication.kerja-sama-industri.index')}
                     >
                         <HiOutlineBuildingOffice2 /><p>Kerja Sama Industri</p>
                     </Link>
                     <Link
-                        className="flex items-center space-x-2 text-xl w-full transition-all duration-200 ease-in-out hover:font-bold"
+                        className="flex items-center space-x-2 text-lg w-full transition-all duration-200 ease-in-out hover:text-xl"
                         href={route('authentication.mini-industri-kampus.index')}
                         active={route().current('authentication.mini-industri-kampus.index')}
                     >
@@ -90,9 +90,9 @@ export default function AuthenticatedLayout({ children }) {
                 <div className="relative px-4 pb-0">
                     <button onClick={() => setShowData((prev) => !prev)} className="mb-4 w-full flex items-center space-x-2">
                         <span className="flex w-full items-center cursor-pointer space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900">
-                            <MdOutlineManageAccounts className='text-xl'/>
+                            <MdOutlineManageAccounts className='text-lg'/>
                             <div className='flex items-center justify-between w-full'>
-                                <p className='text-xl'>Account</p>
+                                <p className='text-lg'>Account</p>
                                 <svg
                                     className={`w-4 h-4 transition-transform duration-200 ${showData ? 'rotate-180' : ''}`}
                                     fill="currentColor"

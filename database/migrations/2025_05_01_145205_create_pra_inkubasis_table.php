@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('pra_inkubasi', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_usaha');
-            $table->string('prodi');
-            $table->string('kelas');
-            $table->string('semester');
-            $table->string('brand_produk');
-            $table->string('link');
+            $table->string('nama_ketua_tim');
+            $table->string('status_mahasiswa_alumni')->nullable();
+            $table->string('judul_proposal');
+            $table->string('dosen_pembimbing')->nullable();
+            $table->string('usulan_anggaran')->nullable();
+            $table->string('no_wa');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

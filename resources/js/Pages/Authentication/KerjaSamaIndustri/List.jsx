@@ -66,15 +66,15 @@ export default function InkubasiList({ daftarKSI, filters }) {
 
                             {showImport && (
                                 <div className="fixed inset-0 bg-black/50 backdrop-blur-md z-50 flex items-center justify-center">
-                                <div className="bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg w-full max-w-md relative">
-                                    <button
-                                    className="absolute top-2 right-4 font-bold text-gray-500 hover:text-red-600"
-                                    onClick={() => setShowImport(false)}
-                                    >
-                                    ✕
-                                    </button>
-                                    <Import onClose={() => setShowImport(false)} />
-                                </div>
+                                    <div className="bg-white/50 backdrop-blur-md p-6 rounded-lg shadow-lg w-full max-w-md relative">
+                                        <button
+                                        className="absolute top-2 right-4 font-bold text-gray-500 hover:text-red-600"
+                                        onClick={() => setShowImport(false)}
+                                        >
+                                        ✕
+                                        </button>
+                                        <Import onClose={() => setShowImport(false)} />
+                                    </div>
                                 </div>
                             )}
 
@@ -91,7 +91,7 @@ export default function InkubasiList({ daftarKSI, filters }) {
                                 </thead>
                                 <tbody>
                                     {daftarKSI?.data?.length > 0 ? (
-                                        daftarKSI?.data?.map((item, index) => (
+                                        daftarKSI?.data?.map((item) => (
                                             <tr key={item.id} className="hover:bg-gray-50">
                                                 <td className="py-2 px-4 border-b">{item.id}</td>
                                                 <td className="py-2 px-4 border-b">{item.nama_ksi}</td>
