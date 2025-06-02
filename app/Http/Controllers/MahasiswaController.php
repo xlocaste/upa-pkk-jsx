@@ -197,6 +197,27 @@ class MahasiswaController extends Controller
             ->with('success', 'Import dari semua sheet berhasil!');
     }
 
+    public function search(Request $request)
+    {
+        $query = Mahasiswa::query();
+
+        if ($request->has('keyword') && $request->keyword != '') {
+            $keyword = $request->keyword;
+            $query->where('nama', 'like', '%' . $keyword . '%')
+                ->orWhere('nim', 'like', '%' . $keyword . '%')
+                ->orWhere('prodi', 'like', '%' . $keyword . '%');
+        }
+
+        $filteredMahasiswa = $query->paginate(10)->appends(['keyword' => $request->keyword]);
+
+        return Inertia::render('Authentication/Mahasiswa/List', [
+            'Mahasiswa' => $filteredMahasiswa,
+            'filters' => [
+                'keyword' => $request->keyword,
+            ],
+        ]);
+    }
+
 
     public function import()
     {

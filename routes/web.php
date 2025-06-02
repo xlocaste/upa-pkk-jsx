@@ -36,6 +36,7 @@ Route::prefix('/authentication')->name('authentication.')->group(function() {
         Route::group(['middleware' => ['auth']], function() {
             Route::get('/create', [MahasiswaController::class, 'create'])->name('create');
             Route::get('/import', [MahasiswaController::class, 'import'])->name('import');
+            Route::get('/search', [MahasiswaController::class, 'search'])->name('search');
             Route::post('/', [MahasiswaController::class, 'store'])->name('store');
             Route::post('/excel', [MahasiswaController::class, 'excel'])->name('excel');
             Route::put('/{mahasiswa}', [MahasiswaController::class, 'update'])->name('update');
