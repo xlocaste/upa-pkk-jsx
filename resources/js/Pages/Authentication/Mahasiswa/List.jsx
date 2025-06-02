@@ -93,7 +93,7 @@ export default function MahasiswaList({ Mahasiswa, filters }) {
                                 </thead>
                                 <tbody>
                                     {Mahasiswa.data.length > 0 ? (
-                                        Mahasiswa.data.map((mhs, index) => (
+                                        Mahasiswa.data.map((mhs) => (
                                             <tr key={mhs.id} className="hover:bg-gray-50">
                                                 <td className="py-2 px-4 border-b">{mhs.nim}</td>
                                                 <td className="py-2 px-4 border-b">{mhs.nama}</td>

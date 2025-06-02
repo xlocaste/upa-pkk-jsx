@@ -21,24 +21,32 @@ export default function MahasiswaList({ PraInkubasi, auth }) {
                             </div>
                             <div className='grid grid-cols-2 items-center gap-6'>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Nama Usaha</p>
-                                    <p className="font-bold text-3xl z-10">{PraInkubasi.nama_usaha}</p>
+                                    <p className='font-bold text-xl z-10'>Nama Ketua Tim</p>
+                                    <p className="font-bold text-3xl z-10">{PraInkubasi.nama_ketua_tim}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Prodi</p>
-                                    <p className="font-bold text-3xl z-10">{PraInkubasi.prodi}</p>
+                                    <p className='font-bold text-xl z-10'>Status Mahasiswa/Alumni</p>
+                                    <p className="font-bold text-3xl z-10">{PraInkubasi.status_mahasiswa_alumni}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Kelas</p>
-                                    <p className="font-bold text-3xl z-10">{PraInkubasi.kelas}</p>
+                                    <p className='font-bold text-xl z-10'>Judul Proposal</p>
+                                    <p className="font-bold text-3xl z-10">{PraInkubasi.judul_proposal}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Semester</p>
-                                    <p className="font-bold text-3xl z-10">{PraInkubasi.semester}</p>
+                                    <p className='font-bold text-xl z-10'>Dosen Pembimbing</p>
+                                    <p className="font-bold text-3xl z-10">{PraInkubasi.dosen_pembimbing}</p>
                                 </div>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Brand Produk</p>
-                                    <p className="font-bold text-3xl z-10">{PraInkubasi.brand_produk}</p>
+                                    <p className='font-bold text-xl z-10'>Usulan Anggaran</p>
+                                    <p className="font-bold text-3xl z-10">{PraInkubasi.usulan_anggaran}</p>
+                                </div>
+                                <div>
+                                    <p className='font-bold text-xl z-10'>No. WA</p>
+                                    <p className="font-bold text-3xl z-10">{PraInkubasi.no_wa}</p>
+                                </div>
+                                <div className='col-span-2'>
+                                    <p className='font-bold text-xl z-10'>Keterangan</p>
+                                    <p className="font-bold text-3xl z-10">{PraInkubasi.keterangan}</p>
                                 </div>
                                 <div className="col-span-2 flex justify-end z-10">
                                     <Link href={route('authentication.pra-inkubasi.index')}>
