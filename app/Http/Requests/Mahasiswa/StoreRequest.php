@@ -22,29 +22,39 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama'=>['required'],
-            'nim'=>['required', 'unique:mahasiswa,nim'],
-            'semester'=>['required', 'integer', 'min:0'],
-            'ipk'=>['required', 'min:0', 'max:4', 'numeric'],
+            'nama'=>['required','string','max:255'],
+            'nim'=>['required','string','max:20','unique:mahasiswa,nim'],
+            'jenis_kelamin'=>['required','in:Laki-laki,Perempuan'],
+            'prodi'=>['required','string','max:100'],
+            'status'=>['required','in:Aktif,Cuti,DO'],
+            'semester'=>['nullable','integer','min:0'],
+            'nomor_sk'=>['nullable','string','max:100'],
+            'tanggal_sk'=>['nullable','date'],
+            'keterangan'=>['nullable','string'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'nama.required' => 'Nama wajib diisi.',
+            'nama.required'=>'Nama wajib diisi.',
 
-            'nim.required' => 'NIM wajib diisi.',
-            'nim.unique'   => 'NIM ini sudah terdaftar.',
+            'nim.required'=>'NIM wajib diisi.',
+            'nim.unique'=>'NIM ini sudah terdaftar.',
+            'nim.max'=>'NIM maksimal 20 karakter.',
 
-            'semester.required' => 'Semester wajib diisi.',
-            'semester.integer'  => 'Semester harus berupa angka bulat.',
-            'semester.min'      => 'Semester minimal adalah 0.',
+            'jenis_kelamin.required'=>'Jenis kelamin wajib dipilih.',
+            'jenis_kelamin.in'=>'Jenis kelamin harus Laki-laki atau Perempuan.',
 
-            'ipk.required' => 'IPK wajib diisi.',
-            'ipk.numeric'  => 'IPK harus berupa angka.',
-            'ipk.min'      => 'IPK minimal adalah 0.',
-            'ipk.max'      => 'IPK maksimal adalah 4.',
+            'prodi.required'=>'Program studi wajib diisi.',
+
+            'status.required'=>'Status wajib dipilih.',
+            'status.in'=>'Status harus salah satu dari: aktif, cuti, atau do.',
+
+            'semester.integer'=>'Semester harus berupa angka.',
+            'semester.min'=>'Semester minimal adalah 0.',
+
+            'tanggal_sk.date'=>'Tanggal SK harus berupa tanggal yang valid.',
         ];
     }
 }

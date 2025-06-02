@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('nim')->unique();
-            $table->integer('semester');
-            $table->decimal('ipk', 3, 2);
+            $table->string('jenis_kelamin');
+            $table->string('prodi');
+            $table->string('status');
+            $table->integer('semester')->nullable();
+            $table->string('nomor_sk')->nullable();
+            $table->date('tanggal_sk')->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

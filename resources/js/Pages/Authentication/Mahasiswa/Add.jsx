@@ -9,8 +9,13 @@ export default function AddMahasiswa() {
     const { data, setData, post, processing, errors, reset } = useForm({
         nama: '',
         nim: '',
+        jenis_kelamin: '',
+        prodi: '',
+        status: '',
         semester: '',
-        ipk: '',
+        nomor_sk: '',
+        tanggal_sk: '',
+        keterangan: '',
     });
 
     const handleSubmit = (e) => {
@@ -32,7 +37,7 @@ export default function AddMahasiswa() {
                         </div>
                         <div className="p-6 text-gray-900">
                             <form onSubmit={handleSubmit} className="space-y-4">
-                                <div className='flex w h-full space-x-8'>
+                                <div className='flex space-x-8'>
                                     <div className='w-1/2'>
                                         <label className="block text-sm font-medium">Nama</label>
                                         <input
@@ -56,7 +61,49 @@ export default function AddMahasiswa() {
                                     </div>
                                 </div>
 
-                                <div className='flex w h-full space-x-8'>
+                                <div className='flex space-x-8'>
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">Jenis Kelamin</label>
+                                        <select
+                                            value={data.jenis_kelamin}
+                                            onChange={(e) => setData('jenis_kelamin', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        >
+                                            <option value="">-- Pilih Jenis Kelamin --</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
+                                        {errors.jenis_kelamin && <div className="text-red-500 text-sm">{errors.jenis_kelamin}</div>}
+                                    </div>
+
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">Program Studi</label>
+                                        <input
+                                            type="text"
+                                            value={data.prodi}
+                                            onChange={(e) => setData('prodi', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.prodi && <div className="text-red-500 text-sm">{errors.prodi}</div>}
+                                    </div>
+                                </div>
+
+                                <div className='flex space-x-8'>
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">Status</label>
+                                        <select
+                                            value={data.status}
+                                            onChange={(e) => setData('status', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        >
+                                            <option value="">-- Pilih Status --</option>
+                                            <option value="Aktif">Aktif</option>
+                                            <option value="Cuti">Cuti</option>
+                                            <option value="Lulus">Lulus</option>
+                                        </select>
+                                        {errors.status && <div className="text-red-500 text-sm">{errors.status}</div>}
+                                    </div>
+
                                     <div className='w-1/2'>
                                         <label className="block text-sm font-medium">Semester</label>
                                         <input
@@ -68,20 +115,41 @@ export default function AddMahasiswa() {
                                         />
                                         {errors.semester && <div className="text-red-500 text-sm">{errors.semester}</div>}
                                     </div>
+                                </div>
 
+                                <div className='flex space-x-8'>
                                     <div className='w-1/2'>
-                                        <label className="block text-sm font-medium">IPK</label>
+                                        <label className="block text-sm font-medium">Nomor SK</label>
                                         <input
-                                            type="number"
-                                            step="0.01"
-                                            max="4"
-                                            min="0"
-                                            value={data.ipk}
-                                            onChange={(e) => setData('ipk', e.target.value)}
+                                            type="text"
+                                            value={data.nomor_sk}
+                                            onChange={(e) => setData('nomor_sk', e.target.value)}
                                             className="w-full border border-gray-300 rounded px-3 py-2"
                                         />
-                                        {errors.ipk && <div className="text-red-500 text-sm">{errors.ipk}</div>}
+                                        {errors.nomor_sk && <div className="text-red-500 text-sm">{errors.nomor_sk}</div>}
                                     </div>
+
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">Tanggal SK</label>
+                                        <input
+                                            type="date"
+                                            value={data.tanggal_sk}
+                                            onChange={(e) => setData('tanggal_sk', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.tanggal_sk && <div className="text-red-500 text-sm">{errors.tanggal_sk}</div>}
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium">Keterangan</label>
+                                    <textarea
+                                        value={data.keterangan}
+                                        onChange={(e) => setData('keterangan', e.target.value)}
+                                        className="w-full border border-gray-300 rounded px-3 py-2"
+                                        rows={3}
+                                    />
+                                    {errors.keterangan && <div className="text-red-500 text-sm">{errors.keterangan}</div>}
                                 </div>
 
                                 <div className="flex justify-end space-x-4">

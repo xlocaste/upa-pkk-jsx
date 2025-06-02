@@ -50,11 +50,16 @@ class MahasiswaController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $mahasiswa = Mahasiswa::create([
-            'nama'=>$request->nama,
-            'nim'=>$request->nim,
-            'semester'=>$request->semester,
-            'ipk'=>$request->ipk,
+        Mahasiswa::create([
+            'nama'=> $request->nama,
+            'nim'=> $request->nim,
+            'jenis_kelamin'=> $request->jenis_kelamin,
+            'prodi'=> $request->prodi,
+            'status'=> $request->status,
+            'semester'=> $request->semester,
+            'nomor_sk'=> $request->nomor_sk,
+            'tanggal_sk'=> $request->tanggal_sk,
+            'keterangan'=> $request->keterangan,
         ]);
 
         return redirect()->route('authentication.mahasiswa.index');
@@ -63,10 +68,15 @@ class MahasiswaController extends Controller
     public function update(UpdateRequest $request, Mahasiswa $mahasiswa)
     {
         $mahasiswa->update([
-            'nama'=>$request->nama,
-            'nim'=>$request->nim,
-            'semester'=>$request->semester,
-            'ipk'=>$request->ipk,
+            'nama'=> $request->nama,
+            'nim'=> $request->nim,
+            'jenis_kelamin'=> $request->jenis_kelamin,
+            'prodi'=> $request->prodi,
+            'status'=> $request->status,
+            'semester'=> $request->semester,
+            'nomor_sk'=> $request->nomor_sk,
+            'tanggal_sk'=> $request->tanggal_sk,
+            'keterangan'=> $request->keterangan,
         ]);
 
         return Inertia::location(route('authentication.mahasiswa.index'));

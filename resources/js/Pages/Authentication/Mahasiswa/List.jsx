@@ -61,11 +61,11 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
-                                        <th className="py-2 px-4 border-b">No</th>
-                                        <th className="py-2 px-4 border-b">Nama</th>
                                         <th className="py-2 px-4 border-b">NIM</th>
-                                        <th className="py-2 px-4 border-b">Semester</th>
-                                        <th className="py-2 px-4 border-b">IPK</th>
+                                        <th className="py-2 px-4 border-b">Nama</th>
+                                        <th className="py-2 px-4 border-b">Jenis Kelamin</th>
+                                        <th className="py-2 px-4 border-b">Program Studi</th>
+                                        <th className="py-2 px-4 border-b">Status</th>
                                         <th className="py-2 px-4 border-b">Action</th>
                                     </tr>
                                 </thead>
@@ -73,13 +73,11 @@ export default function MahasiswaList({ Mahasiswa, auth }) {
                                     {Mahasiswa.data.length > 0 ? (
                                         Mahasiswa.data.map((mhs, index) => (
                                             <tr key={mhs.id} className="hover:bg-gray-50">
-                                                <td className="py-2 px-4 border-b">
-                                                    {(Mahasiswa.current_page - 1) * Mahasiswa.per_page + index + 1}
-                                                </td>
-                                                <td className="py-2 px-4 border-b">{mhs.nama}</td>
                                                 <td className="py-2 px-4 border-b">{mhs.nim}</td>
-                                                <td className="py-2 px-4 border-b">{mhs.semester}</td>
-                                                <td className="py-2 px-4 border-b">{mhs.ipk}</td>
+                                                <td className="py-2 px-4 border-b">{mhs.nama}</td>
+                                                <td className="py-2 px-4 border-b">{mhs.jenis_kelamin}</td>
+                                                <td className="py-2 px-4 border-b">{mhs.prodi}</td>
+                                                <td className="py-2 px-4 border-b">{mhs.status}</td>
                                                 <td className="px-4 py-1 border-b text-center">
                                                     <div className='flex gap-2 justify-center'>
                                                         <Link
