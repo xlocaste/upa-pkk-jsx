@@ -60,7 +60,7 @@ class LowonganPekerjaanController extends Controller
             $image = $request->file('image')->store('LowongaKerja', 'public');
         }
 
-        $lowonganKerja = LowonganPekerjaan::Create([
+        LowonganPekerjaan::Create([
             'image' => $image,
             'judul_lowongan_kerja' => $request->judul_lowongan_kerja,
             'deskripsi' => $request->deskripsi,
