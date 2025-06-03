@@ -10,6 +10,8 @@ export default function Import({ onClose }) {
 
   const submit = (e) => {
     e.preventDefault();
+    const confirmed = window.confirm("Apakah Anda yakin ingin menyimpan data ini?");
+    if (!confirmed) return;
     post(route('authentication.kerja-sama-industri.excel'), {
       onSuccess: () => {
         onClose();

@@ -16,6 +16,8 @@ export default function Update({ alumni, mahasiswaList }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const confirmed = window.confirm("Apakah Anda yakin ingin menyimpan data ini?");
+        if (!confirmed) return;
         put(route('authentication.alumni.update', alumni.id));
     };
 

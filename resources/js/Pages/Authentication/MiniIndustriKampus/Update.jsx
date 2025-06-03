@@ -16,6 +16,8 @@ export default function Update({ MiniIndustriKampus }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const confirmed = window.confirm("Apakah Anda yakin ingin menyimpan data ini?");
+        if (!confirmed) return;
         post(route('authentication.mini-industri-kampus.update', MiniIndustriKampus.id));
     };
 

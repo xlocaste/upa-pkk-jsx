@@ -15,6 +15,8 @@ export default function AddLowonganKerja() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const confirmed = window.confirm("Apakah Anda yakin ingin menyimpan data ini?");
+        if (!confirmed) return;
         post(route('authentication.lowongan-pekerjaan.store'), {
             onSuccess: () => reset(),
         });

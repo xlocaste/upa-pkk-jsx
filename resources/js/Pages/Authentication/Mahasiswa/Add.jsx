@@ -20,6 +20,8 @@ export default function AddMahasiswa() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const confirmed = window.confirm("Apakah Anda yakin ingin menyimpan data ini?");
+        if (!confirmed) return;
         post(route('authentication.mahasiswa.store'), {
             onSuccess: () => reset(),
         });

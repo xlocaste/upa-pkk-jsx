@@ -16,6 +16,8 @@ export default function AddAlumni({ mahasiswa }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const confirmed = window.confirm("Apakah Anda yakin ingin menyimpan data ini?");
+        if (!confirmed) return;
         post(route('authentication.alumni.store'), {
             onSuccess: () => reset(),
         });

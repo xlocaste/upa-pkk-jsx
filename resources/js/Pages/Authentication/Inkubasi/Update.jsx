@@ -16,6 +16,8 @@ export default function Update({ inkubasi }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const confirmed = window.confirm("Apakah Anda yakin ingin menyimpan data ini?");
+        if (!confirmed) return;
         post(route('authentication.inkubasi.update', inkubasi.id));
     };
 
