@@ -16,11 +16,12 @@ const Welcome = () => {
                 <div className="overflow-hidden sm:rounded-lg h-full flex items-center mx-14">
                     <div className="w-1/2">
                     <p className='text-white font-bold text-4xl'>
-                        Unit Pelaksana Aksi Pemberdayaan dan Kesejahteraan Keluarga.
+                        Unit Penunjang Akademik Pengembangan Karir dan Kewirausahaan
                     </p>
                     <p className='text-white font-extralight'>
-                        Unit Pelaksana Aksi Pemberdayaan dan Kesejahteraan Keluarga (UPA-PKK) berkomitmen untuk memberdayakan dan meningkatkan kesejahteraan keluarga melalui berbagai inisiatif berbasis komunitas.
-                    Misi kami adalah untuk menciptakan pendekatan yang berkelanjutan dan inklusif terhadap kesejahteraan keluarga, serta memberikan dampak positif melalui program-program kolaboratif dan jaringan dukungan.
+                        Unit ini berperan sebagai fasilitator dalam membekali mahasiswa dengan keterampilan dunia kerja dan jiwa kewirausahaan.
+                        Kami menyediakan berbagai program seperti pelatihan karir, seminar kewirausahaan, magang, dan pendampingan startup untuk mendukung kesiapan lulusan menghadapi tantangan global.
+                        Melalui kolaborasi dengan dunia industri dan institusi terkait, kami mendorong terciptanya lulusan yang mandiri, inovatif, dan kompetitif.
                     </p>
                     </div>
                 </div>

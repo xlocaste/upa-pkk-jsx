@@ -132,7 +132,7 @@ export default function AuthenticatedLayout({ children }) {
 
             <div className="flex-1 flex flex-col">
                 <div className='bg-gradient-to-l from-blue-300 via-blue-200 to-white ml-64 py-5 text-center'>
-                    <p className='font-bold'>Unit Pelaksana Aksi Pemberdayaan dan Kesejahteraan Keluarga.</p>
+                    <p className='font-bold'>UPA - PENGEMBANGAN KARIR DAN KEWIRAUSAHAAN</p>
                 </div>
                 <main className="p-6 ml-64">{children}</main>
             </div>
