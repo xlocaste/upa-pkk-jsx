@@ -7,9 +7,17 @@ import { FaEye, FaRegEdit } from "react-icons/fa";
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import SecondaryButton from '@/Components/SecondaryButton';
 
-export default function AlumniList({ daftarAlumni }) {
+export default function AlumniList({ daftarAlumni, filters }) {
     const [showImport, setShowImport] = useState(false);
-    console.log(daftarAlumni)
+    const [keyword, setKeyword] = useState(filters?.keyword || '');
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        router.get(route('authentication.mahasiswa.search'), { keyword }, {
+            preserveState: true,
+            replace: true,
+        });
+    };
 
     const handlePageChange = (url) => {
         if (url) {
@@ -24,11 +32,21 @@ export default function AlumniList({ daftarAlumni }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 py-3 text-gray-900">
+                            <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                                <ApplicationLogo />
+                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK ALUMNI</p>
+                            </div>
                             <div className='flex justify-between m-4 ml-0'>
-                                <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
-                                    <ApplicationLogo />
-                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK ALUMNI</p>
-                                </div>
+                                <form onSubmit={handleSearch} className="flex gap-2">
+                                    <input
+                                        type="text"
+                                        value={keyword}
+                                        onChange={(e) => setKeyword(e.target.value)}
+                                        placeholder="Cari Alumni..."
+                                        className="border pr-24 py-1 rounded"
+                                    />
+                                    <PrimaryButton type="submit" className="text-sm">Cari</PrimaryButton>
+                                </form>
                                 <div className='flex items-center gap-4'>
                                     <PrimaryButton
                                         className="bg-green-600 hover:bg-green-800"
