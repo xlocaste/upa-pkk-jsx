@@ -41,7 +41,7 @@ export default function InkubasiList({ Inkubasi, filters }) {
                                         type="text"
                                         value={keyword}
                                         onChange={(e) => setKeyword(e.target.value)}
-                                        placeholder="Cari Alumni..."
+                                        placeholder="Cari Inkubasi..."
                                         className="border pr-24 py-1 rounded"
                                     />
                                     <PrimaryButton type="submit" className="text-sm">Cari</PrimaryButton>

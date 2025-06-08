@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, router } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -7,7 +7,16 @@ import { FaEye, FaRegEdit } from "react-icons/fa";
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import SecondaryButton from '@/Components/SecondaryButton';
 
-export default function InkubasiList({ daftarMIK }) {
+export default function InkubasiList({ daftarMIK, filters }) {
+    const [keyword, setKeyword] = useState(filters?.keyword || '');
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        router.get(route('authentication.mahasiswa.search'), { keyword }, {
+            preserveState: true,
+            replace: true,
+        });
+    };
 
     const handlePageChange = (url) => {
         if (url) {
@@ -22,11 +31,21 @@ export default function InkubasiList({ daftarMIK }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 py-3 text-gray-900">
+                            <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                                <ApplicationLogo />
+                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK MINI INDUSTRI KAMPUS</p>
+                            </div>
                             <div className='flex justify-between m-4 ml-0'>
-                                <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
-                                    <ApplicationLogo />
-                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK MINI INDUSTRI KAMPUS</p>
-                                </div>
+                                <form onSubmit={handleSearch} className="flex gap-2">
+                                    <input
+                                        type="text"
+                                        value={keyword}
+                                        onChange={(e) => setKeyword(e.target.value)}
+                                        placeholder="Cari..."
+                                        className="border pr-24 py-1 rounded"
+                                    />
+                                    <PrimaryButton type="submit" className="text-sm">Cari</PrimaryButton>
+                                </form>
                                 <div className='flex items-center'>
                                     <PrimaryButton>
                                         <Link href={route('authentication.mini-industri-kampus.create')}>
