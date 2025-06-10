@@ -5,13 +5,18 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import React from 'react';
 
-export default function AddAlumni({ mahasiswa }) {
+export default function AddAlumni() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        mahasiswa_id: '',
+        nim: '',
+        nama: '',
+        hp: '',
+        email: '',
         tempat_magang: '',
         judul_magang: '',
         judul_tugas_akhir: '',
         tahun_lulus: '',
+        nik: '',
+        npwp: '',
     });
 
     const handleSubmit = (e) => {
@@ -35,22 +40,56 @@ export default function AddAlumni({ mahasiswa }) {
                         </div>
                         <div className="p-6 text-gray-900">
                             <form onSubmit={handleSubmit} className="space-y-4">
+
                                 <div className='flex w h-full space-x-8'>
                                     <div className='w-1/2'>
-                                        <label className="block text-sm font-medium">Nama Mahasiswa</label>
-                                        <select
-                                            value={data.mahasiswa_id}
-                                            onChange={(e) => setData('mahasiswa_id', e.target.value)}
+                                        <label className="block text-sm font-medium">NIM</label>
+                                        <input
+                                            type="text"
+                                            value={data.nim}
+                                            onChange={(e) => setData('nim', e.target.value)}
                                             className="w-full border border-gray-300 rounded px-3 py-2"
-                                        >
-                                            <option value="">Pilih Mahasiswa</option>
-                                            {mahasiswa.map((mhs) => (
-                                                <option key={mhs.id} value={mhs.id}>{mhs.nama}</option>
-                                            ))}
-                                        </select>
-                                        {errors.mahasiswa_id && <div className="text-red-500 text-sm">{errors.mahasiswa_id}</div>}
+                                        />
+                                        {errors.nim && <div className="text-red-500 text-sm">{errors.nim}</div>}
                                     </div>
 
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">Nama</label>
+                                        <input
+                                            type="text"
+                                            value={data.nama}
+                                            onChange={(e) => setData('nama', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.nama && <div className="text-red-500 text-sm">{errors.nama}</div>}
+                                    </div>
+                                </div>
+
+                                <div className='flex w h-full space-x-8'>
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">No. HP</label>
+                                        <input
+                                            type="text"
+                                            value={data.hp}
+                                            onChange={(e) => setData('hp', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.hp && <div className="text-red-500 text-sm">{errors.hp}</div>}
+                                    </div>
+
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">Email</label>
+                                        <input
+                                            type="email"
+                                            value={data.email}
+                                            onChange={(e) => setData('email', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
+                                    </div>
+                                </div>
+
+                                <div className='flex w h-full space-x-8'>
                                     <div className='w-1/2'>
                                         <label className="block text-sm font-medium">Tempat Magang</label>
                                         <input
@@ -61,9 +100,7 @@ export default function AddAlumni({ mahasiswa }) {
                                         />
                                         {errors.tempat_magang && <div className="text-red-500 text-sm">{errors.tempat_magang}</div>}
                                     </div>
-                                </div>
 
-                                <div className='flex w h-full space-x-8'>
                                     <div className='w-1/2'>
                                         <label className="block text-sm font-medium">Judul Magang</label>
                                         <input
@@ -74,7 +111,9 @@ export default function AddAlumni({ mahasiswa }) {
                                         />
                                         {errors.judul_magang && <div className="text-red-500 text-sm">{errors.judul_magang}</div>}
                                     </div>
+                                </div>
 
+                                <div className='flex w h-full space-x-8'>
                                     <div className='w-1/2'>
                                         <label className="block text-sm font-medium">Judul Tugas Akhir</label>
                                         <input
@@ -85,17 +124,41 @@ export default function AddAlumni({ mahasiswa }) {
                                         />
                                         {errors.judul_tugas_akhir && <div className="text-red-500 text-sm">{errors.judul_tugas_akhir}</div>}
                                     </div>
+
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">Tahun Lulus</label>
+                                        <input
+                                            type="number"
+                                            value={data.tahun_lulus}
+                                            onChange={(e) => setData('tahun_lulus', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.tahun_lulus && <div className="text-red-500 text-sm">{errors.tahun_lulus}</div>}
+                                    </div>
                                 </div>
 
-                                <div className='w-1/2'>
-                                    <label className="block text-sm font-medium">Tahun Lulus</label>
-                                    <input
-                                        type="number"
-                                        value={data.tahun_lulus}
-                                        onChange={(e) => setData('tahun_lulus', e.target.value)}
-                                        className="w-full border border-gray-300 rounded px-3 py-2"
-                                    />
-                                    {errors.tahun_lulus && <div className="text-red-500 text-sm">{errors.tahun_lulus}</div>}
+                                <div className='flex w h-full space-x-8'>
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">NIK</label>
+                                        <input
+                                            type="text"
+                                            value={data.nik}
+                                            onChange={(e) => setData('nik', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.nik && <div className="text-red-500 text-sm">{errors.nik}</div>}
+                                    </div>
+
+                                    <div className='w-1/2'>
+                                        <label className="block text-sm font-medium">NPWP</label>
+                                        <input
+                                            type="text"
+                                            value={data.npwp}
+                                            onChange={(e) => setData('npwp', e.target.value)}
+                                            className="w-full border border-gray-300 rounded px-3 py-2"
+                                        />
+                                        {errors.npwp && <div className="text-red-500 text-sm">{errors.npwp}</div>}
+                                    </div>
                                 </div>
 
                                 <div className="flex justify-end space-x-4">
@@ -104,10 +167,7 @@ export default function AddAlumni({ mahasiswa }) {
                                             KEMBALI
                                         </Link>
                                     </SecondaryButton>
-                                    <PrimaryButton
-                                        type="submit"
-                                        disabled={processing}
-                                    >
+                                    <PrimaryButton type="submit" disabled={processing}>
                                         Simpan
                                     </PrimaryButton>
                                 </div>

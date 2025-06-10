@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('alumni', function (Blueprint $table) {
             $table->id();
-            $table->string('tempat_magang');
-            $table->string('judul_magang');
-            $table->string('judul_tugas_akhir');
+            $table->string('tempat_magang')->nullable();
+            $table->string('judul_magang')->nullable();
+            $table->string('judul_tugas_akhir')->nullable();
+            $table->string('nim');
+            $table->string('nama');
+            $table->string('hp');
+            $table->string('email')->nullable();
             $table->year('tahun_lulus');
-            $table->unsignedBigInteger('mahasiswa_id');
+            $table->string('nik')->nullable();
+            $table->string('npwp')->nullable();
             $table->timestamps();
-
-            $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa');
-
         });
     }
 

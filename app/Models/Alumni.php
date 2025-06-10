@@ -12,15 +12,15 @@ class Alumni extends Model
     protected $table = 'alumni';
 
     protected $fillable = [
-        'mahasiswa_id',
         'tempat_magang',
         'judul_magang',
         'judul_tugas_akhir',
+        'nim',
+        'nama',
+        'hp',
+        'email',
         'tahun_lulus',
+        'nik',
+        'npwp',
     ];
-
-    public function mahasiswa()
-    {
-        return $this->belongsTo(Mahasiswa::class);
-    }
 }

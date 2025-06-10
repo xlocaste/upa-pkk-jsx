@@ -32,12 +32,17 @@ class AlumniController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $alumni = Alumni::create([
-            'mahasiswa_id'=>$request->mahasiswa_id,
-            'tempat_magang'=>$request->tempat_magang,
-            'judul_magang'=>$request->judul_magang,
-            'judul_tugas_akhir'=>$request->judul_tugas_akhir,
-            'tahun_lulus'=>$request->tahun_lulus,
+        Alumni::create([
+            'nim' => $request->nim,
+            'nama' => $request->nama,
+            'hp' => $request->hp,
+            'email' => $request->email,
+            'tempat_magang' => $request->tempat_magang,
+            'judul_magang' => $request->judul_magang,
+            'judul_tugas_akhir' => $request->judul_tugas_akhir,
+            'tahun_lulus' => $request->tahun_lulus,
+            'nik' => $request->nik,
+            'npwp' => $request->npwp,
         ]);
 
         return redirect()->route('authentication.alumni.index');
@@ -46,10 +51,16 @@ class AlumniController extends Controller
     public function update(UpdateRequest $request, Alumni $alumni)
     {
         $alumni->update([
-            'tempat_magang'=>$request->tempat_magang,
-            'judul_magang'=>$request->judul_magang,
-            'judul_tugas_akhir'=>$request->judul_tugas_akhir,
-            'tahun_lulus'=>$request->tahun_lulus,
+            'nim' => $request->nim,
+            'nama' => $request->nama,
+            'hp' => $request->hp,
+            'email' => $request->email,
+            'tempat_magang' => $request->tempat_magang,
+            'judul_magang' => $request->judul_magang,
+            'judul_tugas_akhir' => $request->judul_tugas_akhir,
+            'tahun_lulus' => $request->tahun_lulus,
+            'nik' => $request->nik,
+            'npwp' => $request->npwp,
         ]);
 
         return redirect()->route('authentication.alumni.index');

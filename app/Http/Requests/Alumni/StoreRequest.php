@@ -22,25 +22,32 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mahasiswa_id' => ['required', 'exists:mahasiswa,id', 'unique:alumni,mahasiswa_id'],
-            'tempat_magang' => ['required'],
-            'judul_magang' => ['required'],
-            'judul_tugas_akhir' => ['required'],
-            'tahun_lulus' => ['required'],
+            'nim' => ['required', 'string', 'unique:alumni,nim'],
+            'nama' => ['required', 'string'],
+            'hp' => ['required', 'string'],
+            'email' => ['nullable', 'email'],
+            'tempat_magang' => ['required', 'string'],
+            'judul_magang' => ['required', 'string'],
+            'judul_tugas_akhir' => ['required', 'string'],
+            'tahun_lulus' => ['required', 'digits:4', 'integer'],
+            'nik' => ['nullable', 'string'],
+            'npwp' => ['nullable', 'string'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'mahasiswa_id.required' => 'Mahasiswa wajib dipilih.',
-            'mahasiswa_id.exists'   => 'Mahasiswa yang dipilih tidak ditemukan.',
-            'mahasiswa_id.unique'   => 'Mahasiswa ini sudah terdaftar sebagai alumni.',
-
-            'tempat_magang.required'    => 'Tempat magang wajib diisi.',
-            'judul_magang.required'     => 'Judul magang wajib diisi.',
+            'nim.required' => 'NIM wajib diisi.',
+            'nim.unique' => 'NIM sudah terdaftar sebagai alumni.',
+            'nama.required' => 'Nama wajib diisi.',
+            'hp.required' => 'Nomor HP wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'tempat_magang.required' => 'Tempat magang wajib diisi.',
+            'judul_magang.required' => 'Judul magang wajib diisi.',
             'judul_tugas_akhir.required' => 'Judul tugas akhir wajib diisi.',
-            'tahun_lulus.required'      => 'Tahun lulus wajib diisi.',
+            'tahun_lulus.required' => 'Tahun lulus wajib diisi.',
+            'tahun_lulus.digits' => 'Tahun lulus harus terdiri dari 4 digit.',
         ];
     }
 }
