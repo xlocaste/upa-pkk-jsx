@@ -75,14 +75,14 @@ export default function AlumniList({ daftarAlumni, filters }) {
                                 </thead>
                                 <tbody>
                                     {daftarAlumni.data.length > 0 ? (
-                                        daftarAlumni.data.map((alumni, index) => (
+                                        daftarAlumni.data.map((alumni) => (
                                             <tr key={alumni.id} className="hover:bg-gray-50">
-                                                <td className="py-2 px-4 border-b">{alumni.mahasiswa?.nama || '-'}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.mahasiswa?.nim || '-'}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.tempat_magang}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.judul_magang}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.judul_tugas_akhir}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.tahun_lulus}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.nama || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.nim || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.tempat_magang || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.judul_magang || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.judul_tugas_akhir || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.tahun_lulus || '-'}</td>
                                                 <td className="px-4 py-1 border-b text-center">
                                                     <div className='flex gap-2 justify-center'>
                                                         <Link

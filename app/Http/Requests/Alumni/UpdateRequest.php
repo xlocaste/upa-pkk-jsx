@@ -26,9 +26,9 @@ class UpdateRequest extends FormRequest
             'nama' => ['required', 'string'],
             'hp' => ['required', 'string'],
             'email' => ['nullable', 'email'],
-            'tempat_magang' => ['required', 'string'],
-            'judul_magang' => ['required', 'string'],
-            'judul_tugas_akhir' => ['required', 'string'],
+            'tempat_magang' => ['nullable', 'string'],
+            'judul_magang' => ['nullable', 'string'],
+            'judul_tugas_akhir' => ['nullable', 'string'],
             'tahun_lulus' => ['required', 'digits:4', 'integer'],
             'nik' => ['nullable', 'string'],
             'npwp' => ['nullable', 'string'],
@@ -38,12 +38,10 @@ class UpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'nim.unique' => 'NIM sudah terdaftar sebagai alumni.',
             'nama.required' => 'Nama wajib diisi.',
             'hp.required' => 'Nomor HP wajib diisi.',
             'email.email' => 'Format email tidak valid.',
-            'tempat_magang.required' => 'Tempat magang wajib diisi.',
-            'judul_magang.required' => 'Judul magang wajib diisi.',
-            'judul_tugas_akhir.required' => 'Judul tugas akhir wajib diisi.',
             'tahun_lulus.required' => 'Tahun lulus wajib diisi.',
             'tahun_lulus.digits' => 'Tahun lulus harus terdiri dari 4 digit.',
         ];
