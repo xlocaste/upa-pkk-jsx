@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { router, Head } from '@inertiajs/react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
-import { Head } from '@inertiajs/react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import PrimaryButton from '@/Components/PrimaryButton';
 
-export default function InkubasiList({ Inkubasi }) {
-    const [filters, setFilters] = useState({ keyword: '' });
+export default function InkubasiList({ Inkubasi, filters }) {
+    const [keyword, setKeyword] = useState(filters.keyword || '');
+
+    const handleSearch = () => {
+        router.get(route('form.inkubasi.list'), { keyword }, { preserveState: true });
+    };
+
     return (
         <DashboardLayout>
             <Head title="Inkubasi" />
@@ -21,17 +26,13 @@ export default function InkubasiList({ Inkubasi }) {
                                 <div className="flex items-center space-x-2">
                                     <input
                                         type="text"
-                                        value={filters.keyword || ''}
-                                        onChange={(e) => setFilters({ ...filters, keyword: e.target.value })}
-                                        onKeyDown={(e) => {
-                                            if (e.key === 'Enter') {
-                                                router.get(route('alumni.search'), { keyword: filters.keyword });
-                                            }
-                                        }}
-                                        placeholder="Cari nama, NIM, tempat magang..."
+                                        value={keyword}
+                                        onChange={(e) => setKeyword(e.target.value)}
+                                        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                                        placeholder="Cari nama tenant, bidang fokus, tahun..."
                                         className="border border-gray-300 rounded-md px-3 py-1 w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     />
-                                    <PrimaryButton>
+                                    <PrimaryButton onClick={handleSearch}>
                                         Cari
                                     </PrimaryButton>
                                 </div>

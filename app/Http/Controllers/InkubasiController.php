@@ -24,18 +24,28 @@ class InkubasiController extends Controller
         ]);
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $daftarInkubasi = Inkubasi::all();
+        $keyword = $request->input('keyword');
 
-        return inertia::render('Form/Inkubasi/List', [
+        $query = Inkubasi::query();
+
+        if ($keyword) {
+            $query->where('nama_tenant', 'like', "%{$keyword}%")
+                ->orWhere('bidang_fokus_tenant', 'like', "%{$keyword}%")
+                ->orWhere('tahun_inkubasi_tenant', 'like', "%{$keyword}%");
+        }
+
+        $daftarInkubasi = $query->get();
+
+        return Inertia::render('Form/Inkubasi/List', [
             'Inkubasi' => $daftarInkubasi,
+            'filters' => $request->only('keyword'),
             'auth' => [
                 'user' => Auth::user(),
             ],
         ]);
     }
-
     public function store(StoreRequest $request)
     {
         $inkubasi = Inkubasi::create([
