@@ -32,12 +32,12 @@ export default function AlumniList({ daftarAlumni }) {
                                         daftarAlumni.map((alumni, index) => (
                                             <tr key={alumni.id} className="hover:bg-gray-50">
                                                 <td className="py-2 px-4 border-b">{index + 1}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.mahasiswa?.nama || '-'}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.mahasiswa?.nim || '-'}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.tempat_magang}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.judul_magang}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.judul_tugas_akhir}</td>
-                                                <td className="py-2 px-4 border-b">{alumni.tahun_lulus}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.nama || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.nim || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.tempat_magang || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.judul_magang || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.judul_tugas_akhir || '-'}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.tahun_lulus || '-'}</td>
                                             </tr>
                                         ))
                                     ) : (
