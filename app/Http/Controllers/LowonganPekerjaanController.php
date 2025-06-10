@@ -24,15 +24,21 @@ class LowonganPekerjaanController extends Controller
         ]);
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $daftarLowonganKerja = LowonganPekerjaan::all();
+        $query = LowonganPekerjaan::query();
+
+        if ($request->filled('keyword')) {
+            $query->where('judul_lowongan_kerja', 'like', '%' . $request->keyword . '%')
+                  ->orWhere('deskripsi', 'like', '%' . $request->keyword . '%')
+                  ->orWhere('kontak', 'like', '%' . $request->keyword . '%');
+        }
+
+        $lowonganKerja = $query->latest()->get();
 
         return Inertia::render('Form/LowonganPekerjaan/List', [
-            'lowonganKerja' => $daftarLowonganKerja,
-            'auth' => [
-                'user' => Auth::user(),
-            ],
+            'lowonganKerja' => $lowonganKerja,
+            'filters' => $request->only('keyword'),
         ]);
     }
 
