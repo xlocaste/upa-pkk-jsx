@@ -15,7 +15,7 @@ export default function InkubasiList({ daftarKSI, filters }) {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        router.get(route('authentication.kerja-sama-industri.search'), { keyword }, {
+        router.get(route('authentication.kerja-sama-industri.index'), { keyword }, {
             preserveState: true,
             replace: true,
         });

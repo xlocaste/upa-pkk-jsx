@@ -11,15 +11,25 @@ use Inertia\Inertia;
 
 class MiniIndustriKampusController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $daftarMIK = MiniIndustriKampus::paginate(5);
+        $query = MiniIndustriKampus::query();
 
-        {
-            return Inertia::render('Authentication/MiniIndustriKampus/List', [
-                'daftarMIK' => $daftarMIK
-            ]);
+        if ($request->has('keyword') && $request->keyword != '') {
+            $query->where(function ($q) use ($request) {
+                $q->where('nama_mik', 'like', '%' . $request->keyword . '%')
+                ->orWhere('bidang_fokus_mik', 'like', '%' . $request->keyword . '%');
+            });
         }
+
+        $daftarMIK = $query->paginate(5)->withQueryString();
+
+        return Inertia::render('Authentication/MiniIndustriKampus/List', [
+            'daftarMIK' => $daftarMIK,
+            'filters' => [
+                'keyword' => $request->keyword,
+            ],
+        ]);
     }
 
     public function list(Request $request)
