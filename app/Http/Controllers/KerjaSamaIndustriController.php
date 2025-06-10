@@ -26,15 +26,24 @@ class KerjaSamaIndustriController extends Controller
         }
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $daftarKSI = KerjaSamaIndustri::all();
+        $query = KerjaSamaIndustri::query();
 
-        {
-            return Inertia::render('Form/KerjaSamaIndustri/List', [
-                'daftarKSI' => $daftarKSI
-            ]);
+        if ($request->has('keyword') && $request->keyword != '') {
+            $keyword = $request->keyword;
+            $query->where('nama_ksi', 'like', "%{$keyword}%")
+                ->orWhere('jenis_kegiatan', 'like', "%{$keyword}%");
         }
+
+        $daftarKSI = $query->get();
+
+        return Inertia::render('Form/KerjaSamaIndustri/List', [
+            'daftarKSI' => $daftarKSI,
+            'filters' => [
+                'keyword' => $request->keyword ?? '',
+            ],
+        ]);
     }
 
     public function store(StoreRequest $request)

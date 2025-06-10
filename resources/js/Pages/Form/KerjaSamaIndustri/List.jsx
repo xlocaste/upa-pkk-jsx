@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import PrimaryButton from '@/Components/PrimaryButton';
 
-export default function InkubasiList({ daftarKSI }) {
+export default function KerjaSamaIndustriList({ daftarKSI, filters }) {
+    const [keyword, setKeyword] = useState(filters.keyword || '');
+
+    const handleSearch = () => {
+        router.get(route('form.kerja-sama-industri.list'), { keyword });
+    };
+
     return (
         <DashboardLayout>
             <Head title="Kerja Sama Industri" />
@@ -11,17 +18,35 @@ export default function InkubasiList({ daftarKSI }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <div className='flex items-center mb-4 space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
-                                <ApplicationLogo />
-                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK KERJA SAMA INDUSTRI</p>
+                            <div className='flex items-center mb-4 justify-between bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                                <div className='flex items-center space-x-4'>
+                                    <ApplicationLogo />
+                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK KERJA SAMA INDUSTRI</p>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <input
+                                        type="text"
+                                        value={keyword}
+                                        onChange={(e) => setKeyword(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter') handleSearch();
+                                        }}
+                                        placeholder="Cari nama mitra atau jenis kegiatan..."
+                                        className="border border-gray-300 rounded-md px-3 py-1 w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
+                                    <PrimaryButton onClick={handleSearch}>
+                                        Cari
+                                    </PrimaryButton>
+                                </div>
                             </div>
+
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
                                         <th className="py-2 px-4 border-b">No</th>
-                                        <th className="py-2 px-4 border-b">Nama Tenant</th>
+                                        <th className="py-2 px-4 border-b">Nama Mitra</th>
                                         <th className="py-2 px-4 border-b">Jenis Kegiatan</th>
-                                        <th className="py-2 px-4 border-b">Tahun Kerja Sama Industri</th>
+                                        <th className="py-2 px-4 border-b">Tahun Kerja Sama</th>
                                         <th className="py-2 px-4 border-b">Tahun Exit</th>
                                     </tr>
                                 </thead>
