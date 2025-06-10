@@ -30,7 +30,7 @@ export default function AddAlumni() {
 
     return (
         <AuthenticatedLayout>
-            <Head title="Tambah Alumni" />
+            <Head title="Alumni" />
             <div className="py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">

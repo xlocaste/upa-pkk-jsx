@@ -75,7 +75,7 @@ class AlumniController extends Controller
 
     public function show($alumni)
     {
-        $alumni = Alumni::with('mahasiswa')->findOrFail($alumni);
+        $alumni = Alumni::findOrFail($alumni);
 
         return Inertia::render('Authentication/Alumni/Detail', [
             'Alumni' => $alumni

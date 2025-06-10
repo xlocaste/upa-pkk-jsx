@@ -21,28 +21,53 @@ export default function MahasiswaList({ Alumni, auth }) {
                             </div>
                             <div className='grid grid-cols-2 items-center gap-6'>
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Nama Alumni</p>
-                                    <p className="font-bold text-3xl z-10">{Alumni.mahasiswa?.nama || '-'}</p>
+                                    <p className='font-bold text-xl'>Nama Alumni</p>
+                                    <p className="text-2xl font-semibold">{Alumni.nama || '-'}</p>
                                 </div>
+
                                 <div>
-                                    <p className='font-bold text-xl z-10'>NIM</p>
-                                    <p className="font-bold text-3xl z-10">{Alumni.mahasiswa?.nim || '-'}</p>
+                                    <p className='font-bold text-xl'>NIM</p>
+                                    <p className="text-2xl font-semibold">{Alumni.nim || '-'}</p>
                                 </div>
+
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Tempat Magang</p>
-                                    <p className="font-bold text-3xl z-10">{Alumni.tempat_magang}</p>
+                                    <p className='font-bold text-xl'>No HP</p>
+                                    <p className="text-2xl font-semibold">{Alumni.hp || '-'}</p>
                                 </div>
+
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Judul Magang</p>
-                                    <p className="font-bold text-3xl z-10">{Alumni.judul_magang}</p>
+                                    <p className='font-bold text-xl'>Email</p>
+                                    <p className="text-2xl font-semibold">{Alumni.email || '-'}</p>
                                 </div>
+
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Judul Tugas Akhir</p>
-                                    <p className="font-bold text-3xl z-10">{Alumni.judul_tugas_akhir}</p>
+                                    <p className='font-bold text-xl'>Tempat Magang</p>
+                                    <p className="text-2xl font-semibold">{Alumni.tempat_magang || '-'}</p>
                                 </div>
+
                                 <div>
-                                    <p className='font-bold text-xl z-10'>Tahun Lulus</p>
-                                    <p className="font-bold text-3xl z-10">{Alumni.tahun_lulus}</p>
+                                    <p className='font-bold text-xl'>Judul Magang</p>
+                                    <p className="text-2xl font-semibold">{Alumni.judul_magang || '-'}</p>
+                                </div>
+
+                                <div>
+                                    <p className='font-bold text-xl'>Judul Tugas Akhir</p>
+                                    <p className="text-2xl font-semibold">{Alumni.judul_tugas_akhir || '-'}</p>
+                                </div>
+
+                                <div>
+                                    <p className='font-bold text-xl'>Tahun Lulus</p>
+                                    <p className="text-2xl font-semibold">{Alumni.tahun_lulus || '-'}</p>
+                                </div>
+
+                                <div>
+                                    <p className='font-bold text-xl'>NIK</p>
+                                    <p className="text-2xl font-semibold">{Alumni.nik || '-'}</p>
+                                </div>
+
+                                <div>
+                                    <p className='font-bold text-xl'>NPWP</p>
+                                    <p className="text-2xl font-semibold">{Alumni.npwp || '-'}</p>
                                 </div>
                                 <div className="col-span-2 flex justify-end z-10">
                                     <Link href={route('authentication.alumni.index')}>
