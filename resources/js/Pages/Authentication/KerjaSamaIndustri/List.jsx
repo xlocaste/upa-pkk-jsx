@@ -34,7 +34,7 @@ export default function InkubasiList({ daftarKSI, filters }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 py-3 text-gray-900">
-                            <div className='flex items-center space-x-4 mt-3 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                            <div className='flex items-center space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
                                 <ApplicationLogo />
                                 <p className='font-bold text-gray-700 text-xl'>UPA-PKK KERJA SAMA INDUSTRI</p>
                             </div>
