@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Models\Alumni;
 use Inertia\Inertia;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class AlumniController extends Controller
 {
@@ -80,6 +81,56 @@ class AlumniController extends Controller
         return Inertia::render('Authentication/Alumni/Detail', [
             'Alumni' => $alumni
         ]);
+    }
+
+    public function excel(Request $request)
+    {
+        $request->validate([
+            'file' => ['required', 'file', 'mimes:xlsx,xls'],
+        ]);
+
+        $spreadsheet = IOFactory::load($request->file('file'));
+        $sheet = $spreadsheet->getActiveSheet();
+        $rows = $sheet->toArray();
+
+        $headerRowIndex = null;
+        foreach ($rows as $i => $row) {
+            if (in_array('NIM', $row) && in_array('Nama', $row)) {
+                $headerRowIndex = $i;
+                break;
+            }
+        }
+
+        if (is_null($headerRowIndex)) {
+            return back()->withErrors(['file' => 'Kolom NIM atau Nama tidak ditemukan dalam file Excel.']);
+        }
+
+        $header = array_map('trim', $rows[$headerRowIndex]);
+
+        foreach (array_slice($rows, $headerRowIndex + 1) as $row) {
+            $data = array_combine($header, $row);
+
+            if (empty($data['NIM']) || empty($data['Nama'])) {
+                continue;
+            }
+
+            Alumni::updateOrCreate(
+                ['nim' => $data['NIM']],
+                [
+                    'nama' => $data['Nama'],
+                    'hp' => $data['HP'] ?? null,
+                    'email' => $data['Email'] ?? null,
+                    'tahun_lulus' => $data['Tahun Lulus'] ?? null,
+                    'nik' => $data['NIK'] ?? null,
+                    'npwp' => $data['NPWP'] ?? null,
+                    'tempat_magang' => null,
+                    'judul_magang' => null,
+                    'judul_tugas_akhir' => null,
+                ]
+            );
+        }
+
+        return back()->with('success', 'Data alumni berhasil diimport.');
     }
 
     public function edit(Alumni $alumni)
