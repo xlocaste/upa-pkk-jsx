@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react'; // ← pastikan `router` diimpor
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import PrimaryButton from '@/Components/PrimaryButton';
 
-export default function AlumniList({ daftarAlumni }) {
+export default function AlumniList({ daftarAlumni, filters }) {
+    const [keyword, setKeyword] = useState(filters?.keyword || '');
+
+    const handleSearch = () => {
+        router.get(route('form.alumni.list'), { keyword }, { preserveState: true });
+    };
+
     return (
         <DashboardLayout>
             <Head title="Alumni" />
@@ -11,10 +18,26 @@ export default function AlumniList({ daftarAlumni }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <div className='flex items-center mb-4 space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
-                                <ApplicationLogo />
-                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK ALUMNI</p>
+                            <div className='flex items-center mb-4 justify-between bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                                <div className='flex items-center space-x-4'>
+                                    <ApplicationLogo />
+                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK ALUMNI</p>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <input
+                                        type="text"
+                                        value={keyword}
+                                        onChange={(e) => setKeyword(e.target.value)}
+                                        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                                        placeholder="Cari nama, NIM, tempat magang..."
+                                        className="border border-gray-300 rounded-md px-3 py-1 w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
+                                    <PrimaryButton onClick={handleSearch}>
+                                        Cari
+                                    </PrimaryButton>
+                                </div>
                             </div>
+
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
@@ -28,8 +51,8 @@ export default function AlumniList({ daftarAlumni }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {daftarAlumni.length > 0 ? (
-                                        daftarAlumni.map((alumni, index) => (
+                                    {daftarAlumni.data.length > 0 ? (
+                                        daftarAlumni.data.map((alumni, index) => (
                                             <tr key={alumni.id} className="hover:bg-gray-50">
                                                 <td className="py-2 px-4 border-b">{index + 1}</td>
                                                 <td className="py-2 px-4 border-b">{alumni.nama || '-'}</td>

@@ -22,12 +22,31 @@ class AlumniController extends Controller
         ]);
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $daftarAlumni = Alumni::get();
+        $query = Alumni::query();
+
+        if ($request->has('keyword') && $request->keyword != '') {
+            $keyword = $request->keyword;
+            $query->where('nama', 'like', '%' . $keyword . '%')
+                ->orWhere('nim', 'like', '%' . $keyword . '%')
+                ->orWhere('tempat_magang', 'like', '%' . $keyword . '%')
+                ->orWhere('judul_magang', 'like', '%' . $keyword . '%')
+                ->orWhere('judul_tugas_akhir', 'like', '%' . $keyword . '%')
+                ->orWhere('email', 'like', '%' . $keyword . '%')
+                ->orWhere('hp', 'like', '%' . $keyword . '%')
+                ->orWhere('tahun_lulus', 'like', '%' . $keyword . '%')
+                ->orWhere('nik', 'like', '%' . $keyword . '%')
+                ->orWhere('npwp', 'like', '%' . $keyword . '%');
+        }
+
+        $daftarAlumni = $query->paginate(20)->appends(['keyword' => $request->keyword]);
 
         return Inertia::render('Form/Alumni/List', [
-            'daftarAlumni' => $daftarAlumni
+            'daftarAlumni' => $daftarAlumni,
+            'filters' => [
+                'keyword' => $request->keyword,
+            ],
         ]);
     }
 

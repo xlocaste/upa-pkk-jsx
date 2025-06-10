@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import { Head } from '@inertiajs/react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import PrimaryButton from '@/Components/PrimaryButton';
 
 export default function InkubasiList({ Inkubasi }) {
+    const [filters, setFilters] = useState({ keyword: '' });
     return (
         <DashboardLayout>
             <Head title="Inkubasi" />
@@ -11,9 +13,28 @@ export default function InkubasiList({ Inkubasi }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <div className='flex items-center mb-4 space-x-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
-                                <ApplicationLogo />
-                                <p className='font-bold text-gray-700 text-xl'>UPA-PKK INKUBASI</p>
+                            <div className='flex items-center mb-4 justify-between bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                                <div className='flex items-center space-x-4'>
+                                    <ApplicationLogo />
+                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK INKUBASI</p>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <input
+                                        type="text"
+                                        value={filters.keyword || ''}
+                                        onChange={(e) => setFilters({ ...filters, keyword: e.target.value })}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter') {
+                                                router.get(route('alumni.search'), { keyword: filters.keyword });
+                                            }
+                                        }}
+                                        placeholder="Cari nama, NIM, tempat magang..."
+                                        className="border border-gray-300 rounded-md px-3 py-1 w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
+                                    <PrimaryButton>
+                                        Cari
+                                    </PrimaryButton>
+                                </div>
                             </div>
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
