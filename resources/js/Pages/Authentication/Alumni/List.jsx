@@ -14,7 +14,7 @@ export default function AlumniList({ daftarAlumni, filters }) {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        router.get(route('authentication.mahasiswa.search'), { keyword }, {
+        router.get(route('authentication.alumni.search'), { keyword }, {
             preserveState: true,
             replace: true,
         });

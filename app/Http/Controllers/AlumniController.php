@@ -15,7 +15,7 @@ class AlumniController extends Controller
 {
     public function index()
     {
-        $daftarAlumni = Alumni::paginate(5);
+        $daftarAlumni = Alumni::paginate(20);
 
         return Inertia::render('Authentication/Alumni/List', [
             'daftarAlumni' => $daftarAlumni
@@ -131,6 +131,34 @@ class AlumniController extends Controller
         }
 
         return back()->with('success', 'Data alumni berhasil diimport.');
+    }
+
+    public function search(Request $request)
+    {
+        $query = Alumni::query();
+
+        if ($request->has('keyword') && $request->keyword != '') {
+            $keyword = $request->keyword;
+            $query->where('nama', 'like', '%' . $keyword . '%')
+                ->orWhere('nim', 'like', '%' . $keyword . '%')
+                ->orWhere('tempat_magang', 'like', '%' . $keyword . '%')
+                ->orWhere('judul_magang', 'like', '%' . $keyword . '%')
+                ->orWhere('judul_tugas_akhir', 'like', '%' . $keyword . '%')
+                ->orWhere('email', 'like', '%' . $keyword . '%')
+                ->orWhere('hp', 'like', '%' . $keyword . '%')
+                ->orWhere('tahun_lulus', 'like', '%' . $keyword . '%')
+                ->orWhere('nik', 'like', '%' . $keyword . '%')
+                ->orWhere('npwp', 'like', '%' . $keyword . '%');
+        }
+
+        $filteredAlumni = $query->paginate(20)->appends(['keyword' => $request->keyword]);
+
+        return Inertia::render('Authentication/Alumni/List', [
+            'daftarAlumni' => $filteredAlumni,
+            'filters' => [
+                'keyword' => $request->keyword,
+            ],
+        ]);
     }
 
     public function edit(Alumni $alumni)
