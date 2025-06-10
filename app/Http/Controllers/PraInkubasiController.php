@@ -26,15 +26,23 @@ class PraInkubasiController extends Controller
         ]);
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $daftarPraInkubasi = PraInkubasi::all();
+        $query = PraInkubasi::query();
+
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
+            $query->where('nama_ketua_tim', 'like', "%$keyword%")
+                ->orWhere('judul_proposal', 'like', "%$keyword%")
+                ->orWhere('status_mahasiswa_alumni', 'like', "%$keyword%");
+        }
+
+        $daftarPraInkubasi = $query->latest()->get();
 
         return Inertia::render('Form/PraInkubasi/List', [
             'praInkubasi' => $daftarPraInkubasi,
-            'auth' => [
-                'user' => Auth::user(),
-            ],
+            'filters' => $request->only('keyword'),
+            'auth' => ['user' => Auth::user()],
         ]);
     }
 
