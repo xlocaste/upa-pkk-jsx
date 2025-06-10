@@ -12,7 +12,7 @@ export default function InkubasiList({ Inkubasi, filters }) {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        router.get(route('authentication.mahasiswa.search'), { keyword }, {
+        router.get(route('authentication.inkubasi.index'), { keyword }, {
             preserveState: true,
             replace: true,
         });

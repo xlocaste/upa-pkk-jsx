@@ -12,12 +12,22 @@ use Inertia\Inertia;
 
 class InkubasiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $daftarInkubasi = Inkubasi::paginate(5);
+        $query = Inkubasi::query();
+
+        if ($request->has('keyword') && $request->keyword != '') {
+            $keyword = $request->keyword;
+            $query->where('nama_tenant', 'like', '%' . $keyword . '%');
+        }
+
+        $daftarInkubasi = $query->paginate(5)->withQueryString();
 
         return inertia::render('Authentication/Inkubasi/List', [
             'Inkubasi' => $daftarInkubasi,
+            'filters' => [
+                'keyword' => $request->keyword,
+            ],
             'auth' => [
                 'user' => Auth::user(),
             ],
