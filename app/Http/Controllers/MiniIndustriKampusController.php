@@ -22,15 +22,23 @@ class MiniIndustriKampusController extends Controller
         }
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $daftarMIK = MiniIndustriKampus::all();
+        $query = MiniIndustriKampus::query();
 
-        {
-            return Inertia::render('Form/MiniIndustriKampus/List', [
-                'daftarMIK' => $daftarMIK
-            ]);
+        if ($request->has('keyword') && $request->keyword != '') {
+            $keyword = $request->keyword;
+            $query->where('nama_mik', 'like', '%' . $keyword . '%');
         }
+
+        $daftarMIK = $query->get();
+
+        return Inertia::render('Form/MiniIndustriKampus/List', [
+            'daftarMIK' => $daftarMIK,
+            'filters' => [
+                'keyword' => $request->keyword,
+            ],
+        ]);
     }
 
     public function store(StoreRequest $request)
