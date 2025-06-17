@@ -39,7 +39,6 @@ class UpdateRequest extends FormRequest
             'nama_ketua_tim.string' => 'Nama ketua tim harus berupa teks.',
             'nama_ketua_tim.max' => 'Nama ketua tim maksimal 255 karakter.',
 
-            'status_mahasiswa_alumni.required' => 'Status mahasiswa/alumni wajib diisi.',
             'status_mahasiswa_alumni.string' => 'Status harus berupa teks.',
             'status_mahasiswa_alumni.max' => 'Status maksimal 50 karakter.',
 
