@@ -45,7 +45,6 @@ export default function PraInkubasiList({ praInkubasi, filters }) {
                                 <table className="min-w-full bg-white border border-gray-200">
                                     <thead>
                                         <tr className="bg-gray-100 text-left text-sm">
-                                            <th className="py-2 px-4 border-b">No</th>
                                             <th className="py-2 px-4 border-b">Nama Ketua Tim</th>
                                             <th className="py-2 px-4 border-b">Status Mahasiswa/Alumni</th>
                                             <th className="py-2 px-4 border-b">Judul Proposal</th>

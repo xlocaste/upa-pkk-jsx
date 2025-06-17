@@ -3,12 +3,19 @@ import DashboardLayout from '@/Layouts/DashboardLayout';
 import { Head, router } from '@inertiajs/react'; // ← pastikan `router` diimpor
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import PrimaryButton from '@/Components/PrimaryButton';
+import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function AlumniList({ daftarAlumni, filters }) {
     const [keyword, setKeyword] = useState(filters?.keyword || '');
 
     const handleSearch = () => {
         router.get(route('form.alumni.list'), { keyword }, { preserveState: true });
+    };
+
+    const handlePageChange = (url) => {
+        if (url) {
+            router.get(url, {}, { preserveState: true });
+        }
     };
 
     return (
@@ -54,7 +61,7 @@ export default function AlumniList({ daftarAlumni, filters }) {
                                     {daftarAlumni.data.length > 0 ? (
                                         daftarAlumni.data.map((alumni, index) => (
                                             <tr key={alumni.id} className="hover:bg-gray-50">
-                                                <td className="py-2 px-4 border-b">{index + 1}</td>
+                                                <td className="py-2 px-4 border-b">{alumni.id}</td>
                                                 <td className="py-2 px-4 border-b">{alumni.nama || '-'}</td>
                                                 <td className="py-2 px-4 border-b">{alumni.nim || '-'}</td>
                                                 <td className="py-2 px-4 border-b">{alumni.tempat_magang || '-'}</td>
@@ -72,6 +79,27 @@ export default function AlumniList({ daftarAlumni, filters }) {
                                     )}
                                 </tbody>
                             </table>
+                            <div className="flex justify-end py-2 gap-4">
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(daftarAlumni.prev_page_url)}
+                                    disabled={!daftarAlumni.prev_page_url}
+                                    className="text-xs"
+                                >
+                                    Previous
+                                </SecondaryButton>
+
+                                <span className="text-gray-700 self-center text-xs">
+                                    Page {daftarAlumni.current_page} of {daftarAlumni.last_page}
+                                </span>
+
+                                <SecondaryButton
+                                    onClick={() => handlePageChange(daftarAlumni.next_page_url)}
+                                    disabled={!daftarAlumni.next_page_url}
+                                    className="text-xs"
+                                >
+                                    Next
+                                </SecondaryButton>
+                            </div>
                         </div>
                     </div>
                 </div>
