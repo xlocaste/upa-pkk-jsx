@@ -37,6 +37,14 @@ export default function InkubasiList({ Inkubasi, filters }) {
                                     </PrimaryButton>
                                 </div>
                             </div>
+
+                            <p className="text-sm text-gray-600 mb-4">
+                                Halaman ini menampilkan data kegiatan *Inkubasi Bisnis* yang difasilitasi oleh Unit Pengembangan Karir dan Kewirausahaan (UPA-PKK) Politeknik Negeri Sambas.
+                                Inkubasi merupakan proses lanjutan dari pra-inkubasi, di mana tenant (tim atau individu) yang memiliki ide usaha potensial diberikan bimbingan, akses jaringan, serta fasilitas pengembangan bisnis.
+                                Informasi dalam tabel ini mencakup nama tenant, fokus bidang usaha, serta tahun dimulainya dan berakhirnya program inkubasi.
+                                Tujuan dari program ini adalah mencetak wirausahawan muda mandiri yang siap bersaing di pasar.
+                            </p>
+
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
                                     <tr className="bg-gray-100 text-left">
