@@ -39,6 +39,12 @@ export default function KerjaSamaIndustriList({ daftarKSI, filters }) {
                                     </PrimaryButton>
                                 </div>
                             </div>
+                            <p className="text-sm text-gray-600 mb-4">
+                                Halaman ini menyajikan data Kerja Sama Industri (KSI) yang dilakukan oleh UPA-PKK Politeknik Negeri Sambas.
+                                Kerja sama ini meliputi berbagai bentuk kolaborasi antara institusi dengan mitra industri, baik dalam bentuk pelatihan, magang, pendampingan usaha, maupun program lainnya yang mendukung pengembangan kompetensi mahasiswa dan alumni.
+                                Informasi meliputi nama mitra, jenis kegiatan, serta periode kerja sama yang berlangsung.
+                                Data ini penting sebagai indikator keterlibatan institusi dalam membangun jejaring dengan dunia usaha dan dunia industri (DUDI).
+                            </p>
 
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
