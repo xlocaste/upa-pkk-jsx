@@ -39,6 +39,12 @@ export default function MiniIndustriKampusList({ daftarMIK, filters }) {
                                     </PrimaryButton>
                                 </div>
                             </div>
+                            <p className="text-sm text-gray-600 mb-4">
+                                Halaman ini menampilkan data Mini Industri Kampus (MIK) yang dikelola oleh UPA-PKK Politeknik Negeri Sambas.
+                                MIK merupakan wadah inkubasi bisnis di lingkungan kampus yang bertujuan untuk mendorong pengembangan unit usaha mahasiswa dan alumni dalam bidang tertentu sesuai potensi lokal maupun tren industri.
+                                Program ini membantu tenant dalam membangun model bisnis, produksi, pemasaran, hingga pendampingan usaha secara berkelanjutan.
+                                Informasi ini mencakup nama tenant, bidang fokus usaha, tahun pendirian, serta tahun keluar (exit) dari program inkubasi.
+                            </p>
 
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
