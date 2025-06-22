@@ -37,6 +37,14 @@ export default function LowonganList({ lowonganKerja, filters }) {
                                     </PrimaryButton>
                                 </div>
                             </div>
+
+                            <p className="text-sm text-gray-600 mb-4">
+                                Halaman ini menyajikan berbagai informasi lowongan pekerjaan yang dapat diakses oleh mahasiswa dan alumni Politeknik Negeri Sambas (Poltesa).
+                                Melalui sistem ini, UPA-PKK berperan aktif dalam menghubungkan lulusan dengan dunia industri dan dunia usaha.
+                                Pengguna dapat mencari dan melihat detail lowongan kerja, termasuk informasi deskripsi pekerjaan dan kontak yang dapat dihubungi.
+                                Fitur pencarian memudahkan pencocokan peluang kerja dengan minat dan keahlian pengguna.
+                            </p>
+
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {lowonganKerja.length > 0 ? (
                                     lowonganKerja.map((lowongan) => (
