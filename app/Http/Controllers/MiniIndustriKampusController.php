@@ -36,9 +36,14 @@ class MiniIndustriKampusController extends Controller
     {
         $query = MiniIndustriKampus::query();
 
-        if ($request->has('keyword') && $request->keyword != '') {
+        if ($request->filled('keyword')) {
             $keyword = $request->keyword;
-            $query->where('nama_mik', 'like', '%' . $keyword . '%');
+
+            $query->where(function ($q) use ($keyword) {
+                $q->where('nama_mik', 'like', "%$keyword%")
+                ->orWhere('bidang_fokus_mik', 'like', "%$keyword%")
+                ->orWhere('tahun_exit_mik', 'like', "%$keyword%");
+            });
         }
 
         $daftarMIK = $query->get();
