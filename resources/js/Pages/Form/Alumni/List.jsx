@@ -38,12 +38,17 @@ export default function AlumniList({ daftarAlumni, filters }) {
                                         onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                                         placeholder="Cari nama, NIM, tempat magang..."
                                         className="border border-gray-300 rounded-md px-3 py-1 w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                    />
+                                        />
                                     <PrimaryButton onClick={handleSearch}>
                                         Cari
                                     </PrimaryButton>
                                 </div>
                             </div>
+                            <p className="text-sm text-gray-600 mb-4">
+                                Halaman ini menampilkan daftar data alumni Politeknik Negeri Sambas (Poltesa) yang telah mengikuti program magang dan menyelesaikan tugas akhir.
+                                Pengguna dapat melakukan pencarian berdasarkan nama, NIM, atau tempat magang untuk menemukan data alumni tertentu.
+                                Fitur ini bertujuan untuk mendukung pelacakan jejak karier alumni serta menjadi basis data yang berguna dalam evaluasi dan pengembangan kurikulum kampus berbasis kebutuhan dunia kerja.
+                            </p>
 
                             <table className="min-w-full bg-white border border-gray-200">
                                 <thead>
