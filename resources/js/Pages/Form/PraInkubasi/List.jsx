@@ -41,6 +41,13 @@ export default function PraInkubasiList({ praInkubasi, filters }) {
                                 </div>
                             </div>
 
+                            <p className="text-sm text-gray-600 mb-4">
+                                Halaman ini memuat data peserta program *Pra-Inkubasi* yang diselenggarakan oleh Unit Pengembangan Karir dan Kewirausahaan (UPA-PKK) Politeknik Negeri Sambas.
+                                Program ini bertujuan untuk membina dan memfasilitasi mahasiswa atau alumni dalam tahap awal pengembangan ide bisnis.
+                                Data mencakup informasi penting seperti nama ketua tim, judul proposal, status peserta, dan estimasi anggaran.
+                                Melalui halaman ini, UPA-PKK dapat melakukan monitoring dan pencatatan terhadap perkembangan kegiatan kewirausahaan kampus.
+                            </p>
+
                             <div className="overflow-x-auto">
                                 <table className="min-w-full bg-white border border-gray-200">
                                     <thead>
