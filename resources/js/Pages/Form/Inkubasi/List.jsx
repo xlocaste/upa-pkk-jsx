@@ -38,43 +38,26 @@ export default function InkubasiList({ Inkubasi, filters }) {
                                 </div>
                             </div>
 
-                            <p className="text-sm text-gray-600 mb-4">
-                                Halaman ini menampilkan data kegiatan *Inkubasi Bisnis* yang difasilitasi oleh Unit Pengembangan Karir dan Kewirausahaan (UPA-PKK) Politeknik Negeri Sambas.
-                                Inkubasi merupakan proses lanjutan dari pra-inkubasi, di mana tenant (tim atau individu) yang memiliki ide usaha potensial diberikan bimbingan, akses jaringan, serta fasilitas pengembangan bisnis.
-                                Informasi dalam tabel ini mencakup nama tenant, fokus bidang usaha, serta tahun dimulainya dan berakhirnya program inkubasi.
-                                Tujuan dari program ini adalah mencetak wirausahawan muda mandiri yang siap bersaing di pasar.
+                            <p className="text-sm text-gray-600 mb-6">
+                                Halaman ini menampilkan data kegiatan <strong>Inkubasi Bisnis</strong> yang difasilitasi oleh Unit Pengembangan Karir dan Kewirausahaan (UPA-PKK) Politeknik Negeri Sambas. Inkubasi merupakan proses lanjutan dari pra-inkubasi, di mana tenant (tim atau individu) yang memiliki ide usaha potensial diberikan bimbingan, akses jaringan, serta fasilitas pengembangan bisnis.
                             </p>
 
-                            <table className="min-w-full bg-white border border-gray-200">
-                                <thead>
-                                    <tr className="bg-gray-100 text-left">
-                                        <th className="py-2 px-4 border-b">No</th>
-                                        <th className="py-2 px-4 border-b">Nama Tenant</th>
-                                        <th className="py-2 px-4 border-b">Bidang Fokus</th>
-                                        <th className="py-2 px-4 border-b">Tahun Inkubasi</th>
-                                        <th className="py-2 px-4 border-b">Tahun Exit</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {Inkubasi.length > 0 ? (
-                                        Inkubasi.map((item, index) => (
-                                            <tr key={item.id} className="hover:bg-gray-50">
-                                                <td className="py-2 px-4 border-b">{index + 1}</td>
-                                                <td className="py-2 px-4 border-b">{item.nama_tenant}</td>
-                                                <td className="py-2 px-4 border-b">{item.bidang_fokus_tenant}</td>
-                                                <td className="py-2 px-4 border-b">{item.tahun_inkubasi_tenant}</td>
-                                                <td className="py-2 px-4 border-b">{item.tahun_exit_tenant}</td>
-                                            </tr>
-                                        ))
-                                    ) : (
-                                        <tr>
-                                            <td colSpan="5" className="text-center py-4 text-gray-500">
-                                                Data inkubasi tidak tersedia.
-                                            </td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </table>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {Inkubasi.length > 0 ? (
+                                    Inkubasi.map((item, index) => (
+                                        <div key={item.id} className="border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition">
+                                            <h3 className="text-lg font-semibold text-blue-600 mb-1">{item.nama_tenant}</h3>
+                                            <p className="text-sm text-gray-700 mb-1"><strong>Bidang Fokus:</strong> {item.bidang_fokus_tenant}</p>
+                                            <p className="text-sm text-gray-700 mb-1"><strong>Tahun Inkubasi:</strong> {item.tahun_inkubasi_tenant}</p>
+                                            <p className="text-sm text-gray-700"><strong>Tahun Exit:</strong> {item.tahun_exit_tenant}</p>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className="col-span-full text-center text-gray-500 py-8">
+                                        Data inkubasi tidak tersedia.
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
