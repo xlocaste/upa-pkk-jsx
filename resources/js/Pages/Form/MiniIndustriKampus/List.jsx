@@ -14,23 +14,26 @@ export default function MiniIndustriKampusList({ daftarMIK, filters }) {
     return (
         <DashboardLayout>
             <Head title="Mini Industri Kampus" />
-            <div className="py-8">
+            <div className="p-4 md:py-8 md:px-0">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
+                    <div className="overflow-hidden bg-white shadow-md rounded-lg sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <div className='flex items-center mb-4 justify-between bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
-                                <div className='flex items-center space-x-4'>
+                            {/* Header + Search */}
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-4">
+                                <div className="flex items-center space-x-3">
                                     <ApplicationLogo />
-                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK MINI INDUSTRI KAMPUS</p>
+                                    <p className="font-bold text-gray-700 text-lg sm:text-xl">
+                                        UPA-PKK MINI INDUSTRI KAMPUS
+                                    </p>
                                 </div>
-                                <div className="flex items-center space-x-2">
+                                <div className="flex w-full sm:w-auto items-center gap-2">
                                     <input
                                         type="text"
                                         value={keyword}
                                         onChange={(e) => setKeyword(e.target.value)}
                                         onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                                         placeholder="Cari nama tenant..."
-                                        className="border border-gray-300 rounded-md px-3 py-1 w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                        className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     />
                                     <PrimaryButton onClick={handleSearch}>
                                         Cari
@@ -38,22 +41,32 @@ export default function MiniIndustriKampusList({ daftarMIK, filters }) {
                                 </div>
                             </div>
 
-                            <p className="text-sm text-gray-600 mb-6">
-                                Halaman ini menampilkan data <strong>Mini Industri Kampus (MIK)</strong> yang dikelola oleh UPA-PKK Politeknik Negeri Sambas. MIK merupakan wadah inkubasi bisnis di lingkungan kampus yang bertujuan untuk mendorong pengembangan unit usaha mahasiswa dan alumni.
+                            {/* Description */}
+                            <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                                Halaman ini menampilkan data <strong>Mini Industri Kampus (MIK)</strong> yang dikelola oleh UPA-PKK Politeknik Negeri Sambas.
+                                MIK merupakan wadah inkubasi bisnis di lingkungan kampus yang bertujuan untuk mendorong pengembangan unit usaha mahasiswa dan alumni.
                             </p>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {/* Grid List */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {daftarMIK.length > 0 ? (
                                     daftarMIK.map((item) => (
-                                        <div key={item.id} className="border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition">
-                                            <h3 className="text-lg font-semibold text-blue-600 mb-2">{item.nama_mik}</h3>
-                                            <p className="text-sm text-gray-700 mb-1"><strong>Bidang Fokus:</strong> {item.bidang_fokus_mik}</p>
-                                            <p className="text-sm text-gray-700 mb-1"><strong>Tahun MIK:</strong> {item.tahun_mik}</p>
-                                            <p className="text-sm text-gray-700"><strong>Tahun Exit:</strong> {item.tahun_exit_mik}</p>
+                                        <div
+                                            key={item.id}
+                                            className="border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-lg transition bg-white"
+                                        >
+                                            <h3 className="text-lg font-bold text-blue-600 mb-3">
+                                                {item.nama_mik}
+                                            </h3>
+                                            <div className="space-y-1 text-sm text-gray-700">
+                                                <p><span className="font-semibold">Bidang Fokus:</span> {item.bidang_fokus_mik}</p>
+                                                <p><span className="font-semibold">Tahun MIK:</span> {item.tahun_mik}</p>
+                                                <p><span className="font-semibold">Tahun Exit:</span> {item.tahun_exit_mik}</p>
+                                            </div>
                                         </div>
                                     ))
                                 ) : (
-                                    <div className="col-span-full text-center text-gray-500 py-8">
+                                    <div className="col-span-full text-center text-gray-500 py-10">
                                         Data Mini Industri Kampus tidak tersedia.
                                     </div>
                                 )}
