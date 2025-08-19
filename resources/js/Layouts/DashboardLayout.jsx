@@ -90,13 +90,13 @@ function NavLinks({ auth, isMobile }) {
             </Link>
 
             {auth?.user ? (
-                <Link href={route('logout')} method="POST">
+                <Link href={route('logout')} method="POST" className='hidden md:block'>
                     <PrimaryButton type="submit" className="w-full md:w-auto">
                         Logout
                     </PrimaryButton>
                 </Link>
             ) : (
-                <Link href={route('login')}>
+                <Link href={route('login')} className='hidden md:block'>
                     <PrimaryButton className="w-full md:w-auto">Login</PrimaryButton>
                 </Link>
             )}
