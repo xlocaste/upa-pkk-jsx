@@ -21,8 +21,8 @@ export default function AlumniList({ daftarAlumni, filters }) {
     return (
         <DashboardLayout>
             <Head title="Alumni" />
-            <div className="py-6 px-4 sm:px-6 lg:px-8">
-                <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
+            <div className="py-4 px-4 md:p-8">
+                <div className="overflow-hidden bg-white shadow-md rounded-lg sm:rounded-lg">
                     <div className="p-6 text-gray-900">
                         {/* Header */}
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-4 bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-3">

@@ -14,23 +14,26 @@ export default function LowonganList({ lowonganKerja, filters }) {
     return (
         <DashboardLayout>
             <Head title="Lowongan Pekerjaan" />
-            <div className="py-8">
+            <div className="py-4 md:py-8">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-md sm:rounded-lg">
+                    <div className="overflow-hidden bg-white shadow-md mx-4 md:m-0 rounded-lg sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            <div className='flex items-center mb-4 justify-between bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2'>
+                            {/* Header + Search */}
+                            <div className='flex flex-col sm:flex-row sm:items-center mb-4 justify-between bg-gradient-to-r from-blue-300 via-blue-50 to-white rounded-md p-2 gap-3'>
                                 <div className='flex items-center space-x-4'>
                                     <ApplicationLogo />
-                                    <p className='font-bold text-gray-700 text-xl'>UPA-PKK JOB HUNTER</p>
+                                    <p className='font-bold text-gray-700 text-lg sm:text-xl'>
+                                        UPA-PKK JOB HUNTER
+                                    </p>
                                 </div>
-                                <div className="flex items-center space-x-2">
+                                <div className="flex items-center space-x-2 w-full sm:w-auto">
                                     <input
                                         type="text"
                                         value={keyword}
                                         onChange={(e) => setKeyword(e.target.value)}
                                         onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                                         placeholder="Cari judul, deskripsi, kontak..."
-                                        className="border border-gray-300 rounded-md px-3 py-1 w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                        className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-64 md:w-80 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
                                     />
                                     <PrimaryButton onClick={handleSearch}>
                                         Cari
@@ -38,6 +41,7 @@ export default function LowonganList({ lowonganKerja, filters }) {
                                 </div>
                             </div>
 
+                            {/* Deskripsi */}
                             <p className="text-sm text-gray-600 mb-4">
                                 Halaman ini menyajikan berbagai informasi lowongan pekerjaan yang dapat diakses oleh mahasiswa dan alumni Politeknik Negeri Sambas (Poltesa).
                                 Melalui sistem ini, UPA-PKK berperan aktif dalam menghubungkan lulusan dengan dunia industri dan dunia usaha.
@@ -45,6 +49,7 @@ export default function LowonganList({ lowonganKerja, filters }) {
                                 Fitur pencarian memudahkan pencocokan peluang kerja dengan minat dan keahlian pengguna.
                             </p>
 
+                            {/* List Lowongan */}
                             <div className="grid grid-cols-1 gap-6">
                                 {lowonganKerja.length > 0 ? (
                                     lowonganKerja.map((lowongan) => (
@@ -53,8 +58,9 @@ export default function LowonganList({ lowonganKerja, filters }) {
                                             href={route('form.lowongan-pekerjaan.detail', lowongan.id)}
                                             className="block"
                                         >
-                                            <div className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition p-4 flex gap-4 hover:bg-gray-50">
-                                                <div className="flex-shrink-0 w-64 h-64">
+                                            <div className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition p-4 flex flex-col md:flex-row gap-4 hover:bg-gray-50">
+                                                {/* Gambar */}
+                                                <div className="flex-shrink-0 w-full h-48 md:w-64 md:h-64">
                                                     {lowongan.image ? (
                                                         <img
                                                             src={`/storage/${lowongan.image}`}
@@ -67,11 +73,12 @@ export default function LowonganList({ lowonganKerja, filters }) {
                                                         </div>
                                                     )}
                                                 </div>
+                                                {/* Isi */}
                                                 <div className="flex-1">
                                                     <h3 className="text-lg font-semibold text-gray-800 my-2">
                                                         {lowongan.judul_lowongan_kerja}
                                                     </h3>
-                                                    <p className="text-gray-700 text-sm mb-2">
+                                                    <p className="text-gray-700 text-sm mb-2 line-clamp-3">
                                                         {lowongan.deskripsi}
                                                     </p>
                                                     <p className="text-gray-600 text-sm mb-4">
