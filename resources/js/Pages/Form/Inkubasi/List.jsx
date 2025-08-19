@@ -14,7 +14,7 @@ export default function InkubasiList({ Inkubasi, filters }) {
     return (
         <DashboardLayout>
             <Head title="Inkubasi" />
-            <div className="p-4 md:py-8">
+            <div className="p-4 md:py-8 md:px-0">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-md rounded-lg sm:rounded-lg">
                         <div className="p-6 text-gray-900">
