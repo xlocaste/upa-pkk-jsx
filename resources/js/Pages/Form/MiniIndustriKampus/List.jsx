@@ -28,9 +28,7 @@ export default function MiniIndustriKampusList({ daftarMIK, filters }) {
                                         type="text"
                                         value={keyword}
                                         onChange={(e) => setKeyword(e.target.value)}
-                                        onKeyDown={(e) => {
-                                            if (e.key === 'Enter') handleSearch();
-                                        }}
+                                        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                                         placeholder="Cari nama tenant..."
                                         className="border border-gray-300 rounded-md px-3 py-1 w-full md:w-80 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     />
@@ -39,43 +37,27 @@ export default function MiniIndustriKampusList({ daftarMIK, filters }) {
                                     </PrimaryButton>
                                 </div>
                             </div>
-                            <p className="text-sm text-gray-600 mb-4">
-                                Halaman ini menampilkan data Mini Industri Kampus (MIK) yang dikelola oleh UPA-PKK Politeknik Negeri Sambas.
-                                MIK merupakan wadah inkubasi bisnis di lingkungan kampus yang bertujuan untuk mendorong pengembangan unit usaha mahasiswa dan alumni dalam bidang tertentu sesuai potensi lokal maupun tren industri.
-                                Program ini membantu tenant dalam membangun model bisnis, produksi, pemasaran, hingga pendampingan usaha secara berkelanjutan.
-                                Informasi ini mencakup nama tenant, bidang fokus usaha, tahun pendirian, serta tahun keluar (exit) dari program inkubasi.
+
+                            <p className="text-sm text-gray-600 mb-6">
+                                Halaman ini menampilkan data <strong>Mini Industri Kampus (MIK)</strong> yang dikelola oleh UPA-PKK Politeknik Negeri Sambas. MIK merupakan wadah inkubasi bisnis di lingkungan kampus yang bertujuan untuk mendorong pengembangan unit usaha mahasiswa dan alumni.
                             </p>
 
-                            <table className="min-w-full bg-white border border-gray-200">
-                                <thead>
-                                    <tr className="bg-gray-100 text-left">
-                                        <th className="py-2 px-4 border-b">No</th>
-                                        <th className="py-2 px-4 border-b">Nama Tenant</th>
-                                        <th className="py-2 px-4 border-b">Bidang Fokus</th>
-                                        <th className="py-2 px-4 border-b">Tahun MIK</th>
-                                        <th className="py-2 px-4 border-b">Tahun Exit</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {daftarMIK.length > 0 ? (
-                                        daftarMIK.map((item, index) => (
-                                            <tr key={item.id} className="hover:bg-gray-50">
-                                                <td className="py-2 px-4 border-b">{index + 1}</td>
-                                                <td className="py-2 px-4 border-b">{item.nama_mik}</td>
-                                                <td className="py-2 px-4 border-b">{item.bidang_fokus_mik}</td>
-                                                <td className="py-2 px-4 border-b">{item.tahun_mik}</td>
-                                                <td className="py-2 px-4 border-b">{item.tahun_exit_mik}</td>
-                                            </tr>
-                                        ))
-                                    ) : (
-                                        <tr>
-                                            <td colSpan="5" className="text-center py-4 text-gray-500">
-                                                Data Mini Industri Kampus tidak tersedia.
-                                            </td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </table>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {daftarMIK.length > 0 ? (
+                                    daftarMIK.map((item) => (
+                                        <div key={item.id} className="border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition">
+                                            <h3 className="text-lg font-semibold text-blue-600 mb-2">{item.nama_mik}</h3>
+                                            <p className="text-sm text-gray-700 mb-1"><strong>Bidang Fokus:</strong> {item.bidang_fokus_mik}</p>
+                                            <p className="text-sm text-gray-700 mb-1"><strong>Tahun MIK:</strong> {item.tahun_mik}</p>
+                                            <p className="text-sm text-gray-700"><strong>Tahun Exit:</strong> {item.tahun_exit_mik}</p>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className="col-span-full text-center text-gray-500 py-8">
+                                        Data Mini Industri Kampus tidak tersedia.
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
